@@ -1,0 +1,32 @@
+<Type_Doc>
+	<Type_Document Id_Type_Document="1" Description="Cedula Nacional"/>
+	<Type_Document Id_Type_Document="2" Description="Cedula Residente"/>
+	<Type_Document Id_Type_Document="3" Description="Pasaporte"/>
+	<Type_Document Id_Type_Document="4" Descriptionn="Cedula Juridica"/>
+	<Type_Document Id_Type_Document="5" Description="Registro Civil"/>
+	<Type_Document Id_Type_Document="6" Description="Cedula Extranjera"/>
+</Type_Doc>
+
+<Client Names="Aitana Aguero" Password_Client="AA2920" Document="117963254" Id_Type_Document="1" />
+<Beneficiary Names="Amira Arias" Document="119560345" Id_Type_Document="1" Relationship="Hermana" Profit_Percentage="25" Birth_Date="2020-03-26" Cellphon="85369477" Home_Phone="22562349" EMAIL="amirarias121@gmail.com" />
+<Client Names="David Campos" Password_Client="DC1234" Document="O005236" Id_Type_Document="3" />
+
+<Type_Account Coin="Colones" Minimum_balance="15000" Fine_Inclumplimiento_Balance_Minimum="2500" Monthly_Amount_Services="527" Num_Max_Operacion_Cajero_Humano_Without_Commission="15" Num_Max_Operation_Automatic_Cash_Without_Commission="10" Amount_Comision_Cajero_Humano="750"	Amount_Automatic_Cash_Commission="603" Annual_Interest_Rate="2" />
+
+<Account Id_Type_Account="1" Id_Client="1" Balance="250000" Creation_date="2020-05-16" />
+<Account Id_Type_Account="1" Id_Client="2" Balance="750000" Creation_date="2020-07-16" />
+
+<Account_x_Beneficiary Id_Account="1" Id_Beneficiary="1" />
+
+<Type_Movement>
+	<Type_Movement Id_Type_Movement="1" Descrip="Debito"/>
+	<Type_Movement Id_Type_Movement="2" Descrip="Credito"/>
+</Type_Movement>
+
+
+<Movement Id_Account="1" Descrip="Compra de Pintura" Amount="35000"  Realization_Date="2020-05-30" Id_Type_Movement="1"/>
+<Movement Id_Account="2" Descrip="Pago deuda de televisor" Amount="45000"  Realization_Date="2020-06-04"Id_Type_Movement="2"/>
+<Movement Id_Account="1" Descrip="Salario" Amount="125000"  Realization_Date="2020-07-16" Id_Type_Movement="2"/>
+<Movement Id_Account="3" Descrip="Pago del Internet" Amount="27000"  Realization_Date="2020-08-10" Id_Type_Movement="1"/>
+
+<Sub_Accounts Reason="Comprar Carro" Term_Period="6" Id_Account="4" Date_Surcharge="15" Interest_Accumulated="45100" Date_Start="2020-07-03" Date_End="2019-01-03" Annual_Interest_Rate="10.5"	Monthly_Profit_Percentage="0.5" />
