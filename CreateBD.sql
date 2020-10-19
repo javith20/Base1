@@ -38,7 +38,9 @@ CREATE TABLE Tipo_Cuenta_Ahorros (
 	Comision_Humano MONEY NOT NULL, 
 	Comision_Automatico  MONEY NOT NULL,
 	Interes REAL NOT NULL,
-	Activo BIT NOT NULL DEFAULT '1'
+	Activo BIT NOT NULL DEFAULT '1',
+	FOREIGN KEY (Id_Tipo_Moneda) REFERENCES Tipo_Moneda(Id_Tipo_Moneda)
+
 );
 CREATE TABLE Persona (
 	Id_Persona INT NOT NULL PRIMARY KEY IDENTITY(1,1),
