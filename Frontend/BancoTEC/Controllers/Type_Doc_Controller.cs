@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BancoTEC.Controllers
 {
-    public class TipoDocIdController : Controller
+    public class Type_Doc_Controller : Controller
     {
         // GET: TipoDocId
         public ActionResult Index()
