@@ -46,7 +46,7 @@ CREATE TABLE Persona (
 	Id_Persona INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 	Nombre VARCHAR(100) NOT NULL,
 	Id_TipoDocumento INT NOT NULL,
-	Documento_Identidad VARCHAR(20) NOT NULL,
+	Documento_Identidad VARCHAR(20) NOT NULL UNIQUE,
 	Fecha_Nacimiento DATE NOT NULL,
 	Email VARCHAR(100) NOT NULL,
 	Telefono1 VARCHAR(15) NOT NULL, 
@@ -58,7 +58,7 @@ CREATE TABLE Cuenta (
 	Id_Cuenta INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 	Id_Persona INT NOT NULL,
 	Id_Tipo_Cuenta_Ahorros INT NOT NULL,
-	Num_Cuenta INT NOT NULL,
+	Num_Cuenta INT NOT NULL UNIQUE,
 	Fecha_Creacion DATE NOT NULL,
 	Saldo MONEY NOT NULL,
 	Activo BIT NOT NULL DEFAULT '1',
@@ -89,15 +89,18 @@ CREATE TABLE Estado_Cuenta (
 );
 CREATE TABLE Usuario (
 	Id_Usuario INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-	Nombre_Usuario VARCHAR(120) NOT NULL,
+	Id_Persona INT NOT NULL,
+	Nombre_Usuario VARCHAR(120) NOT NULL UNIQUE,
 	Clave VARCHAR(120) NOT NULL,
 	Es_Admin BIT NOT NULL,
-	Activo BIT NOT NULL DEFAULT '1'
+	Activo BIT NOT NULL DEFAULT '1',
+	FOREIGN KEY (Id_Persona) REFERENCES Persona(Id_Persona)
 );
 CREATE TABLE Usuario_Visualizacion (
 	Id_Usuario_Visualizacion INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 	Id_Usuario INT NOT NULL,
-	Nombre_Usuario VARCHAR(120) NOT NULL,
+	Id_Cuenta INT  NOT NULL,
 	Activo BIT NOT NULL DEFAULT '1',
-	FOREIGN KEY (Id_Usuario) REFERENCES Usuario(Id_Usuario)
+	FOREIGN KEY (Id_Usuario) REFERENCES Usuario(Id_Usuario),
+	FOREIGN KEY (Id_Cuenta) REFERENCES Cuenta(Id_Cuenta)
 );
