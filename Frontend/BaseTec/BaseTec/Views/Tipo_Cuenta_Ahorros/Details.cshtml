@@ -1,0 +1,106 @@
+﻿@model BaseTec.Models.Tipo_Cuenta_Ahorros
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tipo_Cuenta_Ahorros</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Saldo_Minimo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Saldo_Minimo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Multa_Saldo_Minimo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Multa_Saldo_Minimo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo_Anual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargo_Anual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_Retiros_Humano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_Retiros_Humano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_Retiros_Automatico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_Retiros_Automatico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comision_Humano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comision_Humano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comision_Automatico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comision_Automatico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_Moneda.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Moneda.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Tipo_Cuenta_Ahorros }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
