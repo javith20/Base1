@@ -12,12 +12,12 @@ namespace BaseTec.Controllers
 {
     public class Usuario_VisualizacionController : Controller
     {
-        private BD1Entities db = new BD1Entities();
+        private BD1Entities1 db = new BD1Entities1();
 
         // GET: Usuario_Visualizacion
         public ActionResult Index()
         {
-            var usuario_Visualizacion = db.Usuario_Visualizacion.Include(u => u.Usuario);
+            var usuario_Visualizacion = db.Usuario_Visualizacion.Include(u => u.Cuenta).Include(u => u.Usuario);
             return View(usuario_Visualizacion.ToList());
         }
 
@@ -39,6 +39,7 @@ namespace BaseTec.Controllers
         // GET: Usuario_Visualizacion/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta");
             ViewBag.Id_Usuario = new SelectList(db.Usuario, "Id_Usuario", "Nombre_Usuario");
             return View();
         }
@@ -48,7 +49,7 @@ namespace BaseTec.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Usuario_Visualizacion,Id_Usuario,Nombre_Usuario,Activo")] Usuario_Visualizacion usuario_Visualizacion)
+        public ActionResult Create([Bind(Include = "Id_Usuario_Visualizacion,Id_Usuario,Id_Cuenta,Activo")] Usuario_Visualizacion usuario_Visualizacion)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +58,7 @@ namespace BaseTec.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta", usuario_Visualizacion.Id_Cuenta);
             ViewBag.Id_Usuario = new SelectList(db.Usuario, "Id_Usuario", "Nombre_Usuario", usuario_Visualizacion.Id_Usuario);
             return View(usuario_Visualizacion);
         }
@@ -73,6 +75,7 @@ namespace BaseTec.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta", usuario_Visualizacion.Id_Cuenta);
             ViewBag.Id_Usuario = new SelectList(db.Usuario, "Id_Usuario", "Nombre_Usuario", usuario_Visualizacion.Id_Usuario);
             return View(usuario_Visualizacion);
         }
@@ -82,7 +85,7 @@ namespace BaseTec.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_Usuario_Visualizacion,Id_Usuario,Nombre_Usuario,Activo")] Usuario_Visualizacion usuario_Visualizacion)
+        public ActionResult Edit([Bind(Include = "Id_Usuario_Visualizacion,Id_Usuario,Id_Cuenta,Activo")] Usuario_Visualizacion usuario_Visualizacion)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +93,7 @@ namespace BaseTec.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta", usuario_Visualizacion.Id_Cuenta);
             ViewBag.Id_Usuario = new SelectList(db.Usuario, "Id_Usuario", "Nombre_Usuario", usuario_Visualizacion.Id_Usuario);
             return View(usuario_Visualizacion);
         }

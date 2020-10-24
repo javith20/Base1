@@ -243,46 +243,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="Cargar_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Datos" Type="xml" Mode="In" />
-    <Parameter Name="doc" Type="int" Mode="In" />
-  </Function>
-  <Function Name="Cargar_Cuentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Datos" Type="xml" Mode="In" />
-    <Parameter Name="doc" Type="int" Mode="In" />
-  </Function>
-  <Function Name="Cargar_Estado_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Datos" Type="xml" Mode="In" />
-    <Parameter Name="doc" Type="int" Mode="In" />
-  </Function>
-  <Function Name="Cargar_Parentezco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Datos" Type="xml" Mode="In" />
-    <Parameter Name="doc" Type="int" Mode="In" />
-  </Function>
-  <Function Name="Cargar_Personas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Datos" Type="xml" Mode="In" />
-    <Parameter Name="doc" Type="int" Mode="In" />
-  </Function>
-  <Function Name="Cargar_Tipo_Cuenta_Ahorros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Datos" Type="xml" Mode="In" />
-    <Parameter Name="doc" Type="int" Mode="In" />
-  </Function>
-  <Function Name="Cargar_Tipo_Doc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
-    <Parameter Name="doc" Type="int" Mode="In" />
-  </Function>
-  <Function Name="Cargar_Tipo_Moneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
-    <Parameter Name="doc" Type="int" Mode="In" />
-  </Function>
-  <Function Name="Cargar_Usuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Datos" Type="xml" Mode="In" />
-    <Parameter Name="doc" Type="int" Mode="In" />
-  </Function>
-  <Function Name="Cargar_Usuarios_Visualizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Datos" Type="xml" Mode="In" />
-    <Parameter Name="doc" Type="int" Mode="In" />
-  </Function>
   <EntityContainer Name="BD1ModelStoreContainer">
     <EntitySet Name="Beneficiario" EntityType="Self.Beneficiario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />

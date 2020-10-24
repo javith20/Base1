@@ -12,7 +12,7 @@ namespace BaseTec.Controllers
 {
     public class Estado_CuentaController : Controller
     {
-        private BD1Entities db = new BD1Entities();
+        private BD1Entities1 db = new BD1Entities1();
 
         // GET: Estado_Cuenta
         public ActionResult Index()
@@ -39,7 +39,7 @@ namespace BaseTec.Controllers
         // GET: Estado_Cuenta/Create
         public ActionResult Create()
         {
-            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Id_Cuenta");
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace BaseTec.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Id_Cuenta", estado_Cuenta.Id_Cuenta);
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta", estado_Cuenta.Id_Cuenta);
             return View(estado_Cuenta);
         }
 
@@ -73,7 +73,7 @@ namespace BaseTec.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Id_Cuenta", estado_Cuenta.Id_Cuenta);
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta", estado_Cuenta.Id_Cuenta);
             return View(estado_Cuenta);
         }
 
@@ -90,7 +90,7 @@ namespace BaseTec.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Id_Cuenta", estado_Cuenta.Id_Cuenta);
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta", estado_Cuenta.Id_Cuenta);
             return View(estado_Cuenta);
         }
 

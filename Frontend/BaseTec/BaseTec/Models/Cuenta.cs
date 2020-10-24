@@ -19,12 +19,13 @@ namespace BaseTec.Models
         {
             this.Beneficiario = new HashSet<Beneficiario>();
             this.Estado_Cuenta = new HashSet<Estado_Cuenta>();
+            this.Usuario_Visualizacion = new HashSet<Usuario_Visualizacion>();
         }
     
         public int Id_Cuenta { get; set; }
         public int Id_Persona { get; set; }
         public int Id_Tipo_Cuenta_Ahorros { get; set; }
-        public int Num_Cuenta { get; set; }
+        public string Num_Cuenta { get; set; }
         public System.DateTime Fecha_Creacion { get; set; }
         public decimal Saldo { get; set; }
         public bool Activo { get; set; }
@@ -35,5 +36,7 @@ namespace BaseTec.Models
         public virtual Tipo_Cuenta_Ahorros Tipo_Cuenta_Ahorros { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estado_Cuenta> Estado_Cuenta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuario_Visualizacion> Usuario_Visualizacion { get; set; }
     }
 }

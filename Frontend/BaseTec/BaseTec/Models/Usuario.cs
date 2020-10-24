@@ -21,11 +21,13 @@ namespace BaseTec.Models
         }
     
         public int Id_Usuario { get; set; }
+        public int Id_Persona { get; set; }
         public string Nombre_Usuario { get; set; }
         public string Clave { get; set; }
         public bool Es_Admin { get; set; }
         public bool Activo { get; set; }
     
+        public virtual Persona Persona { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario_Visualizacion> Usuario_Visualizacion { get; set; }
     }

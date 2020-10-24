@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<BaseTec.Models.Beneficiario>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Beneficiarios";
 }
 
-<h2>Index</h2>
+<h2>Beneficiarios</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -15,13 +15,10 @@
             @Html.DisplayNameFor(model => model.Porcentaje)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Activo)
+            @Html.DisplayNameFor(model => model.Cuenta.Num_Cuenta)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cuenta.Id_Cuenta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Parentezco.Nombre)
+            Relacion
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Persona.Nombre)
@@ -34,11 +31,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Porcentaje)
         </td>
+ 
         <td>
-            @Html.DisplayFor(modelItem => item.Activo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cuenta.Id_Cuenta)
+            @Html.DisplayFor(modelItem => item.Cuenta.Num_Cuenta)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Parentezco.Nombre)
@@ -47,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.Persona.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Beneficiario }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Beneficiario }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Beneficiario })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id_Beneficiario }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id_Beneficiario }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id_Beneficiario })
         </td>
     </tr>
 }

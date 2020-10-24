@@ -12,12 +12,13 @@ namespace BaseTec.Controllers
 {
     public class UsuariosController : Controller
     {
-        private BD1Entities db = new BD1Entities();
+        private BD1Entities1 db = new BD1Entities1();
 
         // GET: Usuarios
         public ActionResult Index()
         {
-            return View(db.Usuario.ToList());
+            var usuario = db.Usuario.Include(u => u.Persona);
+            return View(usuario.ToList());
         }
 
         // GET: Usuarios/Details/5
@@ -38,6 +39,7 @@ namespace BaseTec.Controllers
         // GET: Usuarios/Create
         public ActionResult Create()
         {
+            ViewBag.Id_Persona = new SelectList(db.Persona, "Id_Persona", "Nombre");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace BaseTec.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Usuario,Nombre_Usuario,Clave,Es_Admin,Activo")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "Id_Usuario,Id_Persona,Nombre_Usuario,Clave,Es_Admin,Activo")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace BaseTec.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Id_Persona = new SelectList(db.Persona, "Id_Persona", "Nombre", usuario.Id_Persona);
             return View(usuario);
         }
 
@@ -70,6 +73,7 @@ namespace BaseTec.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Id_Persona = new SelectList(db.Persona, "Id_Persona", "Nombre", usuario.Id_Persona);
             return View(usuario);
         }
 
@@ -78,7 +82,7 @@ namespace BaseTec.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_Usuario,Nombre_Usuario,Clave,Es_Admin,Activo")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "Id_Usuario,Id_Persona,Nombre_Usuario,Clave,Es_Admin,Activo")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace BaseTec.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Id_Persona = new SelectList(db.Persona, "Id_Persona", "Nombre", usuario.Id_Persona);
             return View(usuario);
         }
 

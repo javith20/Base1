@@ -12,7 +12,7 @@ namespace BaseTec.Controllers
 {
     public class BeneficiariosController : Controller
     {
-        private BD1Entities db = new BD1Entities();
+        private BD1Entities1 db = new BD1Entities1();
 
         // GET: Beneficiarios
         public ActionResult Index()
@@ -39,7 +39,7 @@ namespace BaseTec.Controllers
         // GET: Beneficiarios/Create
         public ActionResult Create()
         {
-            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Id_Cuenta");
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta");
             ViewBag.Id_Parentezco = new SelectList(db.Parentezco, "Id_Parentezco", "Nombre");
             ViewBag.Id_Persona = new SelectList(db.Persona, "Id_Persona", "Nombre");
             return View();
@@ -59,7 +59,7 @@ namespace BaseTec.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Id_Cuenta", beneficiario.Id_Cuenta);
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta", beneficiario.Id_Cuenta);
             ViewBag.Id_Parentezco = new SelectList(db.Parentezco, "Id_Parentezco", "Nombre", beneficiario.Id_Parentezco);
             ViewBag.Id_Persona = new SelectList(db.Persona, "Id_Persona", "Nombre", beneficiario.Id_Persona);
             return View(beneficiario);
@@ -77,7 +77,7 @@ namespace BaseTec.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Id_Cuenta", beneficiario.Id_Cuenta);
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta", beneficiario.Id_Cuenta);
             ViewBag.Id_Parentezco = new SelectList(db.Parentezco, "Id_Parentezco", "Nombre", beneficiario.Id_Parentezco);
             ViewBag.Id_Persona = new SelectList(db.Persona, "Id_Persona", "Nombre", beneficiario.Id_Persona);
             return View(beneficiario);
@@ -96,7 +96,7 @@ namespace BaseTec.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Id_Cuenta", beneficiario.Id_Cuenta);
+            ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta", beneficiario.Id_Cuenta);
             ViewBag.Id_Parentezco = new SelectList(db.Parentezco, "Id_Parentezco", "Nombre", beneficiario.Id_Parentezco);
             ViewBag.Id_Persona = new SelectList(db.Persona, "Id_Persona", "Nombre", beneficiario.Id_Persona);
             return View(beneficiario);

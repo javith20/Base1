@@ -10,25 +10,9 @@
     <Property Name="Id_Parentezco" Type="Int32" Nullable="false" />
     <Property Name="Porcentaje" Type="Single" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Cuenta" Relationship="Self.FK__Beneficia__Id_Cu__3A81B327" FromRole="Beneficiario" ToRole="Cuenta" />
     <NavigationProperty Name="Parentezco" Relationship="Self.FK__Beneficia__Id_Pa__3C69FB99" FromRole="Beneficiario" ToRole="Parentezco" />
     <NavigationProperty Name="Persona" Relationship="Self.FK__Beneficia__Id_Pe__3B75D760" FromRole="Beneficiario" ToRole="Persona" />
-  </EntityType>
-  <EntityType Name="Cuenta">
-    <Key>
-      <PropertyRef Name="Id_Cuenta" />
-    </Key>
-    <Property Name="Id_Cuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Id_Persona" Type="Int32" Nullable="false" />
-    <Property Name="Id_Tipo_Cuenta_Ahorros" Type="Int32" Nullable="false" />
-    <Property Name="Num_Cuenta" Type="Int32" Nullable="false" />
-    <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Saldo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="Activo" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Beneficiario" Relationship="Self.FK__Beneficia__Id_Cu__3A81B327" FromRole="Cuenta" ToRole="Beneficiario" />
-    <NavigationProperty Name="Persona" Relationship="Self.FK__Cuenta__Id_Perso__36B12243" FromRole="Cuenta" ToRole="Persona" />
-    <NavigationProperty Name="Tipo_Cuenta_Ahorros" Relationship="Self.FK__Cuenta__Id_Tipo___35BCFE0A" FromRole="Cuenta" ToRole="Tipo_Cuenta_Ahorros" />
-    <NavigationProperty Name="Estado_Cuenta" Relationship="Self.FK__Estado_Cu__Id_Cu__403A8C7D" FromRole="Cuenta" ToRole="Estado_Cuenta" />
+    <NavigationProperty Name="Cuenta" Relationship="BD1Model.FK__Beneficia__Id_Cu__3C69FB99" FromRole="Beneficiario" ToRole="Cuenta" />
   </EntityType>
   <EntityType Name="Estado_Cuenta">
     <Key>
@@ -41,7 +25,7 @@
     <Property Name="Saldo_Inicial" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="Saldo_Final" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Cuenta" Relationship="Self.FK__Estado_Cu__Id_Cu__403A8C7D" FromRole="Estado_Cuenta" ToRole="Cuenta" />
+    <NavigationProperty Name="Cuenta" Relationship="BD1Model.FK__Estado_Cu__Id_Cu__4222D4EF" FromRole="Estado_Cuenta" ToRole="Cuenta" />
   </EntityType>
   <EntityType Name="Parentezco">
     <Key>
@@ -66,8 +50,9 @@
     <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Beneficiario" Relationship="Self.FK__Beneficia__Id_Pe__3B75D760" FromRole="Persona" ToRole="Beneficiario" />
-    <NavigationProperty Name="Cuenta" Relationship="Self.FK__Cuenta__Id_Perso__36B12243" FromRole="Persona" ToRole="Cuenta" />
     <NavigationProperty Name="Tipo_Documento" Relationship="Self.FK__Persona__Id_Tipo__31EC6D26" FromRole="Persona" ToRole="Tipo_Documento" />
+    <NavigationProperty Name="Usuario" Relationship="BD1Model.FK__Usuario__Id_Pers__46E78A0C" FromRole="Persona" ToRole="Usuario" />
+    <NavigationProperty Name="Cuenta" Relationship="BD1Model.FK__Cuenta__Id_Perso__38996AB5" FromRole="Persona" ToRole="Cuenta" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -95,8 +80,8 @@
     <Property Name="Comision_Automatico" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="Interes" Type="Single" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Cuenta" Relationship="Self.FK__Cuenta__Id_Tipo___35BCFE0A" FromRole="Tipo_Cuenta_Ahorros" ToRole="Cuenta" />
     <NavigationProperty Name="Tipo_Moneda" Relationship="Self.FK__Tipo_Cuen__Id_Ti__2E1BDC42" FromRole="Tipo_Cuenta_Ahorros" ToRole="Tipo_Moneda" />
+    <NavigationProperty Name="Cuenta" Relationship="BD1Model.FK__Cuenta__Id_Tipo___37A5467C" FromRole="Tipo_Cuenta_Ahorros" ToRole="Cuenta" />
   </EntityType>
   <EntityType Name="Tipo_Documento">
     <Key>
@@ -127,6 +112,8 @@
     <Property Name="Es_Admin" Type="Boolean" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Usuario_Visualizacion" Relationship="Self.FK__Usuario_V__Id_Us__46E78A0C" FromRole="Usuario" ToRole="Usuario_Visualizacion" />
+    <Property Name="Id_Persona" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Persona" Relationship="BD1Model.FK__Usuario__Id_Pers__46E78A0C" FromRole="Usuario" ToRole="Persona" />
   </EntityType>
   <EntityType Name="Usuario_Visualizacion">
     <Key>
@@ -137,19 +124,9 @@
     <Property Name="Nombre_Usuario" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario_V__Id_Us__46E78A0C" FromRole="Usuario_Visualizacion" ToRole="Usuario" />
+    <Property Name="Id_Cuenta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cuenta" Relationship="BD1Model.FK__Usuario_V__Id_Cu__4BAC3F29" FromRole="Usuario_Visualizacion" ToRole="Cuenta" />
   </EntityType>
-  <Association Name="FK__Beneficia__Id_Cu__3A81B327">
-    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
-    <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cuenta">
-        <PropertyRef Name="Id_Cuenta" />
-      </Principal>
-      <Dependent Role="Beneficiario">
-        <PropertyRef Name="Id_Cuenta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Beneficia__Id_Pa__3C69FB99">
     <End Role="Parentezco" Type="Self.Parentezco" Multiplicity="1" />
     <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="*" />
@@ -171,42 +148,6 @@
       </Principal>
       <Dependent Role="Beneficiario">
         <PropertyRef Name="Id_Persona" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Cuenta__Id_Perso__36B12243">
-    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
-    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Persona">
-        <PropertyRef Name="Id_Persona" />
-      </Principal>
-      <Dependent Role="Cuenta">
-        <PropertyRef Name="Id_Persona" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Cuenta__Id_Tipo___35BCFE0A">
-    <End Role="Tipo_Cuenta_Ahorros" Type="Self.Tipo_Cuenta_Ahorros" Multiplicity="1" />
-    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tipo_Cuenta_Ahorros">
-        <PropertyRef Name="Id_Tipo_Cuenta_Ahorros" />
-      </Principal>
-      <Dependent Role="Cuenta">
-        <PropertyRef Name="Id_Tipo_Cuenta_Ahorros" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Estado_Cu__Id_Cu__403A8C7D">
-    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
-    <End Role="Estado_Cuenta" Type="Self.Estado_Cuenta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cuenta">
-        <PropertyRef Name="Id_Cuenta" />
-      </Principal>
-      <Dependent Role="Estado_Cuenta">
-        <PropertyRef Name="Id_Cuenta" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -248,7 +189,6 @@
   </Association>
   <EntityContainer Name="BD1Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Beneficiario" EntityType="Self.Beneficiario" />
-    <EntitySet Name="Cuenta" EntityType="Self.Cuenta" />
     <EntitySet Name="Estado_Cuenta" EntityType="Self.Estado_Cuenta" />
     <EntitySet Name="Parentezco" EntityType="Self.Parentezco" />
     <EntitySet Name="Persona" EntityType="Self.Persona" />
@@ -258,10 +198,6 @@
     <EntitySet Name="Tipo_Moneda" EntityType="Self.Tipo_Moneda" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" />
     <EntitySet Name="Usuario_Visualizacion" EntityType="Self.Usuario_Visualizacion" />
-    <AssociationSet Name="FK__Beneficia__Id_Cu__3A81B327" Association="Self.FK__Beneficia__Id_Cu__3A81B327">
-      <End Role="Cuenta" EntitySet="Cuenta" />
-      <End Role="Beneficiario" EntitySet="Beneficiario" />
-    </AssociationSet>
     <AssociationSet Name="FK__Beneficia__Id_Pa__3C69FB99" Association="Self.FK__Beneficia__Id_Pa__3C69FB99">
       <End Role="Parentezco" EntitySet="Parentezco" />
       <End Role="Beneficiario" EntitySet="Beneficiario" />
@@ -269,18 +205,6 @@
     <AssociationSet Name="FK__Beneficia__Id_Pe__3B75D760" Association="Self.FK__Beneficia__Id_Pe__3B75D760">
       <End Role="Persona" EntitySet="Persona" />
       <End Role="Beneficiario" EntitySet="Beneficiario" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Cuenta__Id_Perso__36B12243" Association="Self.FK__Cuenta__Id_Perso__36B12243">
-      <End Role="Persona" EntitySet="Persona" />
-      <End Role="Cuenta" EntitySet="Cuenta" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Cuenta__Id_Tipo___35BCFE0A" Association="Self.FK__Cuenta__Id_Tipo___35BCFE0A">
-      <End Role="Tipo_Cuenta_Ahorros" EntitySet="Tipo_Cuenta_Ahorros" />
-      <End Role="Cuenta" EntitySet="Cuenta" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Estado_Cu__Id_Cu__403A8C7D" Association="Self.FK__Estado_Cu__Id_Cu__403A8C7D">
-      <End Role="Cuenta" EntitySet="Cuenta" />
-      <End Role="Estado_Cuenta" EntitySet="Estado_Cuenta" />
     </AssociationSet>
     <AssociationSet Name="FK__Persona__Id_Tipo__31EC6D26" Association="Self.FK__Persona__Id_Tipo__31EC6D26">
       <End Role="Tipo_Documento" EntitySet="Tipo_Documento" />
@@ -294,5 +218,159 @@
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Usuario_Visualizacion" EntitySet="Usuario_Visualizacion" />
     </AssociationSet>
+    <AssociationSet Name="FK__Usuario__Id_Pers__46E78A0C" Association="BD1Model.FK__Usuario__Id_Pers__46E78A0C">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <FunctionImport Name="Cargar_Beneficiario">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Cuentas">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Estado_Cuenta">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Parentezco">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Personas">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Tipo_Cuenta_Ahorros">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Tipo_Doc">
+      <Parameter Name="tipo_Documento" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Tipo_Moneda">
+      <Parameter Name="tipo_Documento" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Usuarios">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Usuarios_Visualizacion">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Cuenta" EntityType="BD1Model.Cuenta" />
+    <AssociationSet Name="FK__Beneficia__Id_Cu__3C69FB99" Association="BD1Model.FK__Beneficia__Id_Cu__3C69FB99">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Beneficiario" EntitySet="Beneficiario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuenta__Id_Perso__38996AB5" Association="BD1Model.FK__Cuenta__Id_Perso__38996AB5">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Cuenta" EntitySet="Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuenta__Id_Tipo___37A5467C" Association="BD1Model.FK__Cuenta__Id_Tipo___37A5467C">
+      <End Role="Tipo_Cuenta_Ahorros" EntitySet="Tipo_Cuenta_Ahorros" />
+      <End Role="Cuenta" EntitySet="Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estado_Cu__Id_Cu__4222D4EF" Association="BD1Model.FK__Estado_Cu__Id_Cu__4222D4EF">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Estado_Cuenta" EntitySet="Estado_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario_V__Id_Cu__4BAC3F29" Association="BD1Model.FK__Usuario_V__Id_Cu__4BAC3F29">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Usuario_Visualizacion" EntitySet="Usuario_Visualizacion" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK__Usuario__Id_Pers__46E78A0C">
+    <End Type="BD1Model.Persona" Role="Persona" Multiplicity="1" />
+    <End Type="BD1Model.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id_Persona" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Cuenta">
+    <Key>
+      <PropertyRef Name="Id_Cuenta" />
+    </Key>
+    <Property Name="Id_Cuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Persona" Type="Int32" Nullable="false" />
+    <Property Name="Id_Tipo_Cuenta_Ahorros" Type="Int32" Nullable="false" />
+    <Property Name="Num_Cuenta" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Saldo" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Beneficiario" Relationship="BD1Model.FK__Beneficia__Id_Cu__3C69FB99" FromRole="Cuenta" ToRole="Beneficiario" />
+    <NavigationProperty Name="Persona" Relationship="BD1Model.FK__Cuenta__Id_Perso__38996AB5" FromRole="Cuenta" ToRole="Persona" />
+    <NavigationProperty Name="Tipo_Cuenta_Ahorros" Relationship="BD1Model.FK__Cuenta__Id_Tipo___37A5467C" FromRole="Cuenta" ToRole="Tipo_Cuenta_Ahorros" />
+    <NavigationProperty Name="Estado_Cuenta" Relationship="BD1Model.FK__Estado_Cu__Id_Cu__4222D4EF" FromRole="Cuenta" ToRole="Estado_Cuenta" />
+    <NavigationProperty Name="Usuario_Visualizacion" Relationship="BD1Model.FK__Usuario_V__Id_Cu__4BAC3F29" FromRole="Cuenta" ToRole="Usuario_Visualizacion" />
+  </EntityType>
+  <Association Name="FK__Beneficia__Id_Cu__3C69FB99">
+    <End Type="BD1Model.Cuenta" Role="Cuenta" Multiplicity="1" />
+    <End Type="BD1Model.Beneficiario" Role="Beneficiario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Beneficiario">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuenta__Id_Perso__38996AB5">
+    <End Type="BD1Model.Persona" Role="Persona" Multiplicity="1" />
+    <End Type="BD1Model.Cuenta" Role="Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id_Persona" />
+      </Principal>
+      <Dependent Role="Cuenta">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuenta__Id_Tipo___37A5467C">
+    <End Type="BD1Model.Tipo_Cuenta_Ahorros" Role="Tipo_Cuenta_Ahorros" Multiplicity="1" />
+    <End Type="BD1Model.Cuenta" Role="Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Cuenta_Ahorros">
+        <PropertyRef Name="Id_Tipo_Cuenta_Ahorros" />
+      </Principal>
+      <Dependent Role="Cuenta">
+        <PropertyRef Name="Id_Tipo_Cuenta_Ahorros" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estado_Cu__Id_Cu__4222D4EF">
+    <End Type="BD1Model.Cuenta" Role="Cuenta" Multiplicity="1" />
+    <End Type="BD1Model.Estado_Cuenta" Role="Estado_Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Estado_Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario_V__Id_Cu__4BAC3F29">
+    <End Type="BD1Model.Cuenta" Role="Cuenta" Multiplicity="1" />
+    <End Type="BD1Model.Usuario_Visualizacion" Role="Usuario_Visualizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Usuario_Visualizacion">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

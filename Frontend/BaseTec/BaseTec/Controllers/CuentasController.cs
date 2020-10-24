@@ -12,7 +12,7 @@ namespace BaseTec.Controllers
 {
     public class CuentasController : Controller
     {
-        private BD1Entities db = new BD1Entities();
+        private BD1Entities1 db = new BD1Entities1();
 
         // GET: Cuentas
         public ActionResult Index()

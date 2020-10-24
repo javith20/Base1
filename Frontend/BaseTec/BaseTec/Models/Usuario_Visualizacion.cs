@@ -16,9 +16,10 @@ namespace BaseTec.Models
     {
         public int Id_Usuario_Visualizacion { get; set; }
         public int Id_Usuario { get; set; }
-        public string Nombre_Usuario { get; set; }
+        public int Id_Cuenta { get; set; }
         public bool Activo { get; set; }
     
+        public virtual Cuenta Cuenta { get; set; }
         public virtual Usuario Usuario { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace BaseTec.Controllers
 {
     public class Tipo_MonedaController : Controller
     {
-        private BD1Entities db = new BD1Entities();
+        private BD1Entities1 db = new BD1Entities1();
 
         // GET: Tipo_Moneda
         public ActionResult Index()

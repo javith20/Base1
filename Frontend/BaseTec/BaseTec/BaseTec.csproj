@@ -142,53 +142,50 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Banco.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Banco.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Banco.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Banco.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Banco.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Banco.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Beneficiario.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cuenta.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Estado_Cuenta.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Parentezco.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Persona.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tipo_Cuenta_Ahorros.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tipo_Documento.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tipo_Moneda.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario_Visualizacion.cs">
-      <DependentUpon>Banco.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -201,24 +198,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Banco.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Banco.Context.cs</LastGenOutput>
-      <DependentUpon>Banco.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Banco.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Banco.edmx</DependentUpon>
-      <LastGenOutput>Banco.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Banco.edmx">
+    <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Banco.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Banco.edmx.diagram">
-      <DependentUpon>Banco.edmx</DependentUpon>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -245,36 +242,36 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Personas\Create.cshtml" />
-    <Content Include="Views\Personas\Delete.cshtml" />
-    <Content Include="Views\Personas\Details.cshtml" />
-    <Content Include="Views\Personas\Edit.cshtml" />
-    <Content Include="Views\Personas\Index.cshtml" />
-    <Content Include="Views\Beneficiarios\Create.cshtml" />
-    <Content Include="Views\Beneficiarios\Delete.cshtml" />
-    <Content Include="Views\Beneficiarios\Details.cshtml" />
-    <Content Include="Views\Beneficiarios\Edit.cshtml" />
-    <Content Include="Views\Beneficiarios\Index.cshtml" />
-    <Content Include="Views\Estado_Cuenta\Create.cshtml" />
-    <Content Include="Views\Estado_Cuenta\Delete.cshtml" />
-    <Content Include="Views\Estado_Cuenta\Details.cshtml" />
-    <Content Include="Views\Estado_Cuenta\Edit.cshtml" />
-    <Content Include="Views\Estado_Cuenta\Index.cshtml" />
-    <Content Include="Views\Cuentas\Create.cshtml" />
-    <Content Include="Views\Cuentas\Delete.cshtml" />
-    <Content Include="Views\Cuentas\Details.cshtml" />
-    <Content Include="Views\Cuentas\Edit.cshtml" />
-    <Content Include="Views\Cuentas\Index.cshtml" />
-    <Content Include="Views\Parentezcoes\Create.cshtml" />
-    <Content Include="Views\Parentezcoes\Delete.cshtml" />
-    <Content Include="Views\Parentezcoes\Details.cshtml" />
-    <Content Include="Views\Parentezcoes\Edit.cshtml" />
-    <Content Include="Views\Parentezcoes\Index.cshtml" />
     <Content Include="Views\Tipo_Cuenta_Ahorros\Create.cshtml" />
     <Content Include="Views\Tipo_Cuenta_Ahorros\Delete.cshtml" />
     <Content Include="Views\Tipo_Cuenta_Ahorros\Details.cshtml" />
     <Content Include="Views\Tipo_Cuenta_Ahorros\Edit.cshtml" />
     <Content Include="Views\Tipo_Cuenta_Ahorros\Index.cshtml" />
+    <Content Include="Views\Beneficiarios\Create.cshtml" />
+    <Content Include="Views\Beneficiarios\Delete.cshtml" />
+    <Content Include="Views\Beneficiarios\Details.cshtml" />
+    <Content Include="Views\Beneficiarios\Edit.cshtml" />
+    <Content Include="Views\Beneficiarios\Index.cshtml" />
+    <Content Include="Views\Cuentas\Create.cshtml" />
+    <Content Include="Views\Cuentas\Delete.cshtml" />
+    <Content Include="Views\Cuentas\Details.cshtml" />
+    <Content Include="Views\Cuentas\Edit.cshtml" />
+    <Content Include="Views\Cuentas\Index.cshtml" />
+    <Content Include="Views\Estado_Cuenta\Create.cshtml" />
+    <Content Include="Views\Estado_Cuenta\Delete.cshtml" />
+    <Content Include="Views\Estado_Cuenta\Details.cshtml" />
+    <Content Include="Views\Estado_Cuenta\Edit.cshtml" />
+    <Content Include="Views\Estado_Cuenta\Index.cshtml" />
+    <Content Include="Views\Parentezcoes\Create.cshtml" />
+    <Content Include="Views\Parentezcoes\Delete.cshtml" />
+    <Content Include="Views\Parentezcoes\Details.cshtml" />
+    <Content Include="Views\Parentezcoes\Edit.cshtml" />
+    <Content Include="Views\Parentezcoes\Index.cshtml" />
+    <Content Include="Views\Personas\Create.cshtml" />
+    <Content Include="Views\Personas\Delete.cshtml" />
+    <Content Include="Views\Personas\Details.cshtml" />
+    <Content Include="Views\Personas\Edit.cshtml" />
+    <Content Include="Views\Personas\Index.cshtml" />
     <Content Include="Views\Tipo_Documento\Create.cshtml" />
     <Content Include="Views\Tipo_Documento\Delete.cshtml" />
     <Content Include="Views\Tipo_Documento\Details.cshtml" />

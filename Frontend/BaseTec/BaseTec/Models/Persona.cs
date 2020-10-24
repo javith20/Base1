@@ -19,6 +19,7 @@ namespace BaseTec.Models
         {
             this.Beneficiario = new HashSet<Beneficiario>();
             this.Cuenta = new HashSet<Cuenta>();
+            this.Usuario = new HashSet<Usuario>();
         }
     
         public int Id_Persona { get; set; }
@@ -36,5 +37,7 @@ namespace BaseTec.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cuenta> Cuenta { get; set; }
         public virtual Tipo_Documento Tipo_Documento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuario> Usuario { get; set; }
     }
 }
