@@ -9,6 +9,4 @@ sqlcmd -i Cargar_Beneficiarios.sql
 sqlcmd -i Cargar_Estado_Cuenta.sql
 sqlcmd -i Cargar_Usuario.sql
 sqlcmd -i Cargar_Usuario_Visualizacion.sql
-
-
 pause
