@@ -54,24 +54,56 @@ def genCuenta():
 	return cuenta
 
 def genBeneficiarios():
-	beneficiario ="<Beneficiario NumeroCuenta=\"#C#\" ValorDocumentoIdentidadBeneficiario=\"#ID#\" ParentezcoId=\"#PI#\" Porcentaje=\"#P#\""
+	beneficiario ="<Beneficiario NumeroCuenta=\"#C#\" ValorDocumentoIdentidadBeneficiario=\"#ID#\" ParentezcoId=\"#PI#\" Porcentaje=\"#P#\" />"
 	beneficiario = beneficiario.replace("#C#",ListaCuentasRegistradas[random.randint(0,len(ListaCuentasRegistradas)-1)])
 	beneficiario = beneficiario.replace("#ID#",ListaCedulasRegistradas[random.randint(0,len(ListaCedulasRegistradas)-1)])
 	beneficiario = beneficiario.replace("#PI#",str(random.randint(0,8)))
 	beneficiario = beneficiario.replace("#P#",str(random.randint(1,100)))
 	return beneficiario
 
-listaPersonas = []
-listaCuentas= []
-listaBeneficiarios= []
+def generarEstados(cuenta,fechaInicio,saldoInicial):
+	fecha= fechaInicio.split("-")
 
-for x in range(0,100):
-	listaPersonas.append(genPersona())
-for x in range(0,100):
-	listaCuentas.append(genCuenta())
-for x in range(0,100):
-	listaBeneficiarios.append(genBeneficiarios())
+	while(True):
+		if(fecha[0]=="2020" and fecha[1]=="10"):
+			break
+		estado = "<Estado_de_Cuenta NumeroCuenta=\"#Cuenta#\" fechaInicio=\"#FI#\" fechaFin=\"#FF#\"  saldoInicial=\"#SI#.00\" saldoFinal=\"#SF#.00\" />"
+		estado = estado.replace("#Cuenta#",cuenta)
+		estado = estado.replace("#FI#",fecha[0]+"-"+fecha[1]+"-"+fecha[2])
+		if(fecha[1]=="12"):
+			fecha[0]=str(int(fecha[0])+1)
+			fecha[1]="1"
+		else:
+			fecha[1]=str(int(fecha[1])+1)
+		if(int(fecha[1])<10):
+			fecha[1]="0"+fecha[1]
+		estado = estado.replace("#FF#",fecha[0]+"-"+fecha[1]+"-"+fecha[2])
+		estado = estado.replace("#SI#",saldoInicial)
+		saldoFinal= str(random.randint(1000,9000000))
+		saldoInicial = saldoFinal
+		estado = estado.replace("#SF#",saldoFinal)
 
-print(listaPersonas)
-print(listaCuentas)
-print(listaBeneficiarios)
+
+		print(estado)
+		
+cuentas = open("cuentas.csv")
+Matriz = []
+for x in cuentas:
+	Matriz.append(cuentas.readline().split(','))
+
+
+generarEstados("11717598","2016-08-28","26745278")
+#listaPersonas = []
+#listaCuentas= []
+#listaBeneficiarios= []
+
+#for x in range(0,100):
+#	listaPersonas.append(genPersona())
+#for x in range(0,100):
+#	listaCuentas.append(genCuenta())
+#for x in range(0,100):
+#	listaBeneficiarios.append(genBeneficiarios())
+
+#print(listaPersonas)
+#print(listaCuentas)
+#print(listaBeneficiarios)
