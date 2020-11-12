@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BD1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BD1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Beneficiario">
           <Key>
             <PropertyRef Name="Id_Beneficiario" />
@@ -248,6 +248,62 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Actualizar_Beneficiario_Porcentaje" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
+          <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
+          <Parameter Name="inParentezco" Type="varchar" Mode="In" />
+          <Parameter Name="inPorcentaje" Type="real" Mode="In" />
+        </Function>
+        <Function Name="Cargar_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Datos" Type="xml" Mode="In" />
+          <Parameter Name="doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Cargar_Cuentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Datos" Type="xml" Mode="In" />
+          <Parameter Name="doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Cargar_Estado_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Datos" Type="xml" Mode="In" />
+          <Parameter Name="doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Cargar_Parentezco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Datos" Type="xml" Mode="In" />
+          <Parameter Name="doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Cargar_Personas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Datos" Type="xml" Mode="In" />
+          <Parameter Name="doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Cargar_Tipo_Cuenta_Ahorros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Datos" Type="xml" Mode="In" />
+          <Parameter Name="doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Cargar_Tipo_Doc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
+          <Parameter Name="doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Cargar_Tipo_Moneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
+          <Parameter Name="doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Cargar_Usuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Datos" Type="xml" Mode="In" />
+          <Parameter Name="doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Cargar_Usuarios_Visualizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Datos" Type="xml" Mode="In" />
+          <Parameter Name="doc" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Crear_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
+          <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
+          <Parameter Name="inParentezco" Type="varchar" Mode="In" />
+          <Parameter Name="inPorcentaje" Type="real" Mode="In" />
+        </Function>
+        <Function Name="Eliminar_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="inId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Leer_Todos_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="BD1ModelStoreContainer">
           <EntitySet Name="Beneficiario" EntityType="Self.Beneficiario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
@@ -304,8 +360,7 @@
             <End Role="Usuario_Visualizacion" EntitySet="Usuario_Visualizacion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BD1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -629,7 +684,80 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Usuario_Visualizacion" EntitySet="Usuario_Visualizacion" />
           </AssociationSet>
+          <FunctionImport Name="Actualizar_Beneficiario_Porcentaje">
+            <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+            <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+            <Parameter Name="inParentezco" Mode="In" Type="String" />
+            <Parameter Name="inPorcentaje" Mode="In" Type="Single" />
+          </FunctionImport>
+          <FunctionImport Name="Cargar_Beneficiario">
+            <Parameter Name="Datos" Mode="In" Type="String" />
+            <Parameter Name="doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cargar_Cuentas">
+            <Parameter Name="Datos" Mode="In" Type="String" />
+            <Parameter Name="doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cargar_Estado_Cuenta">
+            <Parameter Name="Datos" Mode="In" Type="String" />
+            <Parameter Name="doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cargar_Parentezco">
+            <Parameter Name="Datos" Mode="In" Type="String" />
+            <Parameter Name="doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cargar_Personas">
+            <Parameter Name="Datos" Mode="In" Type="String" />
+            <Parameter Name="doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cargar_Tipo_Cuenta_Ahorros">
+            <Parameter Name="Datos" Mode="In" Type="String" />
+            <Parameter Name="doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cargar_Tipo_Doc">
+            <Parameter Name="tipo_Documento" Mode="In" Type="String" />
+            <Parameter Name="doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cargar_Tipo_Moneda">
+            <Parameter Name="tipo_Documento" Mode="In" Type="String" />
+            <Parameter Name="doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cargar_Usuarios">
+            <Parameter Name="Datos" Mode="In" Type="String" />
+            <Parameter Name="doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cargar_Usuarios_Visualizacion">
+            <Parameter Name="Datos" Mode="In" Type="String" />
+            <Parameter Name="doc" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Crear_Beneficiario">
+            <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+            <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+            <Parameter Name="inParentezco" Mode="In" Type="String" />
+            <Parameter Name="inPorcentaje" Mode="In" Type="Single" />
+          </FunctionImport>
+          <FunctionImport Name="Eliminar_Beneficiario">
+          <Parameter Name="inId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Leer_Beneficiario_Cuenta" ReturnType="Collection(BD1Model.Leer_Beneficiario_Cuenta_Result)">
+          <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Leer_Todos_Beneficiario" ReturnType="Collection(BD1Model.Leer_Todos_Beneficiario_Result)" />
         </EntityContainer>
+        <ComplexType Name="Leer_Beneficiario_Cuenta_Result">
+          <Property Type="Int32" Name="Id_Beneficiario" Nullable="false" />
+          <Property Type="Int32" Name="Id_Persona" Nullable="false" />
+          <Property Type="Int32" Name="Id_Cuenta" Nullable="false" />
+          <Property Type="Int32" Name="Id_Parentezco" Nullable="false" />
+          <Property Type="Single" Name="Porcentaje" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Leer_Todos_Beneficiario_Result">
+          <Property Type="Int32" Name="Id_Persona" Nullable="false" />
+          <Property Type="Int32" Name="Id_Cuenta" Nullable="false" />
+          <Property Type="Int32" Name="Id_Parentezco" Nullable="false" />
+          <Property Type="Single" Name="Porcentaje" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -757,6 +885,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Actualizar_Beneficiario_Porcentaje" FunctionName="BD1Model.Store.Actualizar_Beneficiario_Porcentaje" />
+          <FunctionImportMapping FunctionImportName="Cargar_Beneficiario" FunctionName="BD1Model.Store.Cargar_Beneficiario" />
+          <FunctionImportMapping FunctionImportName="Cargar_Cuentas" FunctionName="BD1Model.Store.Cargar_Cuentas" />
+          <FunctionImportMapping FunctionImportName="Cargar_Estado_Cuenta" FunctionName="BD1Model.Store.Cargar_Estado_Cuenta" />
+          <FunctionImportMapping FunctionImportName="Cargar_Parentezco" FunctionName="BD1Model.Store.Cargar_Parentezco" />
+          <FunctionImportMapping FunctionImportName="Cargar_Personas" FunctionName="BD1Model.Store.Cargar_Personas" />
+          <FunctionImportMapping FunctionImportName="Cargar_Tipo_Cuenta_Ahorros" FunctionName="BD1Model.Store.Cargar_Tipo_Cuenta_Ahorros" />
+          <FunctionImportMapping FunctionImportName="Cargar_Tipo_Doc" FunctionName="BD1Model.Store.Cargar_Tipo_Doc" />
+          <FunctionImportMapping FunctionImportName="Cargar_Tipo_Moneda" FunctionName="BD1Model.Store.Cargar_Tipo_Moneda" />
+          <FunctionImportMapping FunctionImportName="Cargar_Usuarios" FunctionName="BD1Model.Store.Cargar_Usuarios" />
+          <FunctionImportMapping FunctionImportName="Cargar_Usuarios_Visualizacion" FunctionName="BD1Model.Store.Cargar_Usuarios_Visualizacion" />
+          <FunctionImportMapping FunctionImportName="Crear_Beneficiario" FunctionName="BD1Model.Store.Crear_Beneficiario" />
+          <FunctionImportMapping FunctionImportName="Eliminar_Beneficiario" FunctionName="BD1Model.Store.Eliminar_Beneficiario" />
+          <FunctionImportMapping FunctionImportName="Leer_Todos_Beneficiario" FunctionName="BD1Model.Store.Leer_Todos_Beneficiario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BD1Model.Leer_Todos_Beneficiario_Result">
+                <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+                <ScalarProperty Name="Id_Parentezco" ColumnName="Id_Parentezco" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

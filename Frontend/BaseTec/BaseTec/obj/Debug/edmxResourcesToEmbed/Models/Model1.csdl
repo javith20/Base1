@@ -320,5 +320,78 @@
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Usuario_Visualizacion" EntitySet="Usuario_Visualizacion" />
     </AssociationSet>
+    <FunctionImport Name="Actualizar_Beneficiario_Porcentaje">
+      <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+      <Parameter Name="inParentezco" Mode="In" Type="String" />
+      <Parameter Name="inPorcentaje" Mode="In" Type="Single" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Beneficiario">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Cuentas">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Estado_Cuenta">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Parentezco">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Personas">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Tipo_Cuenta_Ahorros">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Tipo_Doc">
+      <Parameter Name="tipo_Documento" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Tipo_Moneda">
+      <Parameter Name="tipo_Documento" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Usuarios">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Usuarios_Visualizacion">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Beneficiario">
+      <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+      <Parameter Name="inParentezco" Mode="In" Type="String" />
+      <Parameter Name="inPorcentaje" Mode="In" Type="Single" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_Beneficiario">
+      <Parameter Name="inId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Leer_Beneficiario_Cuenta" ReturnType="Collection(BD1Model.Leer_Beneficiario_Cuenta_Result)">
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Leer_Todos_Beneficiario" ReturnType="Collection(BD1Model.Leer_Todos_Beneficiario_Result)" />
   </EntityContainer>
+  <ComplexType Name="Leer_Beneficiario_Cuenta_Result">
+    <Property Type="Int32" Name="Id_Beneficiario" Nullable="false" />
+    <Property Type="Int32" Name="Id_Persona" Nullable="false" />
+    <Property Type="Int32" Name="Id_Cuenta" Nullable="false" />
+    <Property Type="Int32" Name="Id_Parentezco" Nullable="false" />
+    <Property Type="Single" Name="Porcentaje" Nullable="false" />
+    <Property Type="Boolean" Name="Activo" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Leer_Todos_Beneficiario_Result">
+    <Property Type="Int32" Name="Id_Persona" Nullable="false" />
+    <Property Type="Int32" Name="Id_Cuenta" Nullable="false" />
+    <Property Type="Int32" Name="Id_Parentezco" Nullable="false" />
+    <Property Type="Single" Name="Porcentaje" Nullable="false" />
+  </ComplexType>
 </Schema>

@@ -17,7 +17,7 @@ namespace BaseTec.Controllers
         // GET: Beneficiarios
         public ActionResult Index()
         {
-            var beneficiario = db.Beneficiario.Include(b => b.Cuenta).Include(b => b.Parentezco).Include(b => b.Persona);
+            var beneficiario = db.Leer_Todos_Beneficiario();
             return View(beneficiario.ToList());
         }
 
@@ -122,9 +122,7 @@ namespace BaseTec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Beneficiario beneficiario = db.Beneficiario.Find(id);
-            db.Beneficiario.Remove(beneficiario);
-            db.SaveChanges();
+            db.Eliminar_Beneficiario(id);
             return RedirectToAction("Index");
         }
 

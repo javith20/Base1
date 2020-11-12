@@ -12,6 +12,8 @@ namespace BaseTec.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BD1Entities1 : DbContext
     {
@@ -35,5 +37,200 @@ namespace BaseTec.Models
         public virtual DbSet<Tipo_Moneda> Tipo_Moneda { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Usuario_Visualizacion> Usuario_Visualizacion { get; set; }
+    
+        public virtual int Actualizar_Beneficiario_Porcentaje(string inNombre_Persona, string inNum_Cuenta, string inParentezco, Nullable<float> inPorcentaje)
+        {
+            var inNombre_PersonaParameter = inNombre_Persona != null ?
+                new ObjectParameter("inNombre_Persona", inNombre_Persona) :
+                new ObjectParameter("inNombre_Persona", typeof(string));
+    
+            var inNum_CuentaParameter = inNum_Cuenta != null ?
+                new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
+                new ObjectParameter("inNum_Cuenta", typeof(string));
+    
+            var inParentezcoParameter = inParentezco != null ?
+                new ObjectParameter("inParentezco", inParentezco) :
+                new ObjectParameter("inParentezco", typeof(string));
+    
+            var inPorcentajeParameter = inPorcentaje.HasValue ?
+                new ObjectParameter("inPorcentaje", inPorcentaje) :
+                new ObjectParameter("inPorcentaje", typeof(float));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Beneficiario_Porcentaje", inNombre_PersonaParameter, inNum_CuentaParameter, inParentezcoParameter, inPorcentajeParameter);
+        }
+    
+        public virtual int Cargar_Beneficiario(string datos, Nullable<int> doc)
+        {
+            var datosParameter = datos != null ?
+                new ObjectParameter("Datos", datos) :
+                new ObjectParameter("Datos", typeof(string));
+    
+            var docParameter = doc.HasValue ?
+                new ObjectParameter("doc", doc) :
+                new ObjectParameter("doc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Beneficiario", datosParameter, docParameter);
+        }
+    
+        public virtual int Cargar_Cuentas(string datos, Nullable<int> doc)
+        {
+            var datosParameter = datos != null ?
+                new ObjectParameter("Datos", datos) :
+                new ObjectParameter("Datos", typeof(string));
+    
+            var docParameter = doc.HasValue ?
+                new ObjectParameter("doc", doc) :
+                new ObjectParameter("doc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Cuentas", datosParameter, docParameter);
+        }
+    
+        public virtual int Cargar_Estado_Cuenta(string datos, Nullable<int> doc)
+        {
+            var datosParameter = datos != null ?
+                new ObjectParameter("Datos", datos) :
+                new ObjectParameter("Datos", typeof(string));
+    
+            var docParameter = doc.HasValue ?
+                new ObjectParameter("doc", doc) :
+                new ObjectParameter("doc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Estado_Cuenta", datosParameter, docParameter);
+        }
+    
+        public virtual int Cargar_Parentezco(string datos, Nullable<int> doc)
+        {
+            var datosParameter = datos != null ?
+                new ObjectParameter("Datos", datos) :
+                new ObjectParameter("Datos", typeof(string));
+    
+            var docParameter = doc.HasValue ?
+                new ObjectParameter("doc", doc) :
+                new ObjectParameter("doc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Parentezco", datosParameter, docParameter);
+        }
+    
+        public virtual int Cargar_Personas(string datos, Nullable<int> doc)
+        {
+            var datosParameter = datos != null ?
+                new ObjectParameter("Datos", datos) :
+                new ObjectParameter("Datos", typeof(string));
+    
+            var docParameter = doc.HasValue ?
+                new ObjectParameter("doc", doc) :
+                new ObjectParameter("doc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Personas", datosParameter, docParameter);
+        }
+    
+        public virtual int Cargar_Tipo_Cuenta_Ahorros(string datos, Nullable<int> doc)
+        {
+            var datosParameter = datos != null ?
+                new ObjectParameter("Datos", datos) :
+                new ObjectParameter("Datos", typeof(string));
+    
+            var docParameter = doc.HasValue ?
+                new ObjectParameter("doc", doc) :
+                new ObjectParameter("doc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Tipo_Cuenta_Ahorros", datosParameter, docParameter);
+        }
+    
+        public virtual int Cargar_Tipo_Doc(string tipo_Documento, Nullable<int> doc)
+        {
+            var tipo_DocumentoParameter = tipo_Documento != null ?
+                new ObjectParameter("tipo_Documento", tipo_Documento) :
+                new ObjectParameter("tipo_Documento", typeof(string));
+    
+            var docParameter = doc.HasValue ?
+                new ObjectParameter("doc", doc) :
+                new ObjectParameter("doc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Tipo_Doc", tipo_DocumentoParameter, docParameter);
+        }
+    
+        public virtual int Cargar_Tipo_Moneda(string tipo_Documento, Nullable<int> doc)
+        {
+            var tipo_DocumentoParameter = tipo_Documento != null ?
+                new ObjectParameter("tipo_Documento", tipo_Documento) :
+                new ObjectParameter("tipo_Documento", typeof(string));
+    
+            var docParameter = doc.HasValue ?
+                new ObjectParameter("doc", doc) :
+                new ObjectParameter("doc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Tipo_Moneda", tipo_DocumentoParameter, docParameter);
+        }
+    
+        public virtual int Cargar_Usuarios(string datos, Nullable<int> doc)
+        {
+            var datosParameter = datos != null ?
+                new ObjectParameter("Datos", datos) :
+                new ObjectParameter("Datos", typeof(string));
+    
+            var docParameter = doc.HasValue ?
+                new ObjectParameter("doc", doc) :
+                new ObjectParameter("doc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Usuarios", datosParameter, docParameter);
+        }
+    
+        public virtual int Cargar_Usuarios_Visualizacion(string datos, Nullable<int> doc)
+        {
+            var datosParameter = datos != null ?
+                new ObjectParameter("Datos", datos) :
+                new ObjectParameter("Datos", typeof(string));
+    
+            var docParameter = doc.HasValue ?
+                new ObjectParameter("doc", doc) :
+                new ObjectParameter("doc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Usuarios_Visualizacion", datosParameter, docParameter);
+        }
+    
+        public virtual int Crear_Beneficiario(string inNombre_Persona, string inNum_Cuenta, string inParentezco, Nullable<float> inPorcentaje)
+        {
+            var inNombre_PersonaParameter = inNombre_Persona != null ?
+                new ObjectParameter("inNombre_Persona", inNombre_Persona) :
+                new ObjectParameter("inNombre_Persona", typeof(string));
+    
+            var inNum_CuentaParameter = inNum_Cuenta != null ?
+                new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
+                new ObjectParameter("inNum_Cuenta", typeof(string));
+    
+            var inParentezcoParameter = inParentezco != null ?
+                new ObjectParameter("inParentezco", inParentezco) :
+                new ObjectParameter("inParentezco", typeof(string));
+    
+            var inPorcentajeParameter = inPorcentaje.HasValue ?
+                new ObjectParameter("inPorcentaje", inPorcentaje) :
+                new ObjectParameter("inPorcentaje", typeof(float));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Beneficiario", inNombre_PersonaParameter, inNum_CuentaParameter, inParentezcoParameter, inPorcentajeParameter);
+        }
+    
+        public virtual int Eliminar_Beneficiario(Nullable<int> inId)
+        {
+            var inIdParameter = inId.HasValue ?
+                new ObjectParameter("inId", inId) :
+                new ObjectParameter("inId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Eliminar_Beneficiario", inIdParameter);
+        }
+    
+        public virtual ObjectResult<Leer_Beneficiario_Cuenta_Result> Leer_Beneficiario_Cuenta(string inNum_Cuenta)
+        {
+            var inNum_CuentaParameter = inNum_Cuenta != null ?
+                new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
+                new ObjectParameter("inNum_Cuenta", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Leer_Beneficiario_Cuenta_Result>("Leer_Beneficiario_Cuenta", inNum_CuentaParameter);
+        }
+    
+        public virtual ObjectResult<Leer_Todos_Beneficiario_Result> Leer_Todos_Beneficiario()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Leer_Todos_Beneficiario_Result>("Leer_Todos_Beneficiario");
+        }
     }
 }

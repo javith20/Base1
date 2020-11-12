@@ -122,5 +122,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Actualizar_Beneficiario_Porcentaje" FunctionName="BD1Model.Store.Actualizar_Beneficiario_Porcentaje" />
+    <FunctionImportMapping FunctionImportName="Cargar_Beneficiario" FunctionName="BD1Model.Store.Cargar_Beneficiario" />
+    <FunctionImportMapping FunctionImportName="Cargar_Cuentas" FunctionName="BD1Model.Store.Cargar_Cuentas" />
+    <FunctionImportMapping FunctionImportName="Cargar_Estado_Cuenta" FunctionName="BD1Model.Store.Cargar_Estado_Cuenta" />
+    <FunctionImportMapping FunctionImportName="Cargar_Parentezco" FunctionName="BD1Model.Store.Cargar_Parentezco" />
+    <FunctionImportMapping FunctionImportName="Cargar_Personas" FunctionName="BD1Model.Store.Cargar_Personas" />
+    <FunctionImportMapping FunctionImportName="Cargar_Tipo_Cuenta_Ahorros" FunctionName="BD1Model.Store.Cargar_Tipo_Cuenta_Ahorros" />
+    <FunctionImportMapping FunctionImportName="Cargar_Tipo_Doc" FunctionName="BD1Model.Store.Cargar_Tipo_Doc" />
+    <FunctionImportMapping FunctionImportName="Cargar_Tipo_Moneda" FunctionName="BD1Model.Store.Cargar_Tipo_Moneda" />
+    <FunctionImportMapping FunctionImportName="Cargar_Usuarios" FunctionName="BD1Model.Store.Cargar_Usuarios" />
+    <FunctionImportMapping FunctionImportName="Cargar_Usuarios_Visualizacion" FunctionName="BD1Model.Store.Cargar_Usuarios_Visualizacion" />
+    <FunctionImportMapping FunctionImportName="Crear_Beneficiario" FunctionName="BD1Model.Store.Crear_Beneficiario" />
+    <FunctionImportMapping FunctionImportName="Eliminar_Beneficiario" FunctionName="BD1Model.Store.Eliminar_Beneficiario" />
+    <FunctionImportMapping FunctionImportName="Leer_Todos_Beneficiario" FunctionName="BD1Model.Store.Leer_Todos_Beneficiario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BD1Model.Leer_Todos_Beneficiario_Result">
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+          <ScalarProperty Name="Id_Parentezco" ColumnName="Id_Parentezco" />
+          <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

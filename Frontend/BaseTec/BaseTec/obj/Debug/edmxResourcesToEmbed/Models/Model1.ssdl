@@ -243,6 +243,62 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="Actualizar_Beneficiario_Porcentaje" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
+    <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inParentezco" Type="varchar" Mode="In" />
+    <Parameter Name="inPorcentaje" Type="real" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datos" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Cuentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datos" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Estado_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datos" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Parentezco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datos" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Personas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datos" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Tipo_Cuenta_Ahorros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datos" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Tipo_Doc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Tipo_Moneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Usuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datos" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Usuarios_Visualizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datos" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Crear_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
+    <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inParentezco" Type="varchar" Mode="In" />
+    <Parameter Name="inPorcentaje" Type="real" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Leer_Todos_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="BD1ModelStoreContainer">
     <EntitySet Name="Beneficiario" EntityType="Self.Beneficiario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
