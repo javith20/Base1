@@ -7,10 +7,11 @@ Go
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE Procedure Actualizar_Usuario 
 	@inId_Usuario INT,
-	@inNombre_Persona VARCHAR(120),
+	@inId_Persona VARCHAR(120),
 	@inNombre VARCHAR(120),
 	@inPassword VARCHAR(120),
 	@inEs_Admin VARCHAR(30), 
+
 	@inUsuarioACargo varchar(20), 
 	@inIPusuario varchar(20)
 AS   
@@ -22,16 +23,13 @@ AS
 			BEGIN TRAN
 
 				--Declaracion de variables
-				Declare @Id_Persona Int,
+				Declare 
 				@idUsuarioMoidifica int,
 				@insertado_El date
 
-
-				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
-
 				--Actualizar AL USUARIO
 				Update Usuario
-					set [Id_Persona] = @Id_Persona,
+					set [Id_Persona] = @inId_Persona,
 						[Nombre_Usuario] = @inNombre,
 						[Clave] = @inPassword,
 						[Es_Admin] = @inEs_Admin
@@ -199,7 +197,7 @@ GO
 CREATE Procedure Actualizar_Tipo_Cuenta_Ahorros 
 	@inId_Tipo_Cuenta_Ahorros INT,  -- No me acuerdo si era catalogo
 	@inNombre VARCHAR(100),
-	@inMoneda INT, 
+	@inId_Tipo_Moneda INT, 
 	@inSaldo_Minimo MONEY,
 	@inMulta_Saldo_Minimo MONEY,
 	@inCargo_Anual MONEY,
@@ -219,17 +217,14 @@ AS
 
 			BEGIN TRAN
 
-				Declare @Id_Tipo_Moneda int,
+				Declare 
 						@idUsuarioMoidifica int,
-						@insertado_El date
-
-				set @Id_Tipo_Moneda = (SELECT [Id_Tipo_Moneda] FROM [Tipo_Moneda] WHERE [Nombre] = @inMoneda AND [Activo] = 1)
-				
+						@insertado_El date				
 
 				--Actualizar AL Tipo_Cuenta_Ahorros
 				Update Tipo_Cuenta_Ahorros
 					set Nombre = @inNombre ,
-						 Id_Tipo_Moneda = @Id_Tipo_Moneda,
+						 Id_Tipo_Moneda = @inId_Tipo_Moneda,
 						 Saldo_Minimo = @inSaldo_Minimo,
 						 Multa_Saldo_Minimo = @inMulta_Saldo_Minimo,
 						 Cargo_Anual = @inCargo_Anual,
@@ -265,7 +260,7 @@ GO
 CREATE Procedure Actualizar_Persona 
 	@inId_Persona INT,
 	@inNombre VARCHAR(100),
-	@inTipoDocumento VARCHAR(100),
+	@inId_TipoDocumento VARCHAR(100),
 	@inDocumento_Identidad VARCHAR(20),
 	@inFecha_Nacimiento DATE,
 	@inEmail VARCHAR(100),
@@ -282,17 +277,14 @@ AS
 
 			BEGIN TRAN
 
-				Declare @Id_TipoDocumento INT,
+				Declare
 				@idUsuarioMoidifica int,
 				@insertado_El date
-
-				set @Id_TipoDocumento = (SELECT [Id_TipoDocumento] FROM [Tipo_Documento] WHERE [Nombre] = @inTipoDocumento AND [Activo] = 1)
-
 
 				--Actualizar AL Persona
 				Update Persona
 					set Nombre = @inNombre,
-						 Id_TipoDocumento = @Id_TipoDocumento,
+						 Id_TipoDocumento = @inId_TipoDocumento,
 						 Documento_Identidad = @inDocumento_Identidad,
 						 Fecha_Nacimiento = @inFecha_Nacimiento,
 						 Email = @inEmail,
@@ -324,8 +316,8 @@ GO
 
 CREATE Procedure Actualizar_Cuenta
 	@inId_Cuenta INT,
-	@inNombre_Persona VARCHAR(100),
-	@inNombre_Tipo_Cuenta_Ahorros VARCHAR(100),
+	@inId_Persona VARCHAR(100),
+	@inId_Tipo_Cuenta_Ahorros VARCHAR(100),
 	@inNum_Cuenta VARCHAR(15),
 	@inFecha_Creacion DATE,
 	@inSaldo MONEY,
@@ -341,18 +333,14 @@ AS
 			BEGIN TRAN
 
 				--Declaracion de variables
-				Declare @Id_Persona Int,
-						@Id_Tipo_Cuenta_Ahorros int,
+				Declare 
 						@idUsuarioMoidifica int,
 						@insertado_El date
 
-				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
-				set	@Id_Tipo_Cuenta_Ahorros = (SELECT [Id_Tipo_Cuenta_Ahorros] FROM [Tipo_Cuenta_Ahorros] WHERE [Nombre] = @inNombre_Tipo_Cuenta_Ahorros AND [Activo] = 1)
-
 				--Actualizar AL Cuenta
 				Update Cuenta
-					set Id_Persona = @Id_Persona,
-					 Id_Tipo_Cuenta_Ahorros = @Id_Tipo_Cuenta_Ahorros,
+					set Id_Persona = @inId_Persona,
+					 Id_Tipo_Cuenta_Ahorros = @inId_Tipo_Cuenta_Ahorros,
 					 Num_Cuenta = @inNum_Cuenta,
 					 Fecha_Creacion = @inFecha_Creacion,
 					 Saldo = @inSaldo
@@ -382,9 +370,9 @@ GO
 
 CREATE Procedure Actualizar_Beneficiario
 	@inId_Beneficiario INT,
-	@inNombre_Persona VARCHAR(100),
-	@inNum_Cuenta VARCHAR(15),
-	@inNombre_Parentezco INT,
+	@inId_Persona VARCHAR(100),
+	@inId_Cuenta VARCHAR(15),
+	@inId_Parentezco INT,
 	@inPorcentaje REAL,
 
 	@inUsuarioACargo varchar(20), 
@@ -398,22 +386,15 @@ AS
 			BEGIN TRAN
 
 				--Declaracion de variables
-				Declare @Id_Persona Int,
-						@Id_Cuenta int,
-						@Id_Parentezco int,
+				Declare 
 						@idUsuarioMoidifica int,
 						@insertado_El date
 
-				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
-				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Num_Cuenta] = @inNum_Cuenta AND [Activo] = 1)
-				set	@Id_Parentezco = (SELECT [Id_Parentezco] FROM [Parentezco] WHERE [Nombre] = @inNombre_Parentezco AND [Activo] = 1)
-
-
 				--Actualizar AL Beneficiario
 				Update Beneficiario
-					set Id_Persona = @Id_Persona,
-						 Id_Cuenta = @Id_Cuenta,
-						 Id_Parentezco = @Id_Parentezco,
+					set Id_Persona = @inId_Persona,
+						 Id_Cuenta = @inId_Cuenta,
+						 Id_Parentezco = @inId_Parentezco,
 						 Porcentaje = @inPorcentaje
 					where Id_Beneficiario = @inId_Beneficiario AND
 							[activo] = 1					
@@ -441,7 +422,7 @@ GO
 
 CREATE Procedure Actualizar_Estado_Cuenta
 	@inId_Estado_Cuenta INT,
-	@inNum_Cuenta VARCHAR(15),
+	@inId_Cuenta VARCHAR(15),
 	@inFecha_Inicio DATE,
 	@inFecha_Fin DATE,
 	@inSaldo_Inicial MONEY,
@@ -458,15 +439,13 @@ AS
 			BEGIN TRAN
 
 				--Declaracion de variables
-				Declare	@Id_Cuenta int,
+				Declare	,
 						@idUsuarioMoidifica int,
 						@insertado_El date
 						
-				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Num_Cuenta] = @inNum_Cuenta AND [Activo] = 1)
-
 				--Actualizar AL Estado_Cuenta
 				Update Estado_Cuenta
-					set Id_Cuenta = @Id_Cuenta,
+					set Id_Cuenta = @inId_Cuenta,
 						Fecha_Inicio = @inFecha_Inicio,
 						Fecha_Fin = @inFecha_Fin,
 						Saldo_Inicial = @inSaldo_Inicial,
@@ -497,8 +476,8 @@ GO
 
 CREATE Procedure Actualizar_Usuario_Visualizacion
 	@inId_Usuario_Visualizacion INT,
-	@inNombre_Usuario VARCHAR(120),
-	@inNum_Cuenta VARCHAR(15),
+	@inId_Usuario VARCHAR(120),
+	@inId_Cuenta VARCHAR(15),
 
 
 	@inUsuarioACargo varchar(20), 
@@ -512,19 +491,14 @@ AS
 			BEGIN TRAN
 
 				--Declaracion de variables
-				Declare	@Id_Cuenta int,
-						@Id_Usuario int,
+				Declare	
 						@idUsuarioMoidifica int,
 						@insertado_El date
 						
-				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Num_Cuenta] = @inNum_Cuenta AND [Activo] = 1)
-				set	@Id_Usuario = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre_Usuario AND [Activo] = 1)
-
-
 				--Actualizar AL Usuario_Visualizacion
 				Update Usuario_Visualizacion
-					set Id_Usuario = Id_Usuario,
-						Id_Cuenta = @Id_Cuenta
+					set Id_Usuario = @inId_Usuario,
+						Id_Cuenta = @inId_Cuenta
 					where Id_Usuario_Visualizacion = @inId_Usuario_Visualizacion AND
 							[activo] = 1
 
