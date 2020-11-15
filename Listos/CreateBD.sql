@@ -114,10 +114,11 @@ Create TABLE Bitacora_Accion(
 	Id_Bitacora_Accion INT NOT NULL PRIMARY KEY  IDENTITY(1,1),
 	Id_Tipo_Accion  INT NOT NULL, -- El tipo dfe accion que se realizo
 	Id_Objeto_Accion  INT NOT NULL, --El Id que fue modificado o insertado 
-	Quien_Inserto VARCHAR(100) NOT NULL,-- El usuario que lo hizo
+	Quien_Inserto INT NOT NULL,-- El usuario que lo hizo
 	Insertado_Por VARCHAR(100) NOT NULL,-- Medio por el cual lo hizo 
 	Inserto_El DATE  NOT NULL, --Fecha
 	FOREIGN KEY (Id_Tipo_Accion) REFERENCES Tipo_Accion(Id_Tipo_Accion),
+	
 	);
 go
 --Usuario Master BanqueroMaster

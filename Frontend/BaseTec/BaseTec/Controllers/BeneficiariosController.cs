@@ -17,7 +17,7 @@ namespace BaseTec.Controllers
         // GET: Beneficiarios
         public ActionResult Index()
         {
-            var beneficiario = db.Leer_Todos_Beneficiario();
+            var beneficiario = db.Beneficiario.Include(b => b.Cuenta).Include(b => b.Parentezco).Include(b => b.Persona);
             return View(beneficiario.ToList());
         }
 
@@ -42,7 +42,6 @@ namespace BaseTec.Controllers
             ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta");
             ViewBag.Id_Parentezco = new SelectList(db.Parentezco, "Id_Parentezco", "Nombre");
             ViewBag.Id_Persona = new SelectList(db.Persona, "Id_Persona", "Nombre");
-           
             return View();
         }
 
@@ -55,7 +54,6 @@ namespace BaseTec.Controllers
         {
             if (ModelState.IsValid)
             {
-         
                 db.Beneficiario.Add(beneficiario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -124,7 +122,9 @@ namespace BaseTec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            db.Eliminar_Beneficiario(id);
+            Beneficiario beneficiario = db.Beneficiario.Find(id);
+            db.Beneficiario.Remove(beneficiario);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

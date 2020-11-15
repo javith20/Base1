@@ -7,16 +7,17 @@ go
 
 alter database BD1
 set containment = partial
+
 go
 CREATE  TRIGGER Trigger_Crear_Beneficiario
 ON Beneficiario 
 FOR INSERT
 AS
 DECLARE @Id_Tipo_Accion [INT]=19;
-DECLARE @Quien_Inserto[VARCHAR](30)=(SELECT TOP 1 system_user);
+DECLARE @Quien_Inserto[VARCHAR](30)=0;
 DECLARE @Insertado_Por [VARCHAR](30);
 DECLARE @Fecha [DATETIME] = (SELECT TOP 1 GETDATE());
-IF (@Quien_Inserto='MARII-PC\aguer')
+IF (@Quien_Inserto=0)
 	SET @Insertado_Por = 'XML';	
 ELSE
 	SET @Insertado_Por = 'WEB/SCRIPT';
@@ -32,10 +33,10 @@ FOR INSERT
 AS
 DECLARE @Cursor [int] =1;
 DECLARE @Id_Tipo_Accion [INT]=1;
-DECLARE @Quien_Inserto[VARCHAR](30)=(SELECT TOP 1 system_user);
+DECLARE @Quien_Inserto[VARCHAR](30)=0;
 DECLARE @Insertado_Por [VARCHAR](30);
 DECLARE @Fecha [DATETIME] = (SELECT TOP 1 GETDATE());
-IF (@Quien_Inserto='MARII-PC\aguer')
+IF (@Quien_Inserto=0)
 	SET @Insertado_Por = 'XML';	
 ELSE
 	SET @Insertado_Por = 'WEB/SCRIPT';
@@ -48,6 +49,8 @@ begin
 	DECLARE @Usuario [VARCHAR](100)= (SELECT TOP 1 Nombre_Usuario FROM Usuario WHERE Id_Usuario = @Cursor);
 	DECLARE @Contra [VARCHAR](100)= (SELECT TOP 1 Clave FROM Usuario WHERE Id_Usuario = @Cursor);
 	DECLARE @sqlCommand[NVARCHAR](MAX);
+	SET @sqlCommand = 'IF EXISTS (SELECT * FROM sys.syslogins WHERE name = '+CHAR(39)+@Usuario+CHAR(39)+')'+ 'DROP LOGIN '+@Usuario+';'
+	EXEC sp_executesql @sqlCommand;
 	SET @sqlCommand = 'CREATE USER '+ @Usuario+ ' WITH PASSWORD = '+CHAR(39)+@Contra+CHAR(39)+';'+'CREATE LOGIN '+ @Usuario +' WITH PASSWORD = '+CHAR(39)+@Contra+CHAR(39)+';'
 	EXEC sp_executesql @sqlCommand;
 	SET @sqlCommand = 'ALTER SERVER ROLE [sysadmin] ADD MEMBER '+@Usuario
@@ -63,10 +66,10 @@ ON Tipo_Documento
 FOR INSERT
 AS
 DECLARE @Id_Tipo_Accion [INT]=4;
-DECLARE @Quien_Inserto[VARCHAR](30)=(SELECT TOP 1 system_user);
+DECLARE @Quien_Inserto[VARCHAR](30)=0;
 DECLARE @Insertado_Por [VARCHAR](30);
 DECLARE @Fecha [DATETIME] = (SELECT TOP 1 GETDATE());
-IF (@Quien_Inserto='MARII-PC\aguer')
+IF (@Quien_Inserto=0)
 	SET @Insertado_Por = 'XML';	
 ELSE
 	SET @Insertado_Por = 'WEB/SCRIPT';
@@ -81,10 +84,10 @@ ON Tipo_Moneda
 FOR INSERT
 AS
 DECLARE @Id_Tipo_Accion [INT]=7;
-DECLARE @Quien_Inserto[VARCHAR](30)=(SELECT TOP 1 system_user);
+DECLARE @Quien_Inserto[VARCHAR](30)=0;
 DECLARE @Insertado_Por [VARCHAR](30);
 DECLARE @Fecha [DATETIME] = (SELECT TOP 1 GETDATE());
-IF (@Quien_Inserto='MARII-PC\aguer')
+IF (@Quien_Inserto=0)
 	SET @Insertado_Por = 'XML';	
 ELSE
 	SET @Insertado_Por = 'WEB/SCRIPT';
@@ -99,10 +102,10 @@ ON Parentezco
 FOR INSERT
 AS
 DECLARE @Id_Tipo_Accion [INT]=10;
-DECLARE @Quien_Inserto[VARCHAR](30)=(SELECT TOP 1 system_user);
+DECLARE @Quien_Inserto[VARCHAR](30)=0;
 DECLARE @Insertado_Por [VARCHAR](30);
 DECLARE @Fecha [DATETIME] = (SELECT TOP 1 GETDATE());
-IF (@Quien_Inserto='MARII-PC\aguer')
+IF (@Quien_Inserto=0)
 	SET @Insertado_Por = 'XML';	
 ELSE
 	SET @Insertado_Por = 'WEB/SCRIPT';
@@ -117,10 +120,10 @@ ON Tipo_Cuenta_Ahorros
 FOR INSERT
 AS
 DECLARE @Id_Tipo_Accion [INT]=13;
-DECLARE @Quien_Inserto[VARCHAR](30)=(SELECT TOP 1 system_user);
+DECLARE @Quien_Inserto[VARCHAR](30)=0;
 DECLARE @Insertado_Por [VARCHAR](30);
 DECLARE @Fecha [DATETIME] = (SELECT TOP 1 GETDATE());
-IF (@Quien_Inserto='MARII-PC\aguer')
+IF (@Quien_Inserto=0)
 	SET @Insertado_Por = 'XML';	
 ELSE
 	SET @Insertado_Por = 'WEB/SCRIPT';
@@ -135,10 +138,10 @@ ON Persona
 FOR INSERT
 AS
 DECLARE @Id_Tipo_Accion [INT]=16;
-DECLARE @Quien_Inserto[VARCHAR](30)=(SELECT TOP 1 system_user);
+DECLARE @Quien_Inserto[VARCHAR](30)=0;
 DECLARE @Insertado_Por [VARCHAR](30);
 DECLARE @Fecha [DATETIME] = (SELECT TOP 1 GETDATE());
-IF (@Quien_Inserto='MARII-PC\aguer')
+IF (@Quien_Inserto=0)
 	SET @Insertado_Por = 'XML';	
 ELSE
 	SET @Insertado_Por = 'WEB/SCRIPT';
@@ -153,10 +156,10 @@ ON Estado_Cuenta
 FOR INSERT
 AS
 DECLARE @Id_Tipo_Accion [INT]=22;
-DECLARE @Quien_Inserto[VARCHAR](30)=(SELECT TOP 1 system_user);
+DECLARE @Quien_Inserto[VARCHAR](30)=0;
 DECLARE @Insertado_Por [VARCHAR](30);
 DECLARE @Fecha [DATETIME] = (SELECT TOP 1 GETDATE());
-IF (@Quien_Inserto='MARII-PC\aguer')
+IF (@Quien_Inserto=0)
 	SET @Insertado_Por = 'XML';	
 ELSE
 	SET @Insertado_Por = 'WEB/SCRIPT';
@@ -171,10 +174,10 @@ ON Usuario_Visualizacion
 FOR INSERT
 AS
 DECLARE @Id_Tipo_Accion [INT]=25;
-DECLARE @Quien_Inserto[VARCHAR](30)=(SELECT TOP 1 system_user);
+DECLARE @Quien_Inserto[VARCHAR](30)=0;
 DECLARE @Insertado_Por [VARCHAR](30);
 DECLARE @Fecha [DATETIME] = (SELECT TOP 1 GETDATE());
-IF (@Quien_Inserto='MARII-PC\aguer')
+IF (@Quien_Inserto=0)
 	SET @Insertado_Por = 'XML';	
 ELSE
 	SET @Insertado_Por = 'WEB/SCRIPT';
@@ -188,10 +191,10 @@ ON Cuenta
 FOR INSERT
 AS
 DECLARE @Id_Tipo_Accion [INT]=28;
-DECLARE @Quien_Inserto[VARCHAR](30)=(SELECT TOP 1 system_user);
+DECLARE @Quien_Inserto[VARCHAR](30)=0;
 DECLARE @Insertado_Por [VARCHAR](30);
 DECLARE @Fecha [DATETIME] = (SELECT TOP 1 GETDATE());
-IF (@Quien_Inserto='MARII-PC\aguer')
+IF (@Quien_Inserto=0)
 	SET @Insertado_Por = 'XML';	
 ELSE
 	SET @Insertado_Por = 'WEB/SCRIPT';

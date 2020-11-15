@@ -15,6 +15,7 @@ sqlcmd -i Cargar_Usuario_Visualizacion.sql
 sqlcmd -i Procedures_de_Nuevos.sql
 sqlcmd -i Procedures_de_Actualizar.sql
 sqlcmd -i Procedures_de_Eliminar.sql
+sqlcmd -i Disable.sql
 
 
 pause
