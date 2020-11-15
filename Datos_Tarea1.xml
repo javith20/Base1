@@ -3255,6 +3255,8 @@
     <Usuario User="imendez" Pass="DebajoDelMar5454" ValorDocumentoIdentidad="143062990" EsAdministrador="0" />
     <Usuario User="gruiz" Pass="LaGloriaEsMia" ValorDocumentoIdentidad="134225981" EsAdministrador="0" />
     <Usuario User="fquiros" Pass="MyPass123*" ValorDocumentoIdentidad="106030039" EsAdministrador="1" />
+    <Usuario User="gzuñiga" Pass="miCumple123" ValorDocumentoIdentidad="105711321" EsAdministrador="0" />
+    <Usuario User="jperez" Pass="miCumple123" ValorDocumentoIdentidad="117359964" EsAdministrador="0" />
   </Usuarios>
 
   <Usuarios_Ver>
@@ -3262,5 +3264,8 @@
     <UsuarioPuedeVer User="ralvarez" NumeroCuenta="11326139" />
     <UsuarioPuedeVer User="imendez" NumeroCuenta="11656323" />
     <UsuarioPuedeVer User="imendez" NumeroCuenta="11245285" />
+    <UsuarioPuedeVer User="imendez" NumeroCuenta="11461191" />
+    <UsuarioPuedeVer User="gzuñiga" NumeroCuenta="11592082" />
+    <UsuarioPuedeVer User="gzuñiga" NumeroCuenta="11024586" />
   </Usuarios_Ver>
 </Datos>
