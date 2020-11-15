@@ -12,4 +12,9 @@ sqlcmd -i Cargar_Beneficiarios.sql
 sqlcmd -i Cargar_Estado_Cuenta.sql
 sqlcmd -i Cargar_Usuario.sql
 sqlcmd -i Cargar_Usuario_Visualizacion.sql
+sqlcmd -i Procedures_de_Nuevos.sql
+sqlcmd -i Procedures_de_Actualizar.sql
+sqlcmd -i Procedures_de_Eliminar.sql
+
+
 pause

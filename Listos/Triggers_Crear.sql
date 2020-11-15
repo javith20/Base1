@@ -7,7 +7,6 @@ go
 
 alter database BD1
 set containment = partial
-
 go
 CREATE  TRIGGER Trigger_Crear_Beneficiario
 ON Beneficiario 
@@ -28,7 +27,7 @@ SELECT @Id_Tipo_Accion,Id_Beneficiario,@Quien_Inserto,@Insertado_Por,@Fecha from
 GO
 
 CREATE  TRIGGER Trigger_Crear_Usuario
-ON Usuario 
+ON dbo.Usuario 
 FOR INSERT
 AS
 DECLARE @Cursor [int] =1;
@@ -44,12 +43,10 @@ ELSE
 --Insertar en tabla Bitacora
 INSERT INTO Bitacora_Accion(Id_Tipo_Accion,Id_Objeto_Accion,Quien_Inserto,Insertado_Por,Inserto_El)
 SELECT @Id_Tipo_Accion,Id_Usuario,@Quien_Inserto,@Insertado_Por,@Fecha from INSERTED 
-select * FROM Usuario;
-while (@Cursor < (SELECT count(Id_Usuario) FROM Usuario))
+while (@Cursor < (SELECT count(Id_Usuario) FROM dbo.Usuario))
 begin
 	DECLARE @Usuario [VARCHAR](100)= (SELECT TOP 1 Nombre_Usuario FROM Usuario WHERE Id_Usuario = @Cursor);
 	DECLARE @Contra [VARCHAR](100)= (SELECT TOP 1 Clave FROM Usuario WHERE Id_Usuario = @Cursor);
-	DECLARE @Es_Admi [BIT]= (SELECT TOP 1 Es_Admin FROM Usuario WHERE Id_Usuario = @Cursor);
 	DECLARE @sqlCommand[NVARCHAR](MAX);
 	SET @sqlCommand = 'CREATE USER '+ @Usuario+ ' WITH PASSWORD = '+CHAR(39)+@Contra+CHAR(39)+';'+'CREATE LOGIN '+ @Usuario +' WITH PASSWORD = '+CHAR(39)+@Contra+CHAR(39)+';'
 	EXEC sp_executesql @sqlCommand;

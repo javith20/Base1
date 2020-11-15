@@ -19,6 +19,7 @@ CREATE PROCEDURE Cargar_Usuarios
 				ValorDocumentoIdentidad [VARCHAR](30)'@ValorDocumentoIdentidad',
 				EsAdministrador [BIT]'@EsAdministrador'
 				);
+		SELECT * FROM #Temp;
 		UPDATE #Temp SET #Temp.ValorDocumentoIdentidad = (SELECT Id_Persona FROM Persona where Persona.Documento_Identidad=#Temp.ValorDocumentoIdentidad) ;
 		INSERT INTO Usuario (Id_Persona,Nombre_Usuario,Clave,Es_Admin)
 		SELECT ValorDocumentoIdentidad,Usuario,Pass,EsAdministrador
