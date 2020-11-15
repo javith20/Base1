@@ -412,7 +412,7 @@ AS
 				INSERT INTO Beneficiario(Id_Persona, Id_Cuenta, Id_Parentezco, Porcentaje)
 				values (@inId_Persona,@inId_Cuenta,@inId_Parentezco,@inPorcentaje)
 
-				set @Id_Beneficiario = (SELECT @Id_Beneficiario FROM [Beneficiario] WHERE Id_Persona=@Id_Persona and Id_Cuenta=@Id_Cuenta and Id_Parentezco=@Id_Parentezco   AND [Activo] = 1)
+				set @Id_Beneficiario = (SELECT @Id_Beneficiario FROM [Beneficiario] WHERE Id_Persona=@inId_Persona and Id_Cuenta=@inId_Cuenta and Id_Parentezco=@inId_Parentezco   AND [Activo] = 1)
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
@@ -453,7 +453,7 @@ AS
 			BEGIN TRAN
 
 				--Declaracion de variables
-				Declare	,
+				Declare
 						@idUsuarioMoidifica INT,
 						@insertado_El DATE,
 						@idEstado_Cuenta int
@@ -463,7 +463,7 @@ AS
 				INSERT INTO Estado_Cuenta(Id_Cuenta, Fecha_Inicio, Fecha_Fin, Saldo_Inicial, Saldo_Final)
 				values (@inId_Cuenta, @inFecha_Inicio, @inFecha_Fin, @inSaldo_Inicial, @inSaldo_Final)
 
-				set @idEstado_Cuenta = (SELECT Id_Estado_Cuenta FROM [Estado_Cuenta] WHERE Id_Cuenta =@Id_Cuenta and Fecha_Inicio = @inFecha_Inicio and Fecha_Fin = @inFecha_Fin and Id_Cuenta=@Id_Cuenta AND [Activo] = 1)
+				set @idEstado_Cuenta = (SELECT Id_Estado_Cuenta FROM [Estado_Cuenta] WHERE Id_Cuenta =@inId_Cuenta and Fecha_Inicio = @inFecha_Inicio and Fecha_Fin = @inFecha_Fin  AND [Activo] = 1)
 
 
 				--GUARDA EL ID y fecha
@@ -512,7 +512,7 @@ AS
 				INSERT INTO Usuario_Visualizacion(Id_Usuario, Id_Cuenta)
 				values (@inId_Usuario, @inId_Cuenta)
 
-				set @Id_Usuario_Visualizacion = (SELECT Id_Usuario_Visualizacion FROM [Usuario_Visualizacion] WHERE Id_Usuario=@Id_Usuario and Id_Cuenta=@Id_Cuenta AND [Activo] = 1)
+				set @Id_Usuario_Visualizacion = (SELECT Id_Usuario_Visualizacion FROM [Usuario_Visualizacion] WHERE Id_Usuario=@inId_Usuario and Id_Cuenta=@inId_Cuenta AND [Activo] = 1)
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)

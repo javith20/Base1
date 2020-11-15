@@ -439,7 +439,7 @@ AS
 			BEGIN TRAN
 
 				--Declaracion de variables
-				Declare	,
+				Declare
 						@idUsuarioMoidifica int,
 						@insertado_El date
 						
