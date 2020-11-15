@@ -532,6 +532,7 @@ AS
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
+
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 29,
