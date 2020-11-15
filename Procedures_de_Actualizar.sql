@@ -1,58 +1,10 @@
-
-USE BD1
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---Enlaces
---https://docs.microsoft.com/en-us/sql/t-sql/statements/set-quoted-identifier-transact-sql?view=sql-server-ver15
---https://docs.microsoft.com/en-us/sql/t-sql/statements/set-quoted-identifier-transact-sql?view=sql-server-ver15
---https://docs.microsoft.com/en-us/sql/t-sql/statements/set-nocount-transact-sql?view=sql-server-ver15
---https://docs.microsoft.com/en-us/sql/t-sql/statements/set-xact-abort-transact-sql?view=sql-server-ver15#:~:text=When%20SET%20XACT_ABORT%20is%20ON,and%20the%20transaction%20continues%20processing.
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
----															   Stores Procedure Bitacora Acciones
+---															   Stores Procedure Actualizar
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-CREATE Procedure Insertar_BitacoraAcciones
-	@inNombre_Persona VARCHAR(100),
-	@inId_Tipo_Accion int,
-	@inId_Objeto_Accion int,
-	@inQuien_Inserto varchar(20), --InsertBy
-	@inInsertado_Por varchar(20),  --InsertIn  (xml o web)
-	@inInserto_El DATE			 --InsertAt
-AS   
-	BEGIN 
-		BEGIN TRY
-		SET NOCOUNT ON -- No devuelve el recuento (el evio del mensaje por cada procedimiento almacenado)
-		SET XACT_ABORT ON --Transact genera un error en tiempo de ejecución, entonces esta termina y se revierte.
-			DECLARE @Id_Usuario int
-
-			SET @Id_Usuario = (SELECT Id_Usuario FROM Usuario WHERE Nombre_Usuario = @inQuien_Inserto)
-
-			INSERT INTO Bitacora_Accion(Id_Tipo_Accion, Id_Objeto_Accion,Quien_Inserto,Insertado_Por,Inserto_El)
-			SELECT @inId_Tipo_Accion, @inId_Objeto_Accion, @Id_Usuario,@inInsertado_Por,@inInserto_El
-		END TRY
-		BEGIN CATCH
-			THROW 60500,'Error: No se ha podido guardar la accion en la bitacora',1;
-		END CATCH
-	END
-GO
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
----															   Stores Procedure Crear
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-CREATE Procedure Crear_Usuario 
+CREATE Procedure Actualizar_Usuario 
+	@inId_Usuario INT,
 	@inNombre VARCHAR(120),
 	@inPassword VARCHAR(120),
 	@inEs_Admin VARCHAR(30), 
@@ -71,9 +23,14 @@ AS
 
 				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
 
-				--INSERTA AL USUARIO
-				INSERT INTO Usuario([Id_Persona],[Nombre_Usuario], [Clave], [Es_Admin])
-				values (@Id_Persona, @inNombre, @inPassword, @inEs_Admin)
+				--Actualizar AL USUARIO
+				Update Usuario
+					set [Id_Persona] = @Id_Persona
+					set [Nombre_Usuario] = @inNombre
+					set [Clave] = @inPassword
+					set [Es_Admin]) = @inEs_Admin
+					where Id_Usuario = @inId_Usuario AND
+						[activo] = 1
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
@@ -81,7 +38,7 @@ AS
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
-								@inId_Tipo_Accion = 1,
+								@inId_Tipo_Accion = 2,
 								@inId_Objeto_Accion = @idUsuarioMoidifica,  
 								@inQuien_Inserto = @inUsuarioACargo, 
 								@inInsertado_Por = @inIPusuario, 
@@ -91,12 +48,13 @@ AS
 		BEGIN CATCH
 			If @@TRANCOUNT > 0 
 				ROLLBACK TRAN;
-			THROW 62501,'Error: No se ha podido crear el usuario, por favor revise los datos',1;
+			THROW 62502,'Error: No se ha podido actualizar el usuario, por favor revise los datos',1;
 		END CATCH
 	END
 GO
 
-CREATE Procedure Crear_TipoDocumento 
+CREATE Procedure Actualizar_TipoDocumento 
+	@inId_TipoDocumento INT,
 	@inId_TipoDocumento INT,
 	@inNombre VARCHAR(100),
 
@@ -110,9 +68,11 @@ AS
 
 			BEGIN TRAN
 
-				--INSERTA AL Tipo_Documento
-				INSERT INTO Tipo_Documento([Id_TipoDocumento], [Nombre])
-				values (@inId_TipoDocumento, @inNombre)
+				--Actualizar AL Tipo_Documento
+				Update Tipo_Documento
+					set [Nombre] = @inNombre
+					where Id_TipoDocumento = @inId_TipoDocumento AND
+						[activo] = 1
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
@@ -120,7 +80,7 @@ AS
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
-								@inId_Tipo_Accion = 4,
+								@inId_Tipo_Accion = 5,
 								@inId_Objeto_Accion = @idUsuarioMoidifica,  
 								@inQuien_Inserto = @inUsuarioACargo, 
 								@inInsertado_Por = @inIPusuario, 
@@ -130,12 +90,13 @@ AS
 		BEGIN CATCH
 			If @@TRANCOUNT > 0 
 				ROLLBACK TRAN;
-			THROW 62504,'Error: No se ha podido crear el Tipo Documento, por favor revise los datos',1;
+			THROW 62505,'Error: No se ha podido actualizar el Tipo Documento, por favor revise los datos',1;
 		END CATCH
 	END
 GO
 
-CREATE Procedure Crear_Tipo_Moneda 
+CREATE Procedure Actualizar_Tipo_Moneda 
+	@inId_Tipo_Moneda INT,
 	@inId_Tipo_Moneda INT,
 	@inNombre VARCHAR(100),
 	@inSimbolo Varchar(5),
@@ -150,9 +111,12 @@ AS
 
 			BEGIN TRAN
 
-				--INSERTA AL Tipo_Moneda
-				INSERT INTO Tipo_Moneda(Id_Tipo_Moneda, Nombre,Simbolo)
-				values (@inId_Tipo_Moneda, @inNombre,@inSimbolo)
+				--Actualizar AL Tipo_Moneda
+				Update Tipo_Moneda
+					set Nombre =  @inNombre
+					set Simbolo = @inSimbolo
+					where Id_Tipo_Moneda = @inId_Tipo_Moneda AND
+						[activo] = 1
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
@@ -160,7 +124,7 @@ AS
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
-								@inId_Tipo_Accion = 7,
+								@inId_Tipo_Accion = 8,
 								@inId_Objeto_Accion = @idUsuarioMoidifica,  
 								@inQuien_Inserto = @inUsuarioACargo, 
 								@inInsertado_Por = @inIPusuario, 
@@ -170,12 +134,12 @@ AS
 		BEGIN CATCH
 			If @@TRANCOUNT > 0 
 				ROLLBACK TRAN;
-			THROW 62507,'Error: No se ha podido crear el Tipo Moneda, por favor revise los datos',1;
+			THROW 62508,'Error: No se ha podido actualizar el Tipo Moneda, por favor revise los datos',1;
 		END CATCH
 	END
 GO
 
-CREATE Procedure Crear_Parentezco 
+CREATE Procedure Actualizar_Parentezco 
 	@inId_Parentezco INT,
 	@inNombre VARCHAR(100),
 
@@ -189,9 +153,11 @@ AS
 
 			BEGIN TRAN
 
-				--INSERTA AL Parentezco
-				INSERT INTO Parentezco(Id_Parentezco, Nombre)
-				values (@inId_Parentezco, @inNombre)
+				--Actualizar AL Parentezco
+				Update Parentezco
+					set Nombre = @inNombre
+					where Id_Parentezco = @inId_Parentezco AND
+						[activo] = 1
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
@@ -199,7 +165,7 @@ AS
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
-								@inId_Tipo_Accion = 10,
+								@inId_Tipo_Accion = 11,
 								@inId_Objeto_Accion = @idUsuarioMoidifica,  
 								@inQuien_Inserto = @inUsuarioACargo, 
 								@inInsertado_Por = @inIPusuario, 
@@ -209,12 +175,12 @@ AS
 		BEGIN CATCH
 			If @@TRANCOUNT > 0 
 				ROLLBACK TRAN;
-			THROW 62510,'Error: No se ha podido crear el Parentezco, por favor revise los datos',1;
+			THROW 62511,'Error: No se ha podido actualizar el Parentezco, por favor revise los datos',1;
 		END CATCH
 	END
 GO
 
-CREATE Procedure Crear_Tipo_Cuenta_Ahorros 
+CREATE Procedure Actualizar_Tipo_Cuenta_Ahorros 
 	@inId_Tipo_Cuenta_Ahorros INT,  -- No me acuerdo si era catalogo
 	@inNombre VARCHAR(100),
 	@ininMoneda INT, 
@@ -238,11 +204,22 @@ AS
 			BEGIN TRAN
 
 				Declare @Id_Tipo_Moneda 
-				set @ Id_Tipo_Moneda = (SELECT [Id_Tipo_Moneda] FROM [Tipo_Moneda] WHERE [Nombre] = @inMoneda AND [Activo] = 1)
+				set @Id_Tipo_Moneda = (SELECT [Id_Tipo_Moneda] FROM [Tipo_Moneda] WHERE [Nombre] = @inMoneda AND [Activo] = 1)
 
-				--INSERTA AL Tipo_Cuenta_Ahorros
-				INSERT INTO Tipo_Cuenta_Ahorros(Id_Tipo_Cuenta_Ahorros, Nombre, Id_Tipo_Moneda, Saldo_Minimo, Multa_Saldo_Minimo, Cargo_Anual, Num_Retiros_Humano, Num_Retiros_Automatico, Comision_Humano, Comision_Automatico,Interes)
-				values (@inId_Tipo_Cuenta_Ahorros, @inNombre, @ininMoneda, @inSaldo_Minimo, @inMulta_Saldo_Minimo, @inCargo_Anual, @inNum_Retiros_Humano, @inNum_Retiros_Automatico, @inComision_Humano, @inComision_Automatico, @inInteres)
+				--Actualizar AL Tipo_Cuenta_Ahorros
+				Update Tipo_Cuenta_Ahorros
+					set Nombre = @inNombre 
+					set Id_Tipo_Moneda = @Id_Tipo_Moneda
+					set Saldo_Minimo = @inSaldo_Minimo
+					set Multa_Saldo_Minimo = @inMulta_Saldo_Minimo
+					set Cargo_Anual = @inCargo_Anual
+					set Num_Retiros_Humano = @inNum_Retiros_Humano
+					set Num_Retiros_Automatico = @inNum_Retiros_Automatico
+					set Comision_Humano = @inComision_Humano
+					set Comision_Automatico = @inComision_Automatico
+					set Interes = @inInteres
+					where Id_Tipo_Cuenta_Ahorros = @inId_Tipo_Cuenta_Ahorros AND
+						[activo] = 1
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
@@ -250,7 +227,7 @@ AS
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
-								@inId_Tipo_Accion = 13,
+								@inId_Tipo_Accion = 14,
 								@inId_Objeto_Accion = @idUsuarioMoidifica,  
 								@inQuien_Inserto = @inUsuarioACargo, 
 								@inInsertado_Por = @inIPusuario, 
@@ -260,12 +237,13 @@ AS
 		BEGIN CATCH
 			If @@TRANCOUNT > 0 
 				ROLLBACK TRAN;
-			THROW 62513,'Error: No se ha podido crear el Tipo de Cuenta Ahorros, por favor revise los datos',1;
+			THROW 62514,'Error: No se ha podido actualizar el Tipo de Cuenta Ahorros, por favor revise los datos',1;
 		END CATCH
 	END
 GO
 
-CREATE Procedure Crear_Persona 
+CREATE Procedure Actualizar_Persona 
+	@inId_Persona INT,
 	@inNombre VARCHAR(100),
 	@inTipoDocumento VARCHAR(100),
 	@inDocumento_Identidad VARCHAR(20),
@@ -288,9 +266,17 @@ AS
 				set @Id_TipoDocumento = (SELECT [Id_TipoDocumento] FROM [Tipo_Documento] WHERE [Nombre] = @inTipoDocumento AND [Activo] = 1)
 
 
-				--INSERTA AL Persona
-				INSERT INTO Persona(Nombre, Id_TipoDocumento, Documento_Identidad, Fecha_Nacimiento, Email, Telefono1, Telefono2)
-				values ( @inNombre, @Id_TipoDocumento, @inDocumento_Identidad, @inFecha_Nacimiento, @inEmail, @inTelefono1,  @inTelefono2)
+				--Actualizar AL Persona
+				Update Persona
+					set Nombre = @inNombre
+					set Id_TipoDocumento = @Id_TipoDocumento
+					set Documento_Identidad = @inDocumento_Identidad
+					set Fecha_Nacimiento = @inFecha_Nacimiento
+					set Email = @inEmail
+					set Telefono1 = @inTelefono1
+					set Telefono2 = @inTelefono2
+					where Id_Persona = @inId_Persona AND
+						[activo] = 1
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
@@ -298,7 +284,7 @@ AS
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
-								@inId_Tipo_Accion = 16,
+								@inId_Tipo_Accion = 17,
 								@inId_Objeto_Accion = @idUsuarioMoidifica,  
 								@inQuien_Inserto = @inUsuarioACargo, 
 								@inInsertado_Por = @inIPusuario, 
@@ -308,12 +294,13 @@ AS
 		BEGIN CATCH
 			If @@TRANCOUNT > 0 
 				ROLLBACK TRAN;
-			THROW 62516,'Error: No se ha podido crear la Persona, por favor revise los datos',1;
+			THROW 62517,'Error: No se ha podido actualizar la Persona, por favor revise los datos',1;
 		END CATCH
 	END
 GO
 
-CREATE Procedure Crear_Cuenta
+CREATE Procedure Actualizar_Cuenta
+	@inId_Cuenta INT,
 	@inNombre_Persona VARCHAR(100),
 	@inNombre_Tipo_Cuenta_Ahorros VARCHAR(100),
 	@inNum_Cuenta VARCHAR(15),
@@ -337,9 +324,15 @@ AS
 				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
 					@Id_Tipo_Cuenta_Ahorros = (SELECT [Id_Tipo_Cuenta_Ahorros] FROM [Tipo_Cuenta_Ahorros] WHERE [Nombre] = @inNombre_Tipo_Cuenta_Ahorros AND [Activo] = 1)
 
-				--INSERTA AL Cuenta
-				INSERT INTO Cuenta(	Id_Persona, Id_Tipo_Cuenta_Ahorros, Num_Cuenta, Fecha_Creacion, Saldo)
-				values (@Id_Persona, @Id_Tipo_Cuenta_Ahorros, @inNum_Cuenta, @inFecha_Creacion, @inSaldo )
+				--Actualizar AL Cuenta
+				Update Cuenta
+					set Id_Persona = @Id_Persona
+					set Id_Tipo_Cuenta_Ahorros = @Id_Tipo_Cuenta_Ahorros
+					set Num_Cuenta = @inNum_Cuenta
+					set Fecha_Creacion = @inFecha_Creacion
+					set Saldo = @inSaldo
+					where Id_Cuenta = @inId_Cuenta AND
+						[activo] = 1
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
@@ -347,7 +340,7 @@ AS
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
-								@inId_Tipo_Accion = 19,
+								@inId_Tipo_Accion = 20,
 								@inId_Objeto_Accion = @idUsuarioMoidifica,  
 								@inQuien_Inserto = @inUsuarioACargo, 
 								@inInsertado_Por = @inIPusuario, 
@@ -357,12 +350,13 @@ AS
 		BEGIN CATCH
 			If @@TRANCOUNT > 0 
 				ROLLBACK TRAN;
-			THROW 62519,'Error: No se ha podido crear el Cuenta, por favor revise los datos',1;
+			THROW 62520,'Error: No se ha podido actualizar la Cuenta, por favor revise los datos',1;
 		END CATCH
 	END
 GO
 
-CREATE Procedure Crear_Beneficiario
+CREATE Procedure Actualizar_Beneficiario
+	@inId_Beneficiario INT,
 	@inNombre_Persona VARCHAR(100),
 	@inNum_Cuenta VARCHAR(15),
 	@inNombre_Parentezco INT,
@@ -388,9 +382,14 @@ AS
 				set	@Id_Parentezco = (SELECT [Id_Parentezco] FROM [Parentezco] WHERE [Nombre] = @inNombre_Parentezco AND [Activo] = 1)
 
 
-				--INSERTA AL Beneficiario
-				INSERT INTO Beneficiario(Id_Persona, Id_Cuenta, Id_Parentezco, Porcentaje)
-				values (@Id_Persona,@Id_Cuenta,@Id_Parentezco,@inPorcentaje)
+				--Actualizar AL Beneficiario
+				Update Beneficiario
+					set Id_Persona = @Id_Persona
+					set Id_Cuenta = @Id_Cuenta
+					set Id_Parentezco = @Id_Parentezco
+					set Porcentaje = @inPorcentaje
+					where Id_Beneficiario = @inId_Beneficiario AND
+							[activo] = 1					
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
@@ -398,7 +397,7 @@ AS
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
-								@inId_Tipo_Accion = 22,
+								@inId_Tipo_Accion = 23,
 								@inId_Objeto_Accion = @idUsuarioMoidifica,  
 								@inQuien_Inserto = @inUsuarioACargo, 
 								@inInsertado_Por = @inIPusuario, 
@@ -408,12 +407,13 @@ AS
 		BEGIN CATCH
 			If @@TRANCOUNT > 0 
 				ROLLBACK TRAN;
-			THROW 62522,'Error: No se ha podido crear el beneficiario, por favor revise los datos',1;
+			THROW 62523,'Error: No se ha podido actualizar el beneficiario, por favor revise los datos',1;
 		END CATCH
 	END
 GO
 
-CREATE Procedure Crear_Estado_Cuenta
+CREATE Procedure Actualizar_Estado_Cuenta
+	@inId_Estado_Cuenta INT,
 	@inNum_Cuenta VARCHAR(15),
 	@inFecha_Inicio DATE,
 	@inFecha_Fin DATE,
@@ -435,9 +435,15 @@ AS
 						
 				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
 
-				--INSERTA AL Estado_Cuenta
-				INSERT INTO Estado_Cuenta(Id_Cuenta, Fecha_Inicio, Fecha_Fin, Saldo_Inicial, Saldo_Final)
-				values (@Id_Cuenta, @inFecha_Inicio, @inFecha_Fin, @inSaldo_Inicial, @inSaldo_Final)
+				--Actualizar AL Estado_Cuenta
+				Update Estado_Cuenta
+					set Id_Cuenta = @Id_Cuenta
+						Fecha_Inicio = @inFecha_Inicio
+						Fecha_Fin = @inFecha_Fin
+						Saldo_Inicial = @inSaldo_Inicial
+						Saldo_Final = @inSaldo_Final
+					where Id_Estado_Cuenta = @inId_Estado_Cuenta AND
+							[activo] = 1
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
@@ -445,7 +451,7 @@ AS
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
-								@inId_Tipo_Accion = 25,
+								@inId_Tipo_Accion = 26,
 								@inId_Objeto_Accion = @idUsuarioMoidifica,  
 								@inQuien_Inserto = @inUsuarioACargo, 
 								@inInsertado_Por = @inIPusuario, 
@@ -455,12 +461,13 @@ AS
 		BEGIN CATCH
 			If @@TRANCOUNT > 0 
 				ROLLBACK TRAN;
-			THROW 62525,'Error: No se ha podido crear el Estado Cuenta, por favor revise los datos',1;
+			THROW 62526,'Error: No se ha podido actualizar el Estado Cuenta, por favor revise los datos',1;
 		END CATCH
 	END
 GO
 
-CREATE Procedure Crear_Usuario_Visualizacion
+CREATE Procedure Actualizar_Usuario_Visualizacion
+	@inId_Usuario_Visualizacion INT,
 	@inNombre_Usuario VARCHAR(120),
 	@inNum_Cuenta VARCHAR(15),
 
@@ -483,9 +490,12 @@ AS
 				set	@Id_Usuario = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre_Usuario AND [Activo] = 1)
 
 
-				--INSERTA AL Usuario_Visualizacion
-				INSERT INTO Usuario_Visualizacion(Id_Usuario, Id_Cuenta)
-				values (Id_Usuario, @Id_Cuenta)
+				--Actualizar AL Usuario_Visualizacion
+				Update Usuario_Visualizacion(
+					set Id_Usuario = Id_Usuario
+						Id_Cuenta = @Id_Cuenta
+					where Id_Usuario_Visualizacion = @inId_Usuario_Visualizacion AND
+							[activo] = 1
 
 				--GUARDA EL ID y fecha
 				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
@@ -493,7 +503,7 @@ AS
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
-								@inId_Tipo_Accion = 28,
+								@inId_Tipo_Accion = 29,
 								@inId_Objeto_Accion = @idUsuarioMoidifica,  
 								@inQuien_Inserto = @inUsuarioACargo, 
 								@inInsertado_Por = @inIPusuario, 
@@ -503,7 +513,7 @@ AS
 		BEGIN CATCH
 			If @@TRANCOUNT > 0 
 				ROLLBACK TRAN;
-			THROW 62528,'Error: No se ha podido crear la relacion de Usuario Visualizacion, por favor revise los datos',1;
+			THROW 62529,'Error: No se ha podido actualizar la relacion de Usuario Visualizacion, por favor revise los datos',1;
 		END CATCH
 	END
 GO
