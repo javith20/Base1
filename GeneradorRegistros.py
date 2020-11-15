@@ -91,7 +91,35 @@ Matriz = []
 for x in cuentas:
 	Matriz.append(cuentas.readline().split(','))
 
+def generarTriggers():
+	procedure = "USE BD1
+GO
+drop TRIGGER Trigger_Crear_Beneficiario;
+go
+CREATE  TRIGGER Trigger_Actualizar_Beneficiario
+ON Beneficiario --Tabla a asignar el Trigger
+FOR UPDATE--Evento que se desea lanzar Trigger
+AS
+--Código a ejecutar cuando se realice un INSERT en la tabla &amp;amp;amp;amp;quot;Usuarios&amp;amp;amp;amp;quot;
+--Declarar variables
+DECLARE @Id_Tipo_Accion [INT];
+DECLARE @Quien_Inserto[VARCHAR](30);
+DECLARE @Insertado_Por [VARCHAR](30);
+DECLARE @Fecha [DATETIME];
+DECLARE @Id_Objeto_Accion [INT];
 
+
+SET @Id_Tipo_Accion = 20;
+SET @Fecha = (SELECT TOP 1 GETDATE());
+SET @Quien_Inserto = (SELECT TOP 1 system_user);
+if (@Quien_Inserto='MARII-PC\aguer')
+	SET @Insertado_Por = 'XML';	
+else
+	SET @Insertado_Por = 'WEB/SCRIPT';
+
+--Insertar en tabla AuditoriaTblUsuarios
+INSERT INTO Bitacora_Accion(Id_Tipo_Accion,Id_Objeto_Accion,Quien_Inserto,Insertado_Por,Inserto_El)
+SElect @Id_Tipo_Accion,Id_Beneficiario,@Quien_Inserto,@Insertado_Por,@Fecha from INSERTED"
 generarEstados("11717598","2016-08-28","26745278")
 #listaPersonas = []
 #listaCuentas= []

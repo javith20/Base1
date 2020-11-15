@@ -16,6 +16,17 @@
           <Property Name="Porcentaje" Type="real" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Bitacora_Accion">
+          <Key>
+            <PropertyRef Name="Id_Bitacora_Accion" />
+          </Key>
+          <Property Name="Id_Bitacora_Accion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Tipo_Accion" Type="int" Nullable="false" />
+          <Property Name="Id_Objeto_Accion" Type="int" Nullable="false" />
+          <Property Name="Quien_Inserto" Type="int" Nullable="false" />
+          <Property Name="Insertado_Por" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Inserto_El" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="Cuenta">
           <Key>
             <PropertyRef Name="Id_Cuenta" />
@@ -60,6 +71,14 @@
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Telefono1" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Telefono2" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Accion">
+          <Key>
+            <PropertyRef Name="Id_Tipo_Accion" />
+          </Key>
+          <Property Name="Id_Tipo_Accion" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Tipo_Cuenta_Ahorros">
@@ -116,7 +135,7 @@
           <Property Name="Id_Cuenta" Type="int" Nullable="false" />
           <Property Name="Activo" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Beneficia__Id_Cu__3C69FB99">
+        <Association Name="FK__Beneficia__Id_Cu__4222D4EF">
           <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
           <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -128,7 +147,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Beneficia__Id_Pa__3E52440B">
+        <Association Name="FK__Beneficia__Id_Pa__440B1D61">
           <End Role="Parentezco" Type="Self.Parentezco" Multiplicity="1" />
           <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -140,7 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Beneficia__Id_Pe__3D5E1FD2">
+        <Association Name="FK__Beneficia__Id_Pe__4316F928">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,7 +171,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cuenta__Id_Perso__38996AB5">
+        <Association Name="FK__Bitacora___Id_Ti__276EDEB3">
+          <End Role="Tipo_Accion" Type="Self.Tipo_Accion" Multiplicity="1" />
+          <End Role="Bitacora_Accion" Type="Self.Bitacora_Accion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Accion">
+              <PropertyRef Name="Id_Tipo_Accion" />
+            </Principal>
+            <Dependent Role="Bitacora_Accion">
+              <PropertyRef Name="Id_Tipo_Accion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuenta__Id_Perso__3E52440B">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,7 +195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cuenta__Id_Tipo___37A5467C">
+        <Association Name="FK__Cuenta__Id_Tipo___3D5E1FD2">
           <End Role="Tipo_Cuenta_Ahorros" Type="Self.Tipo_Cuenta_Ahorros" Multiplicity="1" />
           <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -176,7 +207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Estado_Cu__Id_Cu__4222D4EF">
+        <Association Name="FK__Estado_Cu__Id_Cu__47DBAE45">
           <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
           <End Role="Estado_Cuenta" Type="Self.Estado_Cuenta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -188,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Persona__Id_Tipo__32E0915F">
+        <Association Name="FK__Persona__Id_Tipo__38996AB5">
           <End Role="Tipo_Documento" Type="Self.Tipo_Documento" Multiplicity="1" />
           <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
           <ReferentialConstraint>
@@ -200,7 +231,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tipo_Cuen__Id_Ti__2E1BDC42">
+        <Association Name="FK__Tipo_Cuen__Id_Ti__33D4B598">
           <End Role="Tipo_Moneda" Type="Self.Tipo_Moneda" Multiplicity="1" />
           <End Role="Tipo_Cuenta_Ahorros" Type="Self.Tipo_Cuenta_Ahorros" Multiplicity="*" />
           <ReferentialConstraint>
@@ -212,7 +243,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__Id_Pers__46E78A0C">
+        <Association Name="FK__Usuario__Id_Pers__4CA06362">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -224,7 +255,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario_V__Id_Cu__4BAC3F29">
+        <Association Name="FK__Usuario_V__Id_Cu__5165187F">
           <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
           <End Role="Usuario_Visualizacion" Type="Self.Usuario_Visualizacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -236,7 +267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario_V__Id_Us__4AB81AF0">
+        <Association Name="FK__Usuario_V__Id_Us__5070F446">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Usuario_Visualizacion" Type="Self.Usuario_Visualizacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -248,114 +279,64 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="Actualizar_Beneficiario_Porcentaje" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
-          <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
-          <Parameter Name="inParentezco" Type="varchar" Mode="In" />
-          <Parameter Name="inPorcentaje" Type="real" Mode="In" />
-        </Function>
-        <Function Name="Cargar_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Datos" Type="xml" Mode="In" />
-          <Parameter Name="doc" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Cargar_Cuentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Datos" Type="xml" Mode="In" />
-          <Parameter Name="doc" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Cargar_Estado_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Datos" Type="xml" Mode="In" />
-          <Parameter Name="doc" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Cargar_Parentezco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Datos" Type="xml" Mode="In" />
-          <Parameter Name="doc" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Cargar_Personas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Datos" Type="xml" Mode="In" />
-          <Parameter Name="doc" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Cargar_Tipo_Cuenta_Ahorros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Datos" Type="xml" Mode="In" />
-          <Parameter Name="doc" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Cargar_Tipo_Doc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
-          <Parameter Name="doc" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Cargar_Tipo_Moneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
-          <Parameter Name="doc" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Cargar_Usuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Datos" Type="xml" Mode="In" />
-          <Parameter Name="doc" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Cargar_Usuarios_Visualizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Datos" Type="xml" Mode="In" />
-          <Parameter Name="doc" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Crear_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
-          <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
-          <Parameter Name="inParentezco" Type="varchar" Mode="In" />
-          <Parameter Name="inPorcentaje" Type="real" Mode="In" />
-        </Function>
-        <Function Name="Eliminar_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="inId" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Leer_Todos_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="BD1ModelStoreContainer">
           <EntitySet Name="Beneficiario" EntityType="Self.Beneficiario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bitacora_Accion" EntityType="Self.Bitacora_Accion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado_Cuenta" EntityType="Self.Estado_Cuenta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Parentezco" EntityType="Self.Parentezco" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Accion" EntityType="Self.Tipo_Accion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Cuenta_Ahorros" EntityType="Self.Tipo_Cuenta_Ahorros" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Documento" EntityType="Self.Tipo_Documento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Moneda" EntityType="Self.Tipo_Moneda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario_Visualizacion" EntityType="Self.Usuario_Visualizacion" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Beneficia__Id_Cu__3C69FB99" Association="Self.FK__Beneficia__Id_Cu__3C69FB99">
+          <AssociationSet Name="FK__Beneficia__Id_Cu__4222D4EF" Association="Self.FK__Beneficia__Id_Cu__4222D4EF">
             <End Role="Cuenta" EntitySet="Cuenta" />
             <End Role="Beneficiario" EntitySet="Beneficiario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Beneficia__Id_Pa__3E52440B" Association="Self.FK__Beneficia__Id_Pa__3E52440B">
+          <AssociationSet Name="FK__Beneficia__Id_Pa__440B1D61" Association="Self.FK__Beneficia__Id_Pa__440B1D61">
             <End Role="Parentezco" EntitySet="Parentezco" />
             <End Role="Beneficiario" EntitySet="Beneficiario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Beneficia__Id_Pe__3D5E1FD2" Association="Self.FK__Beneficia__Id_Pe__3D5E1FD2">
+          <AssociationSet Name="FK__Beneficia__Id_Pe__4316F928" Association="Self.FK__Beneficia__Id_Pe__4316F928">
             <End Role="Persona" EntitySet="Persona" />
             <End Role="Beneficiario" EntitySet="Beneficiario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cuenta__Id_Perso__38996AB5" Association="Self.FK__Cuenta__Id_Perso__38996AB5">
+          <AssociationSet Name="FK__Bitacora___Id_Ti__276EDEB3" Association="Self.FK__Bitacora___Id_Ti__276EDEB3">
+            <End Role="Tipo_Accion" EntitySet="Tipo_Accion" />
+            <End Role="Bitacora_Accion" EntitySet="Bitacora_Accion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuenta__Id_Perso__3E52440B" Association="Self.FK__Cuenta__Id_Perso__3E52440B">
             <End Role="Persona" EntitySet="Persona" />
             <End Role="Cuenta" EntitySet="Cuenta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cuenta__Id_Tipo___37A5467C" Association="Self.FK__Cuenta__Id_Tipo___37A5467C">
+          <AssociationSet Name="FK__Cuenta__Id_Tipo___3D5E1FD2" Association="Self.FK__Cuenta__Id_Tipo___3D5E1FD2">
             <End Role="Tipo_Cuenta_Ahorros" EntitySet="Tipo_Cuenta_Ahorros" />
             <End Role="Cuenta" EntitySet="Cuenta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Estado_Cu__Id_Cu__4222D4EF" Association="Self.FK__Estado_Cu__Id_Cu__4222D4EF">
+          <AssociationSet Name="FK__Estado_Cu__Id_Cu__47DBAE45" Association="Self.FK__Estado_Cu__Id_Cu__47DBAE45">
             <End Role="Cuenta" EntitySet="Cuenta" />
             <End Role="Estado_Cuenta" EntitySet="Estado_Cuenta" />
           </AssociationSet>
-          <AssociationSet Name="FK__Persona__Id_Tipo__32E0915F" Association="Self.FK__Persona__Id_Tipo__32E0915F">
+          <AssociationSet Name="FK__Persona__Id_Tipo__38996AB5" Association="Self.FK__Persona__Id_Tipo__38996AB5">
             <End Role="Tipo_Documento" EntitySet="Tipo_Documento" />
             <End Role="Persona" EntitySet="Persona" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tipo_Cuen__Id_Ti__2E1BDC42" Association="Self.FK__Tipo_Cuen__Id_Ti__2E1BDC42">
+          <AssociationSet Name="FK__Tipo_Cuen__Id_Ti__33D4B598" Association="Self.FK__Tipo_Cuen__Id_Ti__33D4B598">
             <End Role="Tipo_Moneda" EntitySet="Tipo_Moneda" />
             <End Role="Tipo_Cuenta_Ahorros" EntitySet="Tipo_Cuenta_Ahorros" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario__Id_Pers__46E78A0C" Association="Self.FK__Usuario__Id_Pers__46E78A0C">
+          <AssociationSet Name="FK__Usuario__Id_Pers__4CA06362" Association="Self.FK__Usuario__Id_Pers__4CA06362">
             <End Role="Persona" EntitySet="Persona" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario_V__Id_Cu__4BAC3F29" Association="Self.FK__Usuario_V__Id_Cu__4BAC3F29">
+          <AssociationSet Name="FK__Usuario_V__Id_Cu__5165187F" Association="Self.FK__Usuario_V__Id_Cu__5165187F">
             <End Role="Cuenta" EntitySet="Cuenta" />
             <End Role="Usuario_Visualizacion" EntitySet="Usuario_Visualizacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario_V__Id_Us__4AB81AF0" Association="Self.FK__Usuario_V__Id_Us__4AB81AF0">
+          <AssociationSet Name="FK__Usuario_V__Id_Us__5070F446" Association="Self.FK__Usuario_V__Id_Us__5070F446">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Usuario_Visualizacion" EntitySet="Usuario_Visualizacion" />
           </AssociationSet>
@@ -743,6 +724,12 @@
           <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Leer_Todos_Beneficiario" ReturnType="Collection(BD1Model.Leer_Todos_Beneficiario_Result)" />
+          <EntitySet Name="Bitacora_Accion" EntityType="BD1Model.Bitacora_Accion" />
+          <EntitySet Name="Tipo_Accion" EntityType="BD1Model.Tipo_Accion" />
+          <AssociationSet Name="FK__Bitacora___Id_Ti__276EDEB3" Association="BD1Model.FK__Bitacora___Id_Ti__276EDEB3">
+            <End Role="Tipo_Accion" EntitySet="Tipo_Accion" />
+            <End Role="Bitacora_Accion" EntitySet="Bitacora_Accion" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="Leer_Beneficiario_Cuenta_Result">
           <Property Type="Int32" Name="Id_Beneficiario" Nullable="false" />
@@ -758,6 +745,39 @@
           <Property Type="Int32" Name="Id_Parentezco" Nullable="false" />
           <Property Type="Single" Name="Porcentaje" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Bitacora_Accion">
+          <Key>
+            <PropertyRef Name="Id_Bitacora_Accion" />
+          </Key>
+          <Property Name="Id_Bitacora_Accion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Tipo_Accion" Type="Int32" Nullable="false" />
+          <Property Name="Id_Objeto_Accion" Type="Int32" Nullable="false" />
+          <Property Name="Quien_Inserto" Type="Int32" Nullable="false" />
+          <Property Name="Insertado_Por" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Inserto_El" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Tipo_Accion" Relationship="BD1Model.FK__Bitacora___Id_Ti__276EDEB3" FromRole="Bitacora_Accion" ToRole="Tipo_Accion" />
+        </EntityType>
+        <EntityType Name="Tipo_Accion">
+          <Key>
+            <PropertyRef Name="Id_Tipo_Accion" />
+          </Key>
+          <Property Name="Id_Tipo_Accion" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Bitacora_Accion" Relationship="BD1Model.FK__Bitacora___Id_Ti__276EDEB3" FromRole="Tipo_Accion" ToRole="Bitacora_Accion" />
+        </EntityType>
+        <Association Name="FK__Bitacora___Id_Ti__276EDEB3">
+          <End Type="BD1Model.Tipo_Accion" Role="Tipo_Accion" Multiplicity="1" />
+          <End Type="BD1Model.Bitacora_Accion" Role="Bitacora_Accion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Accion">
+              <PropertyRef Name="Id_Tipo_Accion" />
+            </Principal>
+            <Dependent Role="Bitacora_Accion">
+              <PropertyRef Name="Id_Tipo_Accion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -885,30 +905,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Actualizar_Beneficiario_Porcentaje" FunctionName="BD1Model.Store.Actualizar_Beneficiario_Porcentaje" />
-          <FunctionImportMapping FunctionImportName="Cargar_Beneficiario" FunctionName="BD1Model.Store.Cargar_Beneficiario" />
-          <FunctionImportMapping FunctionImportName="Cargar_Cuentas" FunctionName="BD1Model.Store.Cargar_Cuentas" />
-          <FunctionImportMapping FunctionImportName="Cargar_Estado_Cuenta" FunctionName="BD1Model.Store.Cargar_Estado_Cuenta" />
-          <FunctionImportMapping FunctionImportName="Cargar_Parentezco" FunctionName="BD1Model.Store.Cargar_Parentezco" />
-          <FunctionImportMapping FunctionImportName="Cargar_Personas" FunctionName="BD1Model.Store.Cargar_Personas" />
-          <FunctionImportMapping FunctionImportName="Cargar_Tipo_Cuenta_Ahorros" FunctionName="BD1Model.Store.Cargar_Tipo_Cuenta_Ahorros" />
-          <FunctionImportMapping FunctionImportName="Cargar_Tipo_Doc" FunctionName="BD1Model.Store.Cargar_Tipo_Doc" />
-          <FunctionImportMapping FunctionImportName="Cargar_Tipo_Moneda" FunctionName="BD1Model.Store.Cargar_Tipo_Moneda" />
-          <FunctionImportMapping FunctionImportName="Cargar_Usuarios" FunctionName="BD1Model.Store.Cargar_Usuarios" />
-          <FunctionImportMapping FunctionImportName="Cargar_Usuarios_Visualizacion" FunctionName="BD1Model.Store.Cargar_Usuarios_Visualizacion" />
-          <FunctionImportMapping FunctionImportName="Crear_Beneficiario" FunctionName="BD1Model.Store.Crear_Beneficiario" />
-          <FunctionImportMapping FunctionImportName="Eliminar_Beneficiario" FunctionName="BD1Model.Store.Eliminar_Beneficiario" />
-          <FunctionImportMapping FunctionImportName="Leer_Todos_Beneficiario" FunctionName="BD1Model.Store.Leer_Todos_Beneficiario">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BD1Model.Leer_Todos_Beneficiario_Result">
-                <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
-                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-                <ScalarProperty Name="Id_Parentezco" ColumnName="Id_Parentezco" />
-                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Bitacora_Accion">
+            <EntityTypeMapping TypeName="BD1Model.Bitacora_Accion">
+              <MappingFragment StoreEntitySet="Bitacora_Accion">
+                <ScalarProperty Name="Inserto_El" ColumnName="Inserto_El" />
+                <ScalarProperty Name="Insertado_Por" ColumnName="Insertado_Por" />
+                <ScalarProperty Name="Quien_Inserto" ColumnName="Quien_Inserto" />
+                <ScalarProperty Name="Id_Objeto_Accion" ColumnName="Id_Objeto_Accion" />
+                <ScalarProperty Name="Id_Tipo_Accion" ColumnName="Id_Tipo_Accion" />
+                <ScalarProperty Name="Id_Bitacora_Accion" ColumnName="Id_Bitacora_Accion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Accion">
+            <EntityTypeMapping TypeName="BD1Model.Tipo_Accion">
+              <MappingFragment StoreEntitySet="Tipo_Accion">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Tipo_Accion" ColumnName="Id_Tipo_Accion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

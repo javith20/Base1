@@ -1,4 +1,7 @@
 sqlcmd -i CreateBD.sql
+sqlcmd -i Triggers_Crear.sql
+sqlcmd -i Triggers_Actualizar.sql
+sqlcmd -i Cargar_Tipo_Accion.sql
 sqlcmd -i Cargar_Tipo_Doc.sql
 sqlcmd -i Cargar_Tipo_Moneda.sql
 sqlcmd -i Cargar_Parentezcos.sql

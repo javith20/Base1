@@ -37,6 +37,8 @@ namespace BaseTec.Models
         public virtual DbSet<Tipo_Moneda> Tipo_Moneda { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Usuario_Visualizacion> Usuario_Visualizacion { get; set; }
+        public virtual DbSet<Bitacora_Accion> Bitacora_Accion { get; set; }
+        public virtual DbSet<Tipo_Accion> Tipo_Accion { get; set; }
     
         public virtual int Actualizar_Beneficiario_Porcentaje(string inNombre_Persona, string inNum_Cuenta, string inParentezco, Nullable<float> inPorcentaje)
         {

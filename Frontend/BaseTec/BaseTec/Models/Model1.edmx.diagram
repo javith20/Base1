@@ -26,6 +26,9 @@
         <AssociationConnector Association="BD1Model.FK__Usuario__Id_Pers__46E78A0C" ManuallyRouted="false" />
         <AssociationConnector Association="BD1Model.FK__Tipo_Cuen__Id_Ti__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="BD1Model.FK__Usuario_V__Id_Us__4AB81AF0" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BD1Model.Bitacora_Accion" Width="1.5" PointX="7.625" PointY="1" />
+        <EntityTypeShape EntityType="BD1Model.Tipo_Accion" Width="1.5" PointX="5.375" PointY="1.25" />
+        <AssociationConnector Association="BD1Model.FK__Bitacora___Id_Ti__276EDEB3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

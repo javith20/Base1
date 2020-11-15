@@ -24,8 +24,10 @@ CREATE PROCEDURE Cargar_Beneficiario
 		INSERT INTO Beneficiario (Id_Cuenta,Id_Persona,Id_Parentezco,Porcentaje)
 		SELECT NumeroCuenta,ValorDocumentoIdentidadBeneficiario,ParentezcoId,Porcentaje
 		FROM #Temp ;
-	
-GO			
+GO
+
 EXEC Cargar_Beneficiario
 
 SELECT * FROM Beneficiario;
+
+
