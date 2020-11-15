@@ -1,3 +1,6 @@
+USE BD1;
+Go
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---											Stores Procedure Eliminar
@@ -16,21 +19,24 @@ AS
 
 			BEGIN TRAN
 
+				Declare
+					@idUsuarioMoidifica int,
+					@insertado_El date
+
 				--Eliminario AL USUARIO
 				Update Usuario
 					set [activo] = 0
 					where Id_Usuario = @inId_Usuario
 
-
 				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
+				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] =  @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 3,
-								@inId_Objeto_Accion = @idUsuarioMoidifica,  
-								@inQuien_Inserto = @inUsuarioACargo, 
+								@inId_Objeto_Accion = @inId_Usuario,  
+								@inQuien_Inserto = @idUsuarioMoidifica, 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
 			COMMIT
@@ -56,21 +62,25 @@ AS
 
 			BEGIN TRAN
 
+				Declare
+					@idUsuarioMoidifica int,
+					@insertado_El date
+
 				--Eliminar AL Tipo_Documento
 				Update Tipo_Documento
 					set [activo] = 0
 					where Id_TipoDocumento = @inId_TipoDocumento
 						
 
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
+--GUARDA EL ID y fecha
+				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 6,
-								@inId_Objeto_Accion = @idUsuarioMoidifica,  
-								@inQuien_Inserto = @inUsuarioACargo, 
+								@inId_Objeto_Accion = @inId_TipoDocumento,  
+								@inQuien_Inserto = @idUsuarioMoidifica, 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
 			COMMIT
@@ -96,22 +106,27 @@ AS
 
 			BEGIN TRAN
 
+			Declare
+					@idUsuarioMoidifica int,
+					@insertado_El date
+
 				--Eliminar AL Tipo_Moneda
 				Update Tipo_Moneda
 					set [activo] = 0
 					where Id_Tipo_Moneda = @inId_Tipo_Moneda
 
 				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
+				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 9,
-								@inId_Objeto_Accion = @idUsuarioMoidifica,  
-								@inQuien_Inserto = @inUsuarioACargo, 
+								@inId_Objeto_Accion = @inId_Tipo_Moneda,  
+								@inQuien_Inserto = @idUsuarioMoidifica, 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
+
 			COMMIT
 		END TRY
 		BEGIN CATCH
@@ -135,6 +150,10 @@ AS
 
 			BEGIN TRAN
 
+			Declare
+					@idUsuarioMoidifica int,
+					@insertado_El date
+
 				--Eliminar AL Parentezco
 				Update Parentezco
 					set [activo] = 0
@@ -142,16 +161,17 @@ AS
 						
 
 				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
+				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 12,
-								@inId_Objeto_Accion = @idUsuarioMoidifica,  
-								@inQuien_Inserto = @inUsuarioACargo, 
+								@inId_Objeto_Accion = @inId_Parentezco,  
+								@inQuien_Inserto = @idUsuarioMoidifica, 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
+
 			COMMIT
 		END TRY
 		BEGIN CATCH
@@ -175,6 +195,10 @@ AS
 
 			BEGIN TRAN
 
+			Declare
+					@idUsuarioMoidifica int,
+					@insertado_El date
+
 				--Eliminar AL Tipo_Cuenta_Ahorros
 				Update Tipo_Cuenta_Ahorros
 					set [activo] = 0
@@ -182,14 +206,14 @@ AS
 					
 
 				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
+				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 15,
-								@inId_Objeto_Accion = @idUsuarioMoidifica,  
-								@inQuien_Inserto = @inUsuarioACargo, 
+								@inId_Objeto_Accion = @inId_Tipo_Cuenta_Ahorros,  
+								@inQuien_Inserto = @idUsuarioMoidifica, 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
 			COMMIT
@@ -215,6 +239,10 @@ AS
 
 			BEGIN TRAN
 
+			Declare
+					@idUsuarioMoidifica int,
+					@insertado_El date
+
 				--Eliminar AL Persona
 				Update Persona
 					set [activo] = 0
@@ -222,16 +250,17 @@ AS
 						
 
 				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
+				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
-				EXEC Insertar_BitacoraAcciones
+				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 18,
-								@inId_Objeto_Accion = @idUsuarioMoidifica,  
-								@inQuien_Inserto = @inUsuarioACargo, 
+								@inId_Objeto_Accion = @inId_Persona,  
+								@inQuien_Inserto = @idUsuarioMoidifica, 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
+			
 			COMMIT
 		END TRY
 		BEGIN CATCH
@@ -255,6 +284,10 @@ AS
 
 			BEGIN TRAN
 
+			Declare
+					@idUsuarioMoidifica int,
+					@insertado_El date
+
 				--Eliminar AL Cuenta
 				Update Cuenta
 					set [activo] = 0
@@ -262,14 +295,14 @@ AS
 						
 
 				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
+				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 21,
-								@inId_Objeto_Accion = @idUsuarioMoidifica,  
-								@inQuien_Inserto = @inUsuarioACargo, 
+								@inId_Objeto_Accion = @inId_Cuenta ,  
+								@inQuien_Inserto = @idUsuarioMoidifica, 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
 			COMMIT
@@ -295,6 +328,10 @@ AS
 
 			BEGIN TRAN
 
+			Declare
+					@idUsuarioMoidifica int,
+					@insertado_El date
+
 				--Eliminar AL Beneficiario
 				Update Beneficiario
 					set [activo] = 0
@@ -302,14 +339,14 @@ AS
 												
 
 				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
+				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 24,
-								@inId_Objeto_Accion = @idUsuarioMoidifica,  
-								@inQuien_Inserto = @inUsuarioACargo, 
+								@inId_Objeto_Accion = @inId_Beneficiario,  
+								@inQuien_Inserto = @idUsuarioMoidifica, 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
 			COMMIT
@@ -335,6 +372,10 @@ AS
 
 			BEGIN TRAN
 
+			Declare
+					@idUsuarioMoidifica int,
+					@insertado_El date
+
 				--Eliminar AL Estado_Cuenta
 				Update Estado_Cuenta
 					set [activo] = 0
@@ -342,14 +383,14 @@ AS
 							
 
 				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
+				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 27,
-								@inId_Objeto_Accion = @idUsuarioMoidifica,  
-								@inQuien_Inserto = @inUsuarioACargo, 
+								@inId_Objeto_Accion = @inId_Estado_Cuenta,  
+								@inQuien_Inserto = @idUsuarioMoidifica , 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
 			COMMIT
@@ -375,6 +416,10 @@ AS
 
 			BEGIN TRAN
 
+			Declare
+					@idUsuarioMoidifica int,
+					@insertado_El date
+
 				--Eliminar AL Usuario_Visualizacion
 				Update Usuario_Visualizacion
 					set [activo] = 0
@@ -382,14 +427,14 @@ AS
 							
 
 				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre AND [Activo] = 1)
+				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
 				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 30,
-								@inId_Objeto_Accion = @idUsuarioMoidifica,  
-								@inQuien_Inserto = @inUsuarioACargo, 
+								@inId_Objeto_Accion = @inId_Usuario_Visualizacion,  
+								@inQuien_Inserto = @idUsuarioMoidifica, 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
 			COMMIT
