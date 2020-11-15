@@ -346,8 +346,8 @@ AS
 						@idUsuarioMoidifica int,
 						@insertado_El date
 
-				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1),
-					@Id_Tipo_Cuenta_Ahorros = (SELECT [Id_Tipo_Cuenta_Ahorros] FROM [Tipo_Cuenta_Ahorros] WHERE [Nombre] = @inNombre_Tipo_Cuenta_Ahorros AND [Activo] = 1)
+				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
+				set	@Id_Tipo_Cuenta_Ahorros = (SELECT [Id_Tipo_Cuenta_Ahorros] FROM [Tipo_Cuenta_Ahorros] WHERE [Nombre] = @inNombre_Tipo_Cuenta_Ahorros AND [Activo] = 1)
 
 				--Actualizar AL Cuenta
 				Update Cuenta
@@ -405,7 +405,7 @@ AS
 						@insertado_El date
 
 				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
-				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
+				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Num_Cuenta] = @inNum_Cuenta AND [Activo] = 1)
 				set	@Id_Parentezco = (SELECT [Id_Parentezco] FROM [Parentezco] WHERE [Nombre] = @inNombre_Parentezco AND [Activo] = 1)
 
 
@@ -462,7 +462,7 @@ AS
 						@idUsuarioMoidifica int,
 						@insertado_El date
 						
-				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
+				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Num_Cuenta] = @inNum_Cuenta AND [Activo] = 1)
 
 				--Actualizar AL Estado_Cuenta
 				Update Estado_Cuenta
@@ -517,7 +517,7 @@ AS
 						@idUsuarioMoidifica int,
 						@insertado_El date
 						
-				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
+				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Num_Cuenta] = @inNum_Cuenta AND [Activo] = 1)
 				set	@Id_Usuario = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre_Usuario AND [Activo] = 1)
 
 
