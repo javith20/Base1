@@ -379,6 +379,12 @@
       <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Leer_Todos_Beneficiario" ReturnType="Collection(BD1Model.Leer_Todos_Beneficiario_Result)" />
+    <EntitySet Name="Bitacora_Accion" EntityType="BD1Model.Bitacora_Accion" />
+    <EntitySet Name="Tipo_Accion" EntityType="BD1Model.Tipo_Accion" />
+    <AssociationSet Name="FK__Bitacora___Id_Ti__276EDEB3" Association="BD1Model.FK__Bitacora___Id_Ti__276EDEB3">
+      <End Role="Tipo_Accion" EntitySet="Tipo_Accion" />
+      <End Role="Bitacora_Accion" EntitySet="Bitacora_Accion" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="Leer_Beneficiario_Cuenta_Result">
     <Property Type="Int32" Name="Id_Beneficiario" Nullable="false" />
@@ -394,4 +400,37 @@
     <Property Type="Int32" Name="Id_Parentezco" Nullable="false" />
     <Property Type="Single" Name="Porcentaje" Nullable="false" />
   </ComplexType>
+  <EntityType Name="Bitacora_Accion">
+    <Key>
+      <PropertyRef Name="Id_Bitacora_Accion" />
+    </Key>
+    <Property Name="Id_Bitacora_Accion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Tipo_Accion" Type="Int32" Nullable="false" />
+    <Property Name="Id_Objeto_Accion" Type="Int32" Nullable="false" />
+    <Property Name="Quien_Inserto" Type="Int32" Nullable="false" />
+    <Property Name="Insertado_Por" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Inserto_El" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Tipo_Accion" Relationship="BD1Model.FK__Bitacora___Id_Ti__276EDEB3" FromRole="Bitacora_Accion" ToRole="Tipo_Accion" />
+  </EntityType>
+  <EntityType Name="Tipo_Accion">
+    <Key>
+      <PropertyRef Name="Id_Tipo_Accion" />
+    </Key>
+    <Property Name="Id_Tipo_Accion" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Bitacora_Accion" Relationship="BD1Model.FK__Bitacora___Id_Ti__276EDEB3" FromRole="Tipo_Accion" ToRole="Bitacora_Accion" />
+  </EntityType>
+  <Association Name="FK__Bitacora___Id_Ti__276EDEB3">
+    <End Type="BD1Model.Tipo_Accion" Role="Tipo_Accion" Multiplicity="1" />
+    <End Type="BD1Model.Bitacora_Accion" Role="Bitacora_Accion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Accion">
+        <PropertyRef Name="Id_Tipo_Accion" />
+      </Principal>
+      <Dependent Role="Bitacora_Accion">
+        <PropertyRef Name="Id_Tipo_Accion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

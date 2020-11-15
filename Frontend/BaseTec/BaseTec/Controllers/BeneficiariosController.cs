@@ -42,6 +42,7 @@ namespace BaseTec.Controllers
             ViewBag.Id_Cuenta = new SelectList(db.Cuenta, "Id_Cuenta", "Num_Cuenta");
             ViewBag.Id_Parentezco = new SelectList(db.Parentezco, "Id_Parentezco", "Nombre");
             ViewBag.Id_Persona = new SelectList(db.Persona, "Id_Persona", "Nombre");
+           
             return View();
         }
 
@@ -54,6 +55,7 @@ namespace BaseTec.Controllers
         {
             if (ModelState.IsValid)
             {
+         
                 db.Beneficiario.Add(beneficiario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
