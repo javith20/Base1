@@ -385,6 +385,284 @@
       <End Role="Tipo_Accion" EntitySet="Tipo_Accion" />
       <End Role="Bitacora_Accion" EntitySet="Bitacora_Accion" />
     </AssociationSet>
+    <FunctionImport Name="Actualizar_Beneficiario">
+      <Parameter Name="inId_Beneficiario" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+      <Parameter Name="inNombre_Parentezco" Mode="In" Type="Int32" />
+      <Parameter Name="inPorcentaje" Mode="In" Type="Single" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Cuenta">
+      <Parameter Name="inId_Cuenta" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+      <Parameter Name="inNombre_Tipo_Cuenta_Ahorros" Mode="In" Type="String" />
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+      <Parameter Name="inFecha_Creacion" Mode="In" Type="DateTime" />
+      <Parameter Name="inSaldo" Mode="In" Type="Decimal" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Estado_Cuenta">
+      <Parameter Name="inId_Estado_Cuenta" Mode="In" Type="Int32" />
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+      <Parameter Name="inFecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="inFecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="inSaldo_Inicial" Mode="In" Type="Decimal" />
+      <Parameter Name="inSaldo_Final" Mode="In" Type="Decimal" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Parentezco">
+      <Parameter Name="inId_Parentezco" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Persona">
+      <Parameter Name="inId_Persona" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inTipoDocumento" Mode="In" Type="String" />
+      <Parameter Name="inDocumento_Identidad" Mode="In" Type="String" />
+      <Parameter Name="inFecha_Nacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="inEmail" Mode="In" Type="String" />
+      <Parameter Name="inTelefono1" Mode="In" Type="String" />
+      <Parameter Name="inTelefono2" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Tipo_Cuenta_Ahorros">
+      <Parameter Name="inId_Tipo_Cuenta_Ahorros" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inMoneda" Mode="In" Type="Int32" />
+      <Parameter Name="inSaldo_Minimo" Mode="In" Type="Decimal" />
+      <Parameter Name="inMulta_Saldo_Minimo" Mode="In" Type="Decimal" />
+      <Parameter Name="inCargo_Anual" Mode="In" Type="Decimal" />
+      <Parameter Name="inNum_Retiros_Humano" Mode="In" Type="Int32" />
+      <Parameter Name="inNum_Retiros_Automatico" Mode="In" Type="Int32" />
+      <Parameter Name="inComision_Humano" Mode="In" Type="Decimal" />
+      <Parameter Name="inComision_Automatico" Mode="In" Type="Decimal" />
+      <Parameter Name="inInteres" Mode="In" Type="Single" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Tipo_Moneda">
+      <Parameter Name="inId_Tipo_Moneda" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inSimbolo" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_TipoDocumento">
+      <Parameter Name="inId_TipoDocumento" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Usuario">
+      <Parameter Name="inId_Usuario" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inPassword" Mode="In" Type="String" />
+      <Parameter Name="inEs_Admin" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Actualizar_Usuario_Visualizacion">
+      <Parameter Name="inId_Usuario_Visualizacion" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre_Usuario" Mode="In" Type="String" />
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Beneficiario1">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Cuentas1">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Estado_Cuenta1">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Parentezco1">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Personas1">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Tipo_Accion">
+      <Parameter Name="tipo_Documento" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Tipo_Cuenta_Ahorros1">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Tipo_Doc1">
+      <Parameter Name="tipo_Documento" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Tipo_Moneda1">
+      <Parameter Name="tipo_Documento" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Usuarios1">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Cargar_Usuarios_Visualizacion1">
+      <Parameter Name="Datos" Mode="In" Type="String" />
+      <Parameter Name="doc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Beneficiario1">
+      <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+      <Parameter Name="inNombre_Parentezco" Mode="In" Type="Int32" />
+      <Parameter Name="inPorcentaje" Mode="In" Type="Single" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Cuenta">
+      <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+      <Parameter Name="inNombre_Tipo_Cuenta_Ahorros" Mode="In" Type="String" />
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+      <Parameter Name="inFecha_Creacion" Mode="In" Type="DateTime" />
+      <Parameter Name="inSaldo" Mode="In" Type="Decimal" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Estado_Cuenta">
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+      <Parameter Name="inFecha_Inicio" Mode="In" Type="DateTime" />
+      <Parameter Name="inFecha_Fin" Mode="In" Type="DateTime" />
+      <Parameter Name="inSaldo_Inicial" Mode="In" Type="Decimal" />
+      <Parameter Name="inSaldo_Final" Mode="In" Type="Decimal" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Parentezco">
+      <Parameter Name="inId_Parentezco" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Persona">
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inTipoDocumento" Mode="In" Type="String" />
+      <Parameter Name="inDocumento_Identidad" Mode="In" Type="String" />
+      <Parameter Name="inFecha_Nacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="inEmail" Mode="In" Type="String" />
+      <Parameter Name="inTelefono1" Mode="In" Type="String" />
+      <Parameter Name="inTelefono2" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Tipo_Cuenta_Ahorros">
+      <Parameter Name="inId_Tipo_Cuenta_Ahorros" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inMoneda" Mode="In" Type="Int32" />
+      <Parameter Name="inSaldo_Minimo" Mode="In" Type="Decimal" />
+      <Parameter Name="inMulta_Saldo_Minimo" Mode="In" Type="Decimal" />
+      <Parameter Name="inCargo_Anual" Mode="In" Type="Decimal" />
+      <Parameter Name="inNum_Retiros_Humano" Mode="In" Type="Int32" />
+      <Parameter Name="inNum_Retiros_Automatico" Mode="In" Type="Int32" />
+      <Parameter Name="inComision_Humano" Mode="In" Type="Decimal" />
+      <Parameter Name="inComision_Automatico" Mode="In" Type="Decimal" />
+      <Parameter Name="inInteres" Mode="In" Type="Single" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Tipo_Moneda">
+      <Parameter Name="inId_Tipo_Moneda" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inSimbolo" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_TipoDocumento">
+      <Parameter Name="inId_TipoDocumento" Mode="In" Type="Int32" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Usuario">
+      <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+      <Parameter Name="inNombre" Mode="In" Type="String" />
+      <Parameter Name="inPassword" Mode="In" Type="String" />
+      <Parameter Name="inEs_Admin" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Crear_Usuario_Visualizacion">
+      <Parameter Name="inNombre_Usuario" Mode="In" Type="String" />
+      <Parameter Name="inNum_Cuenta" Mode="In" Type="String" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_Beneficiario1">
+      <Parameter Name="inId_Beneficiario" Mode="In" Type="Int32" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_Cuenta">
+      <Parameter Name="inId_Cuenta" Mode="In" Type="Int32" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_Estado_Cuenta">
+      <Parameter Name="inId_Estado_Cuenta" Mode="In" Type="Int32" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_Parentezco">
+      <Parameter Name="inId_Parentezco" Mode="In" Type="Int32" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_Persona">
+      <Parameter Name="inId_Persona" Mode="In" Type="Int32" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_Tipo_Cuenta_Ahorros">
+      <Parameter Name="inId_Tipo_Cuenta_Ahorros" Mode="In" Type="Int32" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_Tipo_Moneda">
+      <Parameter Name="inId_Tipo_Moneda" Mode="In" Type="Int32" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_TipoDocumento">
+      <Parameter Name="inId_TipoDocumento" Mode="In" Type="Int32" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_Usuario">
+      <Parameter Name="inId_Usuario" Mode="In" Type="Int32" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Eliminar_Usuario_Visualizacion">
+      <Parameter Name="inId_Usuario_Visualizacion" Mode="In" Type="Int32" />
+      <Parameter Name="inUsuarioACargo" Mode="In" Type="String" />
+      <Parameter Name="inIPusuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insertar_BitacoraAcciones">
+      <Parameter Name="inNombre_Persona" Mode="In" Type="String" />
+      <Parameter Name="inId_Tipo_Accion" Mode="In" Type="Int32" />
+      <Parameter Name="inId_Objeto_Accion" Mode="In" Type="Int32" />
+      <Parameter Name="inQuien_Inserto" Mode="In" Type="String" />
+      <Parameter Name="inInsertado_Por" Mode="In" Type="String" />
+      <Parameter Name="inInserto_El" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Leer_Beneficiario_Cuenta_Result">
     <Property Type="Int32" Name="Id_Beneficiario" Nullable="false" />

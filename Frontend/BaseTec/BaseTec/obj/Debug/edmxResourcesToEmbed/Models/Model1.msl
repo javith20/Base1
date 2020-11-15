@@ -143,5 +143,47 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Actualizar_Beneficiario" FunctionName="BD1Model.Store.Actualizar_Beneficiario" />
+    <FunctionImportMapping FunctionImportName="Actualizar_Cuenta" FunctionName="BD1Model.Store.Actualizar_Cuenta" />
+    <FunctionImportMapping FunctionImportName="Actualizar_Estado_Cuenta" FunctionName="BD1Model.Store.Actualizar_Estado_Cuenta" />
+    <FunctionImportMapping FunctionImportName="Actualizar_Parentezco" FunctionName="BD1Model.Store.Actualizar_Parentezco" />
+    <FunctionImportMapping FunctionImportName="Actualizar_Persona" FunctionName="BD1Model.Store.Actualizar_Persona" />
+    <FunctionImportMapping FunctionImportName="Actualizar_Tipo_Cuenta_Ahorros" FunctionName="BD1Model.Store.Actualizar_Tipo_Cuenta_Ahorros" />
+    <FunctionImportMapping FunctionImportName="Actualizar_Tipo_Moneda" FunctionName="BD1Model.Store.Actualizar_Tipo_Moneda" />
+    <FunctionImportMapping FunctionImportName="Actualizar_TipoDocumento" FunctionName="BD1Model.Store.Actualizar_TipoDocumento" />
+    <FunctionImportMapping FunctionImportName="Actualizar_Usuario" FunctionName="BD1Model.Store.Actualizar_Usuario" />
+    <FunctionImportMapping FunctionImportName="Actualizar_Usuario_Visualizacion" FunctionName="BD1Model.Store.Actualizar_Usuario_Visualizacion" />
+    <FunctionImportMapping FunctionImportName="Cargar_Beneficiario1" FunctionName="BD1Model.Store.Cargar_Beneficiario" />
+    <FunctionImportMapping FunctionImportName="Cargar_Cuentas1" FunctionName="BD1Model.Store.Cargar_Cuentas" />
+    <FunctionImportMapping FunctionImportName="Cargar_Estado_Cuenta1" FunctionName="BD1Model.Store.Cargar_Estado_Cuenta" />
+    <FunctionImportMapping FunctionImportName="Cargar_Parentezco1" FunctionName="BD1Model.Store.Cargar_Parentezco" />
+    <FunctionImportMapping FunctionImportName="Cargar_Personas1" FunctionName="BD1Model.Store.Cargar_Personas" />
+    <FunctionImportMapping FunctionImportName="Cargar_Tipo_Accion" FunctionName="BD1Model.Store.Cargar_Tipo_Accion" />
+    <FunctionImportMapping FunctionImportName="Cargar_Tipo_Cuenta_Ahorros1" FunctionName="BD1Model.Store.Cargar_Tipo_Cuenta_Ahorros" />
+    <FunctionImportMapping FunctionImportName="Cargar_Tipo_Doc1" FunctionName="BD1Model.Store.Cargar_Tipo_Doc" />
+    <FunctionImportMapping FunctionImportName="Cargar_Tipo_Moneda1" FunctionName="BD1Model.Store.Cargar_Tipo_Moneda" />
+    <FunctionImportMapping FunctionImportName="Cargar_Usuarios1" FunctionName="BD1Model.Store.Cargar_Usuarios" />
+    <FunctionImportMapping FunctionImportName="Cargar_Usuarios_Visualizacion1" FunctionName="BD1Model.Store.Cargar_Usuarios_Visualizacion" />
+    <FunctionImportMapping FunctionImportName="Crear_Beneficiario1" FunctionName="BD1Model.Store.Crear_Beneficiario" />
+    <FunctionImportMapping FunctionImportName="Crear_Cuenta" FunctionName="BD1Model.Store.Crear_Cuenta" />
+    <FunctionImportMapping FunctionImportName="Crear_Estado_Cuenta" FunctionName="BD1Model.Store.Crear_Estado_Cuenta" />
+    <FunctionImportMapping FunctionImportName="Crear_Parentezco" FunctionName="BD1Model.Store.Crear_Parentezco" />
+    <FunctionImportMapping FunctionImportName="Crear_Persona" FunctionName="BD1Model.Store.Crear_Persona" />
+    <FunctionImportMapping FunctionImportName="Crear_Tipo_Cuenta_Ahorros" FunctionName="BD1Model.Store.Crear_Tipo_Cuenta_Ahorros" />
+    <FunctionImportMapping FunctionImportName="Crear_Tipo_Moneda" FunctionName="BD1Model.Store.Crear_Tipo_Moneda" />
+    <FunctionImportMapping FunctionImportName="Crear_TipoDocumento" FunctionName="BD1Model.Store.Crear_TipoDocumento" />
+    <FunctionImportMapping FunctionImportName="Crear_Usuario" FunctionName="BD1Model.Store.Crear_Usuario" />
+    <FunctionImportMapping FunctionImportName="Crear_Usuario_Visualizacion" FunctionName="BD1Model.Store.Crear_Usuario_Visualizacion" />
+    <FunctionImportMapping FunctionImportName="Eliminar_Beneficiario1" FunctionName="BD1Model.Store.Eliminar_Beneficiario" />
+    <FunctionImportMapping FunctionImportName="Eliminar_Cuenta" FunctionName="BD1Model.Store.Eliminar_Cuenta" />
+    <FunctionImportMapping FunctionImportName="Eliminar_Estado_Cuenta" FunctionName="BD1Model.Store.Eliminar_Estado_Cuenta" />
+    <FunctionImportMapping FunctionImportName="Eliminar_Parentezco" FunctionName="BD1Model.Store.Eliminar_Parentezco" />
+    <FunctionImportMapping FunctionImportName="Eliminar_Persona" FunctionName="BD1Model.Store.Eliminar_Persona" />
+    <FunctionImportMapping FunctionImportName="Eliminar_Tipo_Cuenta_Ahorros" FunctionName="BD1Model.Store.Eliminar_Tipo_Cuenta_Ahorros" />
+    <FunctionImportMapping FunctionImportName="Eliminar_Tipo_Moneda" FunctionName="BD1Model.Store.Eliminar_Tipo_Moneda" />
+    <FunctionImportMapping FunctionImportName="Eliminar_TipoDocumento" FunctionName="BD1Model.Store.Eliminar_TipoDocumento" />
+    <FunctionImportMapping FunctionImportName="Eliminar_Usuario" FunctionName="BD1Model.Store.Eliminar_Usuario" />
+    <FunctionImportMapping FunctionImportName="Eliminar_Usuario_Visualizacion" FunctionName="BD1Model.Store.Eliminar_Usuario_Visualizacion" />
+    <FunctionImportMapping FunctionImportName="Insertar_BitacoraAcciones" FunctionName="BD1Model.Store.Insertar_BitacoraAcciones" />
   </EntityContainerMapping>
 </Mapping>
