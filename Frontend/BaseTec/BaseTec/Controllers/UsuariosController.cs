@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using BaseTec.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BaseTec.Models;
 
 namespace BaseTec.Controllers
 {
@@ -54,7 +50,7 @@ namespace BaseTec.Controllers
             {
                 db.Usuario.Add(usuario);
                 db.SaveChanges();
-    
+
                 return RedirectToAction("Index");
             }
 

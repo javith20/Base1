@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using BaseTec.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BaseTec.Models;
 
 namespace BaseTec.Controllers
 {
@@ -121,7 +117,7 @@ namespace BaseTec.Controllers
             // Cuenta cuenta = db.Cuenta.Find(id);
             //db.Cuenta.Remove(cuenta);
             //db.SaveChanges();
-            db.Eliminar_Cuenta(id,Global.usuario+"", Request.UserHostAddress);
+            db.Eliminar_Cuenta(id, Global.usuario + "", Request.UserHostAddress);
             return RedirectToAction("Index");
         }
 
