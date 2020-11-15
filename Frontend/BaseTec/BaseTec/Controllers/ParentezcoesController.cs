@@ -109,9 +109,10 @@ namespace BaseTec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Parentezco parentezco = db.Parentezco.Find(id);
-            db.Parentezco.Remove(parentezco);
-            db.SaveChanges();
+            //Parentezco parentezco = db.Parentezco.Find(id);
+            //db.Parentezco.Remove(parentezco);
+            // db.SaveChanges();
+            db.Eliminar_Parentezco(id, Global.usuario + "", Request.UserHostAddress);
             return RedirectToAction("Index");
         }
 

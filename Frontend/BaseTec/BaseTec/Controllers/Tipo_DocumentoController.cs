@@ -109,9 +109,10 @@ namespace BaseTec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tipo_Documento tipo_Documento = db.Tipo_Documento.Find(id);
-            db.Tipo_Documento.Remove(tipo_Documento);
-            db.SaveChanges();
+            // Tipo_Documento tipo_Documento = db.Tipo_Documento.Find(id);
+            //db.Tipo_Documento.Remove(tipo_Documento);
+            //db.SaveChanges();
+            db.Eliminar_TipoDocumento(id, Global.usuario + "", Request.UserHostAddress);
             return RedirectToAction("Index");
         }
 

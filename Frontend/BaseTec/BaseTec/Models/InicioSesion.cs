@@ -8,6 +8,7 @@ namespace Municipalidad.Models
 {
     public class InicioSesion
     {
+            
         public string usuario { get; set; }
         [Required]
         public string contrasegna { get; set; }

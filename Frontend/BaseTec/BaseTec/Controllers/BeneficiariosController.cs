@@ -54,8 +54,9 @@ namespace BaseTec.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Beneficiario.Add(beneficiario);
-                db.SaveChanges();
+                //db.Beneficiario.Add(beneficiario);
+                //db.SaveChanges();
+                db.Crear_Beneficiario(beneficiario.Id_Beneficiario + "", beneficiario.Id_Persona + "", beneficiario.Id_Parentezco + "", beneficiario.Porcentaje);
                 return RedirectToAction("Index");
             }
 
@@ -122,9 +123,10 @@ namespace BaseTec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Beneficiario beneficiario = db.Beneficiario.Find(id);
-            db.Beneficiario.Remove(beneficiario);
-            db.SaveChanges();
+            //Beneficiario beneficiario = db.Beneficiario.Find(id);
+            // db.Beneficiario.Remove(beneficiario);
+            // db.SaveChanges();
+            db.Eliminar_Beneficiario1(id, Global.usuario + "", Request.UserHostAddress);
             return RedirectToAction("Index");
         }
 

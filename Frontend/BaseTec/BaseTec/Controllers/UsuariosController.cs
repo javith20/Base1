@@ -54,6 +54,7 @@ namespace BaseTec.Controllers
             {
                 db.Usuario.Add(usuario);
                 db.SaveChanges();
+    
                 return RedirectToAction("Index");
             }
 
@@ -114,9 +115,10 @@ namespace BaseTec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Usuario usuario = db.Usuario.Find(id);
-            db.Usuario.Remove(usuario);
-            db.SaveChanges();
+            // Usuario usuario = db.Usuario.Find(id);
+            // db.Usuario.Remove(usuario);
+            // db.SaveChanges();
+            db.Eliminar_Usuario(id, Global.usuario + "", Request.UserHostAddress);
             return RedirectToAction("Index");
         }
 

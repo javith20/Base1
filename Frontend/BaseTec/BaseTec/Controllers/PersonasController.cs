@@ -114,9 +114,10 @@ namespace BaseTec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Persona persona = db.Persona.Find(id);
-            db.Persona.Remove(persona);
-            db.SaveChanges();
+            // Persona persona = db.Persona.Find(id);
+            //db.Persona.Remove(persona);
+            //db.SaveChanges();
+            db.Eliminar_Persona(id, Global.usuario + "", Request.UserHostAddress);
             return RedirectToAction("Index");
         }
 

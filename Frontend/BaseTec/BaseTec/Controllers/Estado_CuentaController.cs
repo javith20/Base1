@@ -114,9 +114,10 @@ namespace BaseTec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Estado_Cuenta estado_Cuenta = db.Estado_Cuenta.Find(id);
-            db.Estado_Cuenta.Remove(estado_Cuenta);
-            db.SaveChanges();
+            //Estado_Cuenta estado_Cuenta = db.Estado_Cuenta.Find(id);
+            // db.Estado_Cuenta.Remove(estado_Cuenta);
+            //db.SaveChanges();
+            db.Eliminar_Cuenta(id, Global.usuario + "", Request.UserHostAddress);
             return RedirectToAction("Index");
         }
 

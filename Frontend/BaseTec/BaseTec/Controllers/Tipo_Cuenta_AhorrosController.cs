@@ -114,9 +114,10 @@ namespace BaseTec.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tipo_Cuenta_Ahorros tipo_Cuenta_Ahorros = db.Tipo_Cuenta_Ahorros.Find(id);
-            db.Tipo_Cuenta_Ahorros.Remove(tipo_Cuenta_Ahorros);
-            db.SaveChanges();
+            //Tipo_Cuenta_Ahorros tipo_Cuenta_Ahorros = db.Tipo_Cuenta_Ahorros.Find(id);
+            //db.Tipo_Cuenta_Ahorros.Remove(tipo_Cuenta_Ahorros);
+            //db.SaveChanges();
+            db.Eliminar_Tipo_Cuenta_Ahorros(id, Global.usuario + "", Request.UserHostAddress);
             return RedirectToAction("Index");
         }
 

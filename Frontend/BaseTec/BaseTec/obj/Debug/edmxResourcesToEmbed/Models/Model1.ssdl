@@ -276,17 +276,17 @@
   </Association>
   <Function Name="Actualizar_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inId_Beneficiario" Type="int" Mode="In" />
-    <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
-    <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
-    <Parameter Name="inNombre_Parentezco" Type="int" Mode="In" />
+    <Parameter Name="inId_Persona" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Parentezco" Type="int" Mode="In" />
     <Parameter Name="inPorcentaje" Type="real" Mode="In" />
     <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
     <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Actualizar_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inId_Cuenta" Type="int" Mode="In" />
-    <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
-    <Parameter Name="inNombre_Tipo_Cuenta_Ahorros" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Persona" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Tipo_Cuenta_Ahorros" Type="varchar" Mode="In" />
     <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
     <Parameter Name="inFecha_Creacion" Type="date" Mode="In" />
     <Parameter Name="inSaldo" Type="money" Mode="In" />
@@ -295,7 +295,7 @@
   </Function>
   <Function Name="Actualizar_Estado_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inId_Estado_Cuenta" Type="int" Mode="In" />
-    <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="varchar" Mode="In" />
     <Parameter Name="inFecha_Inicio" Type="date" Mode="In" />
     <Parameter Name="inFecha_Fin" Type="date" Mode="In" />
     <Parameter Name="inSaldo_Inicial" Type="money" Mode="In" />
@@ -312,7 +312,7 @@
   <Function Name="Actualizar_Persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inId_Persona" Type="int" Mode="In" />
     <Parameter Name="inNombre" Type="varchar" Mode="In" />
-    <Parameter Name="inTipoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="inId_TipoDocumento" Type="varchar" Mode="In" />
     <Parameter Name="inDocumento_Identidad" Type="varchar" Mode="In" />
     <Parameter Name="inFecha_Nacimiento" Type="date" Mode="In" />
     <Parameter Name="inEmail" Type="varchar" Mode="In" />
@@ -324,7 +324,7 @@
   <Function Name="Actualizar_Tipo_Cuenta_Ahorros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inId_Tipo_Cuenta_Ahorros" Type="int" Mode="In" />
     <Parameter Name="inNombre" Type="varchar" Mode="In" />
-    <Parameter Name="inMoneda" Type="int" Mode="In" />
+    <Parameter Name="inId_Tipo_Moneda" Type="int" Mode="In" />
     <Parameter Name="inSaldo_Minimo" Type="money" Mode="In" />
     <Parameter Name="inMulta_Saldo_Minimo" Type="money" Mode="In" />
     <Parameter Name="inCargo_Anual" Type="money" Mode="In" />
@@ -351,7 +351,7 @@
   </Function>
   <Function Name="Actualizar_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inId_Usuario" Type="int" Mode="In" />
-    <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Persona" Type="varchar" Mode="In" />
     <Parameter Name="inNombre" Type="varchar" Mode="In" />
     <Parameter Name="inPassword" Type="varchar" Mode="In" />
     <Parameter Name="inEs_Admin" Type="varchar" Mode="In" />
@@ -360,8 +360,8 @@
   </Function>
   <Function Name="Actualizar_Usuario_Visualizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inId_Usuario_Visualizacion" Type="int" Mode="In" />
-    <Parameter Name="inNombre_Usuario" Type="varchar" Mode="In" />
-    <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Usuario" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="varchar" Mode="In" />
     <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
     <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
   </Function>
@@ -410,16 +410,16 @@
     <Parameter Name="doc" Type="int" Mode="In" />
   </Function>
   <Function Name="Crear_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
-    <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
-    <Parameter Name="inNombre_Parentezco" Type="int" Mode="In" />
+    <Parameter Name="inId_Persona" Type="int" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="int" Mode="In" />
+    <Parameter Name="inId_Parentezco" Type="int" Mode="In" />
     <Parameter Name="inPorcentaje" Type="real" Mode="In" />
     <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
     <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Crear_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
-    <Parameter Name="inNombre_Tipo_Cuenta_Ahorros" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Persona" Type="int" Mode="In" />
+    <Parameter Name="inId_Tipo_Cuenta_Ahorros" Type="int" Mode="In" />
     <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
     <Parameter Name="inFecha_Creacion" Type="date" Mode="In" />
     <Parameter Name="inSaldo" Type="money" Mode="In" />
@@ -427,7 +427,7 @@
     <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Crear_Estado_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="int" Mode="In" />
     <Parameter Name="inFecha_Inicio" Type="date" Mode="In" />
     <Parameter Name="inFecha_Fin" Type="date" Mode="In" />
     <Parameter Name="inSaldo_Inicial" Type="money" Mode="In" />
@@ -443,7 +443,7 @@
   </Function>
   <Function Name="Crear_Persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inNombre" Type="varchar" Mode="In" />
-    <Parameter Name="inTipoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="inId_TipoDocumento" Type="int" Mode="In" />
     <Parameter Name="inDocumento_Identidad" Type="varchar" Mode="In" />
     <Parameter Name="inFecha_Nacimiento" Type="date" Mode="In" />
     <Parameter Name="inEmail" Type="varchar" Mode="In" />
@@ -455,7 +455,7 @@
   <Function Name="Crear_Tipo_Cuenta_Ahorros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inId_Tipo_Cuenta_Ahorros" Type="int" Mode="In" />
     <Parameter Name="inNombre" Type="varchar" Mode="In" />
-    <Parameter Name="inMoneda" Type="int" Mode="In" />
+    <Parameter Name="inId_Tipo_Moneda" Type="int" Mode="In" />
     <Parameter Name="inSaldo_Minimo" Type="money" Mode="In" />
     <Parameter Name="inMulta_Saldo_Minimo" Type="money" Mode="In" />
     <Parameter Name="inCargo_Anual" Type="money" Mode="In" />
@@ -481,7 +481,7 @@
     <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Crear_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Persona" Type="int" Mode="In" />
     <Parameter Name="inNombre" Type="varchar" Mode="In" />
     <Parameter Name="inPassword" Type="varchar" Mode="In" />
     <Parameter Name="inEs_Admin" Type="varchar" Mode="In" />
@@ -489,8 +489,8 @@
     <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Crear_Usuario_Visualizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="inNombre_Usuario" Type="varchar" Mode="In" />
-    <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Usuario" Type="int" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="int" Mode="In" />
     <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
     <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
   </Function>
@@ -545,7 +545,6 @@
     <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Insertar_BitacoraAcciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="inNombre_Persona" Type="varchar" Mode="In" />
     <Parameter Name="inId_Tipo_Accion" Type="int" Mode="In" />
     <Parameter Name="inId_Objeto_Accion" Type="int" Mode="In" />
     <Parameter Name="inQuien_Inserto" Type="varchar" Mode="In" />
