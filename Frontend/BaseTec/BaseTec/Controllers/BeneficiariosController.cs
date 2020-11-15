@@ -50,9 +50,9 @@ namespace BaseTec.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Beneficiario.Add(beneficiario);
-                //db.SaveChanges();
-                db.Crear_Beneficiario(beneficiario.Id_Beneficiario + "", beneficiario.Id_Persona + "", beneficiario.Id_Parentezco + "", beneficiario.Porcentaje);
+                 db.Beneficiario.Add(beneficiario);
+                 db.SaveChanges();
+                //db.Crear_Beneficiario1(beneficiario.Id_Persona,beneficiario.Id_Cuenta,beneficiario.Id_Parentezco,beneficiario.Id_Parentezco,Global.usuario+"", Request.UserHostAddress);
                 return RedirectToAction("Index");
             }
 
