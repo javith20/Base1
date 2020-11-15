@@ -235,23 +235,23 @@ namespace BaseTec.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Leer_Todos_Beneficiario_Result>("Leer_Todos_Beneficiario");
         }
     
-        public virtual int Actualizar_Beneficiario(Nullable<int> inId_Beneficiario, string inNombre_Persona, string inNum_Cuenta, Nullable<int> inNombre_Parentezco, Nullable<float> inPorcentaje, string inUsuarioACargo, string inIPusuario)
+        public virtual int Actualizar_Beneficiario(Nullable<int> inId_Beneficiario, string inId_Persona, string inId_Cuenta, Nullable<int> inId_Parentezco, Nullable<float> inPorcentaje, string inUsuarioACargo, string inIPusuario)
         {
             var inId_BeneficiarioParameter = inId_Beneficiario.HasValue ?
                 new ObjectParameter("inId_Beneficiario", inId_Beneficiario) :
                 new ObjectParameter("inId_Beneficiario", typeof(int));
     
-            var inNombre_PersonaParameter = inNombre_Persona != null ?
-                new ObjectParameter("inNombre_Persona", inNombre_Persona) :
-                new ObjectParameter("inNombre_Persona", typeof(string));
+            var inId_PersonaParameter = inId_Persona != null ?
+                new ObjectParameter("inId_Persona", inId_Persona) :
+                new ObjectParameter("inId_Persona", typeof(string));
     
-            var inNum_CuentaParameter = inNum_Cuenta != null ?
-                new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
-                new ObjectParameter("inNum_Cuenta", typeof(string));
+            var inId_CuentaParameter = inId_Cuenta != null ?
+                new ObjectParameter("inId_Cuenta", inId_Cuenta) :
+                new ObjectParameter("inId_Cuenta", typeof(string));
     
-            var inNombre_ParentezcoParameter = inNombre_Parentezco.HasValue ?
-                new ObjectParameter("inNombre_Parentezco", inNombre_Parentezco) :
-                new ObjectParameter("inNombre_Parentezco", typeof(int));
+            var inId_ParentezcoParameter = inId_Parentezco.HasValue ?
+                new ObjectParameter("inId_Parentezco", inId_Parentezco) :
+                new ObjectParameter("inId_Parentezco", typeof(int));
     
             var inPorcentajeParameter = inPorcentaje.HasValue ?
                 new ObjectParameter("inPorcentaje", inPorcentaje) :
@@ -265,22 +265,22 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Beneficiario", inId_BeneficiarioParameter, inNombre_PersonaParameter, inNum_CuentaParameter, inNombre_ParentezcoParameter, inPorcentajeParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Beneficiario", inId_BeneficiarioParameter, inId_PersonaParameter, inId_CuentaParameter, inId_ParentezcoParameter, inPorcentajeParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Actualizar_Cuenta(Nullable<int> inId_Cuenta, string inNombre_Persona, string inNombre_Tipo_Cuenta_Ahorros, string inNum_Cuenta, Nullable<System.DateTime> inFecha_Creacion, Nullable<decimal> inSaldo, string inUsuarioACargo, string inIPusuario)
+        public virtual int Actualizar_Cuenta(Nullable<int> inId_Cuenta, string inId_Persona, string inId_Tipo_Cuenta_Ahorros, string inNum_Cuenta, Nullable<System.DateTime> inFecha_Creacion, Nullable<decimal> inSaldo, string inUsuarioACargo, string inIPusuario)
         {
             var inId_CuentaParameter = inId_Cuenta.HasValue ?
                 new ObjectParameter("inId_Cuenta", inId_Cuenta) :
                 new ObjectParameter("inId_Cuenta", typeof(int));
     
-            var inNombre_PersonaParameter = inNombre_Persona != null ?
-                new ObjectParameter("inNombre_Persona", inNombre_Persona) :
-                new ObjectParameter("inNombre_Persona", typeof(string));
+            var inId_PersonaParameter = inId_Persona != null ?
+                new ObjectParameter("inId_Persona", inId_Persona) :
+                new ObjectParameter("inId_Persona", typeof(string));
     
-            var inNombre_Tipo_Cuenta_AhorrosParameter = inNombre_Tipo_Cuenta_Ahorros != null ?
-                new ObjectParameter("inNombre_Tipo_Cuenta_Ahorros", inNombre_Tipo_Cuenta_Ahorros) :
-                new ObjectParameter("inNombre_Tipo_Cuenta_Ahorros", typeof(string));
+            var inId_Tipo_Cuenta_AhorrosParameter = inId_Tipo_Cuenta_Ahorros != null ?
+                new ObjectParameter("inId_Tipo_Cuenta_Ahorros", inId_Tipo_Cuenta_Ahorros) :
+                new ObjectParameter("inId_Tipo_Cuenta_Ahorros", typeof(string));
     
             var inNum_CuentaParameter = inNum_Cuenta != null ?
                 new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
@@ -302,18 +302,18 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Cuenta", inId_CuentaParameter, inNombre_PersonaParameter, inNombre_Tipo_Cuenta_AhorrosParameter, inNum_CuentaParameter, inFecha_CreacionParameter, inSaldoParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Cuenta", inId_CuentaParameter, inId_PersonaParameter, inId_Tipo_Cuenta_AhorrosParameter, inNum_CuentaParameter, inFecha_CreacionParameter, inSaldoParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Actualizar_Estado_Cuenta(Nullable<int> inId_Estado_Cuenta, string inNum_Cuenta, Nullable<System.DateTime> inFecha_Inicio, Nullable<System.DateTime> inFecha_Fin, Nullable<decimal> inSaldo_Inicial, Nullable<decimal> inSaldo_Final, string inUsuarioACargo, string inIPusuario)
+        public virtual int Actualizar_Estado_Cuenta(Nullable<int> inId_Estado_Cuenta, string inId_Cuenta, Nullable<System.DateTime> inFecha_Inicio, Nullable<System.DateTime> inFecha_Fin, Nullable<decimal> inSaldo_Inicial, Nullable<decimal> inSaldo_Final, string inUsuarioACargo, string inIPusuario)
         {
             var inId_Estado_CuentaParameter = inId_Estado_Cuenta.HasValue ?
                 new ObjectParameter("inId_Estado_Cuenta", inId_Estado_Cuenta) :
                 new ObjectParameter("inId_Estado_Cuenta", typeof(int));
     
-            var inNum_CuentaParameter = inNum_Cuenta != null ?
-                new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
-                new ObjectParameter("inNum_Cuenta", typeof(string));
+            var inId_CuentaParameter = inId_Cuenta != null ?
+                new ObjectParameter("inId_Cuenta", inId_Cuenta) :
+                new ObjectParameter("inId_Cuenta", typeof(string));
     
             var inFecha_InicioParameter = inFecha_Inicio.HasValue ?
                 new ObjectParameter("inFecha_Inicio", inFecha_Inicio) :
@@ -339,7 +339,7 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Estado_Cuenta", inId_Estado_CuentaParameter, inNum_CuentaParameter, inFecha_InicioParameter, inFecha_FinParameter, inSaldo_InicialParameter, inSaldo_FinalParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Estado_Cuenta", inId_Estado_CuentaParameter, inId_CuentaParameter, inFecha_InicioParameter, inFecha_FinParameter, inSaldo_InicialParameter, inSaldo_FinalParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
         public virtual int Actualizar_Parentezco(Nullable<int> inId_Parentezco, string inNombre, string inUsuarioACargo, string inIPusuario)
@@ -363,7 +363,7 @@ namespace BaseTec.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Parentezco", inId_ParentezcoParameter, inNombreParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Actualizar_Persona(Nullable<int> inId_Persona, string inNombre, string inTipoDocumento, string inDocumento_Identidad, Nullable<System.DateTime> inFecha_Nacimiento, string inEmail, string inTelefono1, string inTelefono2, string inUsuarioACargo, string inIPusuario)
+        public virtual int Actualizar_Persona(Nullable<int> inId_Persona, string inNombre, string inId_TipoDocumento, string inDocumento_Identidad, Nullable<System.DateTime> inFecha_Nacimiento, string inEmail, string inTelefono1, string inTelefono2, string inUsuarioACargo, string inIPusuario)
         {
             var inId_PersonaParameter = inId_Persona.HasValue ?
                 new ObjectParameter("inId_Persona", inId_Persona) :
@@ -373,9 +373,9 @@ namespace BaseTec.Models
                 new ObjectParameter("inNombre", inNombre) :
                 new ObjectParameter("inNombre", typeof(string));
     
-            var inTipoDocumentoParameter = inTipoDocumento != null ?
-                new ObjectParameter("inTipoDocumento", inTipoDocumento) :
-                new ObjectParameter("inTipoDocumento", typeof(string));
+            var inId_TipoDocumentoParameter = inId_TipoDocumento != null ?
+                new ObjectParameter("inId_TipoDocumento", inId_TipoDocumento) :
+                new ObjectParameter("inId_TipoDocumento", typeof(string));
     
             var inDocumento_IdentidadParameter = inDocumento_Identidad != null ?
                 new ObjectParameter("inDocumento_Identidad", inDocumento_Identidad) :
@@ -405,10 +405,10 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Persona", inId_PersonaParameter, inNombreParameter, inTipoDocumentoParameter, inDocumento_IdentidadParameter, inFecha_NacimientoParameter, inEmailParameter, inTelefono1Parameter, inTelefono2Parameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Persona", inId_PersonaParameter, inNombreParameter, inId_TipoDocumentoParameter, inDocumento_IdentidadParameter, inFecha_NacimientoParameter, inEmailParameter, inTelefono1Parameter, inTelefono2Parameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Actualizar_Tipo_Cuenta_Ahorros(Nullable<int> inId_Tipo_Cuenta_Ahorros, string inNombre, Nullable<int> inMoneda, Nullable<decimal> inSaldo_Minimo, Nullable<decimal> inMulta_Saldo_Minimo, Nullable<decimal> inCargo_Anual, Nullable<int> inNum_Retiros_Humano, Nullable<int> inNum_Retiros_Automatico, Nullable<decimal> inComision_Humano, Nullable<decimal> inComision_Automatico, Nullable<float> inInteres, string inUsuarioACargo, string inIPusuario)
+        public virtual int Actualizar_Tipo_Cuenta_Ahorros(Nullable<int> inId_Tipo_Cuenta_Ahorros, string inNombre, Nullable<int> inId_Tipo_Moneda, Nullable<decimal> inSaldo_Minimo, Nullable<decimal> inMulta_Saldo_Minimo, Nullable<decimal> inCargo_Anual, Nullable<int> inNum_Retiros_Humano, Nullable<int> inNum_Retiros_Automatico, Nullable<decimal> inComision_Humano, Nullable<decimal> inComision_Automatico, Nullable<float> inInteres, string inUsuarioACargo, string inIPusuario)
         {
             var inId_Tipo_Cuenta_AhorrosParameter = inId_Tipo_Cuenta_Ahorros.HasValue ?
                 new ObjectParameter("inId_Tipo_Cuenta_Ahorros", inId_Tipo_Cuenta_Ahorros) :
@@ -418,9 +418,9 @@ namespace BaseTec.Models
                 new ObjectParameter("inNombre", inNombre) :
                 new ObjectParameter("inNombre", typeof(string));
     
-            var inMonedaParameter = inMoneda.HasValue ?
-                new ObjectParameter("inMoneda", inMoneda) :
-                new ObjectParameter("inMoneda", typeof(int));
+            var inId_Tipo_MonedaParameter = inId_Tipo_Moneda.HasValue ?
+                new ObjectParameter("inId_Tipo_Moneda", inId_Tipo_Moneda) :
+                new ObjectParameter("inId_Tipo_Moneda", typeof(int));
     
             var inSaldo_MinimoParameter = inSaldo_Minimo.HasValue ?
                 new ObjectParameter("inSaldo_Minimo", inSaldo_Minimo) :
@@ -462,7 +462,7 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Tipo_Cuenta_Ahorros", inId_Tipo_Cuenta_AhorrosParameter, inNombreParameter, inMonedaParameter, inSaldo_MinimoParameter, inMulta_Saldo_MinimoParameter, inCargo_AnualParameter, inNum_Retiros_HumanoParameter, inNum_Retiros_AutomaticoParameter, inComision_HumanoParameter, inComision_AutomaticoParameter, inInteresParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Tipo_Cuenta_Ahorros", inId_Tipo_Cuenta_AhorrosParameter, inNombreParameter, inId_Tipo_MonedaParameter, inSaldo_MinimoParameter, inMulta_Saldo_MinimoParameter, inCargo_AnualParameter, inNum_Retiros_HumanoParameter, inNum_Retiros_AutomaticoParameter, inComision_HumanoParameter, inComision_AutomaticoParameter, inInteresParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
         public virtual int Actualizar_Tipo_Moneda(Nullable<int> inId_Tipo_Moneda, string inNombre, string inSimbolo, string inUsuarioACargo, string inIPusuario)
@@ -511,15 +511,15 @@ namespace BaseTec.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_TipoDocumento", inId_TipoDocumentoParameter, inNombreParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Actualizar_Usuario(Nullable<int> inId_Usuario, string inNombre_Persona, string inNombre, string inPassword, string inEs_Admin, string inUsuarioACargo, string inIPusuario)
+        public virtual int Actualizar_Usuario(Nullable<int> inId_Usuario, string inId_Persona, string inNombre, string inPassword, string inEs_Admin, string inUsuarioACargo, string inIPusuario)
         {
             var inId_UsuarioParameter = inId_Usuario.HasValue ?
                 new ObjectParameter("inId_Usuario", inId_Usuario) :
                 new ObjectParameter("inId_Usuario", typeof(int));
     
-            var inNombre_PersonaParameter = inNombre_Persona != null ?
-                new ObjectParameter("inNombre_Persona", inNombre_Persona) :
-                new ObjectParameter("inNombre_Persona", typeof(string));
+            var inId_PersonaParameter = inId_Persona != null ?
+                new ObjectParameter("inId_Persona", inId_Persona) :
+                new ObjectParameter("inId_Persona", typeof(string));
     
             var inNombreParameter = inNombre != null ?
                 new ObjectParameter("inNombre", inNombre) :
@@ -541,22 +541,22 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Usuario", inId_UsuarioParameter, inNombre_PersonaParameter, inNombreParameter, inPasswordParameter, inEs_AdminParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Usuario", inId_UsuarioParameter, inId_PersonaParameter, inNombreParameter, inPasswordParameter, inEs_AdminParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Actualizar_Usuario_Visualizacion(Nullable<int> inId_Usuario_Visualizacion, string inNombre_Usuario, string inNum_Cuenta, string inUsuarioACargo, string inIPusuario)
+        public virtual int Actualizar_Usuario_Visualizacion(Nullable<int> inId_Usuario_Visualizacion, string inId_Usuario, string inId_Cuenta, string inUsuarioACargo, string inIPusuario)
         {
             var inId_Usuario_VisualizacionParameter = inId_Usuario_Visualizacion.HasValue ?
                 new ObjectParameter("inId_Usuario_Visualizacion", inId_Usuario_Visualizacion) :
                 new ObjectParameter("inId_Usuario_Visualizacion", typeof(int));
     
-            var inNombre_UsuarioParameter = inNombre_Usuario != null ?
-                new ObjectParameter("inNombre_Usuario", inNombre_Usuario) :
-                new ObjectParameter("inNombre_Usuario", typeof(string));
+            var inId_UsuarioParameter = inId_Usuario != null ?
+                new ObjectParameter("inId_Usuario", inId_Usuario) :
+                new ObjectParameter("inId_Usuario", typeof(string));
     
-            var inNum_CuentaParameter = inNum_Cuenta != null ?
-                new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
-                new ObjectParameter("inNum_Cuenta", typeof(string));
+            var inId_CuentaParameter = inId_Cuenta != null ?
+                new ObjectParameter("inId_Cuenta", inId_Cuenta) :
+                new ObjectParameter("inId_Cuenta", typeof(string));
     
             var inUsuarioACargoParameter = inUsuarioACargo != null ?
                 new ObjectParameter("inUsuarioACargo", inUsuarioACargo) :
@@ -566,7 +566,7 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Usuario_Visualizacion", inId_Usuario_VisualizacionParameter, inNombre_UsuarioParameter, inNum_CuentaParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Actualizar_Usuario_Visualizacion", inId_Usuario_VisualizacionParameter, inId_UsuarioParameter, inId_CuentaParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
         public virtual int Cargar_Beneficiario1(string datos, Nullable<int> doc)
@@ -712,19 +712,19 @@ namespace BaseTec.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cargar_Usuarios_Visualizacion1", datosParameter, docParameter);
         }
     
-        public virtual int Crear_Beneficiario1(string inNombre_Persona, string inNum_Cuenta, Nullable<int> inNombre_Parentezco, Nullable<float> inPorcentaje, string inUsuarioACargo, string inIPusuario)
+        public virtual int Crear_Beneficiario1(Nullable<int> inId_Persona, Nullable<int> inId_Cuenta, Nullable<int> inId_Parentezco, Nullable<float> inPorcentaje, string inUsuarioACargo, string inIPusuario)
         {
-            var inNombre_PersonaParameter = inNombre_Persona != null ?
-                new ObjectParameter("inNombre_Persona", inNombre_Persona) :
-                new ObjectParameter("inNombre_Persona", typeof(string));
+            var inId_PersonaParameter = inId_Persona.HasValue ?
+                new ObjectParameter("inId_Persona", inId_Persona) :
+                new ObjectParameter("inId_Persona", typeof(int));
     
-            var inNum_CuentaParameter = inNum_Cuenta != null ?
-                new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
-                new ObjectParameter("inNum_Cuenta", typeof(string));
+            var inId_CuentaParameter = inId_Cuenta.HasValue ?
+                new ObjectParameter("inId_Cuenta", inId_Cuenta) :
+                new ObjectParameter("inId_Cuenta", typeof(int));
     
-            var inNombre_ParentezcoParameter = inNombre_Parentezco.HasValue ?
-                new ObjectParameter("inNombre_Parentezco", inNombre_Parentezco) :
-                new ObjectParameter("inNombre_Parentezco", typeof(int));
+            var inId_ParentezcoParameter = inId_Parentezco.HasValue ?
+                new ObjectParameter("inId_Parentezco", inId_Parentezco) :
+                new ObjectParameter("inId_Parentezco", typeof(int));
     
             var inPorcentajeParameter = inPorcentaje.HasValue ?
                 new ObjectParameter("inPorcentaje", inPorcentaje) :
@@ -738,18 +738,18 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Beneficiario1", inNombre_PersonaParameter, inNum_CuentaParameter, inNombre_ParentezcoParameter, inPorcentajeParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Beneficiario1", inId_PersonaParameter, inId_CuentaParameter, inId_ParentezcoParameter, inPorcentajeParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Crear_Cuenta(string inNombre_Persona, string inNombre_Tipo_Cuenta_Ahorros, string inNum_Cuenta, Nullable<System.DateTime> inFecha_Creacion, Nullable<decimal> inSaldo, string inUsuarioACargo, string inIPusuario)
+        public virtual int Crear_Cuenta(Nullable<int> inId_Persona, Nullable<int> inId_Tipo_Cuenta_Ahorros, string inNum_Cuenta, Nullable<System.DateTime> inFecha_Creacion, Nullable<decimal> inSaldo, string inUsuarioACargo, string inIPusuario)
         {
-            var inNombre_PersonaParameter = inNombre_Persona != null ?
-                new ObjectParameter("inNombre_Persona", inNombre_Persona) :
-                new ObjectParameter("inNombre_Persona", typeof(string));
+            var inId_PersonaParameter = inId_Persona.HasValue ?
+                new ObjectParameter("inId_Persona", inId_Persona) :
+                new ObjectParameter("inId_Persona", typeof(int));
     
-            var inNombre_Tipo_Cuenta_AhorrosParameter = inNombre_Tipo_Cuenta_Ahorros != null ?
-                new ObjectParameter("inNombre_Tipo_Cuenta_Ahorros", inNombre_Tipo_Cuenta_Ahorros) :
-                new ObjectParameter("inNombre_Tipo_Cuenta_Ahorros", typeof(string));
+            var inId_Tipo_Cuenta_AhorrosParameter = inId_Tipo_Cuenta_Ahorros.HasValue ?
+                new ObjectParameter("inId_Tipo_Cuenta_Ahorros", inId_Tipo_Cuenta_Ahorros) :
+                new ObjectParameter("inId_Tipo_Cuenta_Ahorros", typeof(int));
     
             var inNum_CuentaParameter = inNum_Cuenta != null ?
                 new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
@@ -771,14 +771,14 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Cuenta", inNombre_PersonaParameter, inNombre_Tipo_Cuenta_AhorrosParameter, inNum_CuentaParameter, inFecha_CreacionParameter, inSaldoParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Cuenta", inId_PersonaParameter, inId_Tipo_Cuenta_AhorrosParameter, inNum_CuentaParameter, inFecha_CreacionParameter, inSaldoParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Crear_Estado_Cuenta(string inNum_Cuenta, Nullable<System.DateTime> inFecha_Inicio, Nullable<System.DateTime> inFecha_Fin, Nullable<decimal> inSaldo_Inicial, Nullable<decimal> inSaldo_Final, string inUsuarioACargo, string inIPusuario)
+        public virtual int Crear_Estado_Cuenta(Nullable<int> inId_Cuenta, Nullable<System.DateTime> inFecha_Inicio, Nullable<System.DateTime> inFecha_Fin, Nullable<decimal> inSaldo_Inicial, Nullable<decimal> inSaldo_Final, string inUsuarioACargo, string inIPusuario)
         {
-            var inNum_CuentaParameter = inNum_Cuenta != null ?
-                new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
-                new ObjectParameter("inNum_Cuenta", typeof(string));
+            var inId_CuentaParameter = inId_Cuenta.HasValue ?
+                new ObjectParameter("inId_Cuenta", inId_Cuenta) :
+                new ObjectParameter("inId_Cuenta", typeof(int));
     
             var inFecha_InicioParameter = inFecha_Inicio.HasValue ?
                 new ObjectParameter("inFecha_Inicio", inFecha_Inicio) :
@@ -804,7 +804,7 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Estado_Cuenta", inNum_CuentaParameter, inFecha_InicioParameter, inFecha_FinParameter, inSaldo_InicialParameter, inSaldo_FinalParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Estado_Cuenta", inId_CuentaParameter, inFecha_InicioParameter, inFecha_FinParameter, inSaldo_InicialParameter, inSaldo_FinalParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
         public virtual int Crear_Parentezco(Nullable<int> inId_Parentezco, string inNombre, string inUsuarioACargo, string inIPusuario)
@@ -828,15 +828,15 @@ namespace BaseTec.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Parentezco", inId_ParentezcoParameter, inNombreParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Crear_Persona(string inNombre, string inTipoDocumento, string inDocumento_Identidad, Nullable<System.DateTime> inFecha_Nacimiento, string inEmail, string inTelefono1, string inTelefono2, string inUsuarioACargo, string inIPusuario)
+        public virtual int Crear_Persona(string inNombre, Nullable<int> inId_TipoDocumento, string inDocumento_Identidad, Nullable<System.DateTime> inFecha_Nacimiento, string inEmail, string inTelefono1, string inTelefono2, string inUsuarioACargo, string inIPusuario)
         {
             var inNombreParameter = inNombre != null ?
                 new ObjectParameter("inNombre", inNombre) :
                 new ObjectParameter("inNombre", typeof(string));
     
-            var inTipoDocumentoParameter = inTipoDocumento != null ?
-                new ObjectParameter("inTipoDocumento", inTipoDocumento) :
-                new ObjectParameter("inTipoDocumento", typeof(string));
+            var inId_TipoDocumentoParameter = inId_TipoDocumento.HasValue ?
+                new ObjectParameter("inId_TipoDocumento", inId_TipoDocumento) :
+                new ObjectParameter("inId_TipoDocumento", typeof(int));
     
             var inDocumento_IdentidadParameter = inDocumento_Identidad != null ?
                 new ObjectParameter("inDocumento_Identidad", inDocumento_Identidad) :
@@ -866,10 +866,10 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Persona", inNombreParameter, inTipoDocumentoParameter, inDocumento_IdentidadParameter, inFecha_NacimientoParameter, inEmailParameter, inTelefono1Parameter, inTelefono2Parameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Persona", inNombreParameter, inId_TipoDocumentoParameter, inDocumento_IdentidadParameter, inFecha_NacimientoParameter, inEmailParameter, inTelefono1Parameter, inTelefono2Parameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Crear_Tipo_Cuenta_Ahorros(Nullable<int> inId_Tipo_Cuenta_Ahorros, string inNombre, Nullable<int> inMoneda, Nullable<decimal> inSaldo_Minimo, Nullable<decimal> inMulta_Saldo_Minimo, Nullable<decimal> inCargo_Anual, Nullable<int> inNum_Retiros_Humano, Nullable<int> inNum_Retiros_Automatico, Nullable<decimal> inComision_Humano, Nullable<decimal> inComision_Automatico, Nullable<float> inInteres, string inUsuarioACargo, string inIPusuario)
+        public virtual int Crear_Tipo_Cuenta_Ahorros(Nullable<int> inId_Tipo_Cuenta_Ahorros, string inNombre, Nullable<int> inId_Tipo_Moneda, Nullable<decimal> inSaldo_Minimo, Nullable<decimal> inMulta_Saldo_Minimo, Nullable<decimal> inCargo_Anual, Nullable<int> inNum_Retiros_Humano, Nullable<int> inNum_Retiros_Automatico, Nullable<decimal> inComision_Humano, Nullable<decimal> inComision_Automatico, Nullable<float> inInteres, string inUsuarioACargo, string inIPusuario)
         {
             var inId_Tipo_Cuenta_AhorrosParameter = inId_Tipo_Cuenta_Ahorros.HasValue ?
                 new ObjectParameter("inId_Tipo_Cuenta_Ahorros", inId_Tipo_Cuenta_Ahorros) :
@@ -879,9 +879,9 @@ namespace BaseTec.Models
                 new ObjectParameter("inNombre", inNombre) :
                 new ObjectParameter("inNombre", typeof(string));
     
-            var inMonedaParameter = inMoneda.HasValue ?
-                new ObjectParameter("inMoneda", inMoneda) :
-                new ObjectParameter("inMoneda", typeof(int));
+            var inId_Tipo_MonedaParameter = inId_Tipo_Moneda.HasValue ?
+                new ObjectParameter("inId_Tipo_Moneda", inId_Tipo_Moneda) :
+                new ObjectParameter("inId_Tipo_Moneda", typeof(int));
     
             var inSaldo_MinimoParameter = inSaldo_Minimo.HasValue ?
                 new ObjectParameter("inSaldo_Minimo", inSaldo_Minimo) :
@@ -923,7 +923,7 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Tipo_Cuenta_Ahorros", inId_Tipo_Cuenta_AhorrosParameter, inNombreParameter, inMonedaParameter, inSaldo_MinimoParameter, inMulta_Saldo_MinimoParameter, inCargo_AnualParameter, inNum_Retiros_HumanoParameter, inNum_Retiros_AutomaticoParameter, inComision_HumanoParameter, inComision_AutomaticoParameter, inInteresParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Tipo_Cuenta_Ahorros", inId_Tipo_Cuenta_AhorrosParameter, inNombreParameter, inId_Tipo_MonedaParameter, inSaldo_MinimoParameter, inMulta_Saldo_MinimoParameter, inCargo_AnualParameter, inNum_Retiros_HumanoParameter, inNum_Retiros_AutomaticoParameter, inComision_HumanoParameter, inComision_AutomaticoParameter, inInteresParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
         public virtual int Crear_Tipo_Moneda(Nullable<int> inId_Tipo_Moneda, string inNombre, string inSimbolo, string inUsuarioACargo, string inIPusuario)
@@ -972,11 +972,11 @@ namespace BaseTec.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_TipoDocumento", inId_TipoDocumentoParameter, inNombreParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Crear_Usuario(string inNombre_Persona, string inNombre, string inPassword, string inEs_Admin, string inUsuarioACargo, string inIPusuario)
+        public virtual int Crear_Usuario(Nullable<int> inId_Persona, string inNombre, string inPassword, string inEs_Admin, string inUsuarioACargo, string inIPusuario)
         {
-            var inNombre_PersonaParameter = inNombre_Persona != null ?
-                new ObjectParameter("inNombre_Persona", inNombre_Persona) :
-                new ObjectParameter("inNombre_Persona", typeof(string));
+            var inId_PersonaParameter = inId_Persona.HasValue ?
+                new ObjectParameter("inId_Persona", inId_Persona) :
+                new ObjectParameter("inId_Persona", typeof(int));
     
             var inNombreParameter = inNombre != null ?
                 new ObjectParameter("inNombre", inNombre) :
@@ -998,18 +998,18 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Usuario", inNombre_PersonaParameter, inNombreParameter, inPasswordParameter, inEs_AdminParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Usuario", inId_PersonaParameter, inNombreParameter, inPasswordParameter, inEs_AdminParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Crear_Usuario_Visualizacion(string inNombre_Usuario, string inNum_Cuenta, string inUsuarioACargo, string inIPusuario)
+        public virtual int Crear_Usuario_Visualizacion(Nullable<int> inId_Usuario, Nullable<int> inId_Cuenta, string inUsuarioACargo, string inIPusuario)
         {
-            var inNombre_UsuarioParameter = inNombre_Usuario != null ?
-                new ObjectParameter("inNombre_Usuario", inNombre_Usuario) :
-                new ObjectParameter("inNombre_Usuario", typeof(string));
+            var inId_UsuarioParameter = inId_Usuario.HasValue ?
+                new ObjectParameter("inId_Usuario", inId_Usuario) :
+                new ObjectParameter("inId_Usuario", typeof(int));
     
-            var inNum_CuentaParameter = inNum_Cuenta != null ?
-                new ObjectParameter("inNum_Cuenta", inNum_Cuenta) :
-                new ObjectParameter("inNum_Cuenta", typeof(string));
+            var inId_CuentaParameter = inId_Cuenta.HasValue ?
+                new ObjectParameter("inId_Cuenta", inId_Cuenta) :
+                new ObjectParameter("inId_Cuenta", typeof(int));
     
             var inUsuarioACargoParameter = inUsuarioACargo != null ?
                 new ObjectParameter("inUsuarioACargo", inUsuarioACargo) :
@@ -1019,7 +1019,7 @@ namespace BaseTec.Models
                 new ObjectParameter("inIPusuario", inIPusuario) :
                 new ObjectParameter("inIPusuario", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Usuario_Visualizacion", inNombre_UsuarioParameter, inNum_CuentaParameter, inUsuarioACargoParameter, inIPusuarioParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Crear_Usuario_Visualizacion", inId_UsuarioParameter, inId_CuentaParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
         public virtual int Eliminar_Beneficiario1(Nullable<int> inId_Beneficiario, string inUsuarioACargo, string inIPusuario)
@@ -1192,12 +1192,8 @@ namespace BaseTec.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Eliminar_Usuario_Visualizacion", inId_Usuario_VisualizacionParameter, inUsuarioACargoParameter, inIPusuarioParameter);
         }
     
-        public virtual int Insertar_BitacoraAcciones(string inNombre_Persona, Nullable<int> inId_Tipo_Accion, Nullable<int> inId_Objeto_Accion, string inQuien_Inserto, string inInsertado_Por, Nullable<System.DateTime> inInserto_El)
+        public virtual int Insertar_BitacoraAcciones(Nullable<int> inId_Tipo_Accion, Nullable<int> inId_Objeto_Accion, string inQuien_Inserto, string inInsertado_Por, Nullable<System.DateTime> inInserto_El)
         {
-            var inNombre_PersonaParameter = inNombre_Persona != null ?
-                new ObjectParameter("inNombre_Persona", inNombre_Persona) :
-                new ObjectParameter("inNombre_Persona", typeof(string));
-    
             var inId_Tipo_AccionParameter = inId_Tipo_Accion.HasValue ?
                 new ObjectParameter("inId_Tipo_Accion", inId_Tipo_Accion) :
                 new ObjectParameter("inId_Tipo_Accion", typeof(int));
@@ -1218,7 +1214,7 @@ namespace BaseTec.Models
                 new ObjectParameter("inInserto_El", inInserto_El) :
                 new ObjectParameter("inInserto_El", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_BitacoraAcciones", inNombre_PersonaParameter, inId_Tipo_AccionParameter, inId_Objeto_AccionParameter, inQuien_InsertoParameter, inInsertado_PorParameter, inInserto_ElParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insertar_BitacoraAcciones", inId_Tipo_AccionParameter, inId_Objeto_AccionParameter, inQuien_InsertoParameter, inInsertado_PorParameter, inInserto_ElParameter);
         }
     }
 }

@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout_InicioSeseion.cshtml";
+}
+<h4>Nombre de Usuario</h4>
+<input id="txtUsuario" type="text" />
+<h4>Constraseña</h4>
+<input id="txtPassward" type="text" class="redondeado" />
+<input type="button" value="Aceptar" onclick="location.href = '@Url.Action("Index", "InicioSesion")?nombre=' + $('#txtUsuario').val()+'&pass=' + $('#txtPassward').val()" />
+
