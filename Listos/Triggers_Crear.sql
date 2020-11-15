@@ -1,4 +1,3 @@
-
 USE BD1;
 GO 
 exec sp_configure 'contained database authentication', 1
@@ -8,6 +7,7 @@ go
 
 alter database BD1
 set containment = partial
+
 go
 CREATE  TRIGGER Trigger_Crear_Beneficiario
 ON Beneficiario 
@@ -49,8 +49,13 @@ while (@Cursor < (SELECT count(Id_Usuario) FROM Usuario))
 begin
 	DECLARE @Usuario [VARCHAR](100)= (SELECT TOP 1 Nombre_Usuario FROM Usuario WHERE Id_Usuario = @Cursor);
 	DECLARE @Contra [VARCHAR](100)= (SELECT TOP 1 Clave FROM Usuario WHERE Id_Usuario = @Cursor);
-	DECLARE @sqlCommand[NVARCHAR](MAX) = 'CREATE USER '+ @Usuario+ ' WITH PASSWORD = '+CHAR(39)+@Contra+CHAR(39)+';'
+	DECLARE @Es_Admi [BIT]= (SELECT TOP 1 Es_Admin FROM Usuario WHERE Id_Usuario = @Cursor);
+	DECLARE @sqlCommand[NVARCHAR](MAX);
+	SET @sqlCommand = 'CREATE USER '+ @Usuario+ ' WITH PASSWORD = '+CHAR(39)+@Contra+CHAR(39)+';'+'CREATE LOGIN '+ @Usuario +' WITH PASSWORD = '+CHAR(39)+@Contra+CHAR(39)+';'
 	EXEC sp_executesql @sqlCommand;
+	SET @sqlCommand = 'ALTER SERVER ROLE [sysadmin] ADD MEMBER '+@Usuario
+	EXEC sp_executesql @sqlCommand;
+
 	SET @Cursor = @Cursor+1;
 end;
 GO
