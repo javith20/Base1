@@ -475,7 +475,7 @@ AS
 						@insertado_El DATE,
 						@idEstado_Cuenta int
 						
-				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
+				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Num_Cuenta] = @inNum_Cuenta AND [Activo] = 1)
 
 				--INSERTA AL Estado_Cuenta
 				INSERT INTO Estado_Cuenta(Id_Cuenta, Fecha_Inicio, Fecha_Fin, Saldo_Inicial, Saldo_Final)
