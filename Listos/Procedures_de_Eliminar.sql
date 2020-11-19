@@ -10,7 +10,14 @@ CREATE Procedure Eliminar_Usuario
 	@inId_Usuario INT,
  
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] =  @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -19,18 +26,10 @@ AS
 
 			BEGIN TRAN
 
-				Declare
-					@idUsuarioMoidifica int,
-					@insertado_El date
-
 				--Eliminario AL USUARIO
 				Update Usuario
 					set [activo] = 0
 					where Id_Usuario = @inId_Usuario
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] =  @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -53,7 +52,14 @@ CREATE Procedure Eliminar_TipoDocumento
 	@inId_TipoDocumento INT,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -62,20 +68,11 @@ AS
 
 			BEGIN TRAN
 
-				Declare
-					@idUsuarioMoidifica int,
-					@insertado_El date
-
 				--Eliminar AL Tipo_Documento
 				Update Tipo_Documento
 					set [activo] = 0
 					where Id_TipoDocumento = @inId_TipoDocumento
 						
-
---GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
-
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 6,
@@ -97,7 +94,14 @@ CREATE Procedure Eliminar_Tipo_Moneda
 	@inId_Tipo_Moneda INT,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -106,18 +110,10 @@ AS
 
 			BEGIN TRAN
 
-			Declare
-					@idUsuarioMoidifica int,
-					@insertado_El date
-
 				--Eliminar AL Tipo_Moneda
 				Update Tipo_Moneda
 					set [activo] = 0
 					where Id_Tipo_Moneda = @inId_Tipo_Moneda
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -141,7 +137,14 @@ CREATE Procedure Eliminar_Parentezco
 	@inId_Parentezco INT,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -150,20 +153,11 @@ AS
 
 			BEGIN TRAN
 
-			Declare
-					@idUsuarioMoidifica int,
-					@insertado_El date
-
 				--Eliminar AL Parentezco
 				Update Parentezco
 					set [activo] = 0
 					where Id_Parentezco = @inId_Parentezco
 						
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
-
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 12,
@@ -186,7 +180,14 @@ CREATE Procedure Eliminar_Tipo_Cuenta_Ahorros
 	@inId_Tipo_Cuenta_Ahorros INT,  -- No me acuerdo si era catalogo
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -195,20 +196,11 @@ AS
 
 			BEGIN TRAN
 
-			Declare
-					@idUsuarioMoidifica int,
-					@insertado_El date
-
 				--Eliminar AL Tipo_Cuenta_Ahorros
 				Update Tipo_Cuenta_Ahorros
 					set [activo] = 0
 					where Id_Tipo_Cuenta_Ahorros = @inId_Tipo_Cuenta_Ahorros
 					
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
-
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 15,
@@ -230,7 +222,14 @@ CREATE Procedure Eliminar_Persona
 	@inId_Persona INT,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -239,20 +238,11 @@ AS
 
 			BEGIN TRAN
 
-			Declare
-					@idUsuarioMoidifica int,
-					@insertado_El date
-
 				--Eliminar AL Persona
 				Update Persona
 					set [activo] = 0
 					where Id_Persona = @inId_Persona
-						
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
-
+				
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 18,
@@ -260,7 +250,6 @@ AS
 								@inQuien_Inserto = @idUsuarioMoidifica, 
 								@inInsertado_Por = @inIPusuario, 
 								@inInserto_El = @insertado_El
-			
 			COMMIT
 		END TRY
 		BEGIN CATCH
@@ -275,7 +264,14 @@ CREATE Procedure Eliminar_Cuenta
 	@inId_Cuenta INT,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+				
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -284,20 +280,11 @@ AS
 
 			BEGIN TRAN
 
-			Declare
-					@idUsuarioMoidifica int,
-					@insertado_El date
-
 				--Eliminar AL Cuenta
 				Update Cuenta
 					set [activo] = 0
 					where Id_Cuenta = @inId_Cuenta
-						
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
-
+	
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 21,
@@ -319,7 +306,14 @@ CREATE Procedure Eliminar_Beneficiario
 	@inId_Beneficiario INT,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -328,19 +322,10 @@ AS
 
 			BEGIN TRAN
 
-			Declare
-					@idUsuarioMoidifica int,
-					@insertado_El date
-
 				--Eliminar AL Beneficiario
 				Update Beneficiario
 					set [activo] = 0
 					where Id_Beneficiario = @inId_Beneficiario
-												
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -363,7 +348,14 @@ CREATE Procedure Eliminar_Estado_Cuenta
 	@inId_Estado_Cuenta INT,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -372,20 +364,11 @@ AS
 
 			BEGIN TRAN
 
-			Declare
-					@idUsuarioMoidifica int,
-					@insertado_El date
-
 				--Eliminar AL Estado_Cuenta
 				Update Estado_Cuenta
 					set [activo] = 0
 					where Id_Estado_Cuenta = @inId_Estado_Cuenta
 							
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
-
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 27,
@@ -407,7 +390,14 @@ CREATE Procedure Eliminar_Usuario_Visualizacion
 	@inId_Usuario_Visualizacion INT,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -416,20 +406,11 @@ AS
 
 			BEGIN TRAN
 
-			Declare
-					@idUsuarioMoidifica int,
-					@insertado_El date
-
 				--Eliminar AL Usuario_Visualizacion
 				Update Usuario_Visualizacion
 					set [activo] = 0
 					where Id_Usuario_Visualizacion = @inId_Usuario_Visualizacion 
 							
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
-
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
 								@inId_Tipo_Accion = 30,

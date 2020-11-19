@@ -12,7 +12,19 @@ CREATE Procedure Actualizar_Usuario
 	@inPassword VARCHAR(120),
 	@inEs_Admin VARCHAR(30), 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	--Declaracion de variables
+	@Id_Persona Int,
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] =  @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
+
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -20,14 +32,6 @@ AS
 		SET XACT_ABORT ON
 
 			BEGIN TRAN
-
-				--Declaracion de variables
-				Declare @Id_Persona Int,
-				@idUsuarioMoidifica int,
-				@insertado_El date
-
-
-				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
 
 				--Actualizar AL USUARIO
 				Update Usuario
@@ -37,10 +41,6 @@ AS
 						[Es_Admin] = @inEs_Admin
 					where Id_Usuario = @inId_Usuario AND
 						[activo] = 1
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] =  @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -64,7 +64,15 @@ CREATE Procedure Actualizar_TipoDocumento
 	@inNombre VARCHAR(100),
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
+
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -73,19 +81,11 @@ AS
 
 			BEGIN TRAN
 
-			Declare
-				@idUsuarioMoidifica int,
-				@insertado_El date
-
 				--Actualizar AL Tipo_Documento
 				Update Tipo_Documento
 					set [Nombre] = @inNombre
 					where Id_TipoDocumento = @inId_TipoDocumento AND
 						[activo] = 1
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -110,7 +110,14 @@ CREATE Procedure Actualizar_Tipo_Moneda
 	@inSimbolo Varchar(5),
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -119,20 +126,12 @@ AS
 
 			BEGIN TRAN
 
-				Declare
-				@idUsuarioMoidifica int,
-				@insertado_El date
-
 				--Actualizar AL Tipo_Moneda
 				Update Tipo_Moneda
 					set Nombre =  @inNombre,
 						Simbolo = @inSimbolo
 					where Id_Tipo_Moneda = @inId_Tipo_Moneda AND
 						[activo] = 1
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -156,7 +155,14 @@ CREATE Procedure Actualizar_Parentezco
 	@inNombre VARCHAR(100),
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -165,19 +171,11 @@ AS
 
 			BEGIN TRAN
 
-			Declare
-				@idUsuarioMoidifica int,
-				@insertado_El date
-
 				--Actualizar AL Parentezco
 				Update Parentezco
 					set Nombre = @inNombre
 					where Id_Parentezco = @inId_Parentezco AND
 						[activo] = 1
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -210,7 +208,17 @@ CREATE Procedure Actualizar_Tipo_Cuenta_Ahorros
 	@inInteres REAL,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@Id_Tipo_Moneda int,
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	set @Id_Tipo_Moneda = (SELECT [Id_Tipo_Moneda] FROM [Tipo_Moneda] WHERE [Nombre] = @inMoneda AND [Activo] = 1)
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -218,13 +226,6 @@ AS
 		SET XACT_ABORT ON
 
 			BEGIN TRAN
-
-				Declare @Id_Tipo_Moneda int,
-						@idUsuarioMoidifica int,
-						@insertado_El date
-
-				set @Id_Tipo_Moneda = (SELECT [Id_Tipo_Moneda] FROM [Tipo_Moneda] WHERE [Nombre] = @inMoneda AND [Activo] = 1)
-				
 
 				--Actualizar AL Tipo_Cuenta_Ahorros
 				Update Tipo_Cuenta_Ahorros
@@ -240,10 +241,6 @@ AS
 						 Interes = @inInteres
 					where Id_Tipo_Cuenta_Ahorros = @inId_Tipo_Cuenta_Ahorros AND
 						[activo] = 1
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -273,7 +270,17 @@ CREATE Procedure Actualizar_Persona
 	@inTelefono2 VARCHAR(15),
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	@Id_TipoDocumento INT,
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	set @Id_TipoDocumento = (SELECT [Id_TipoDocumento] FROM [Tipo_Documento] WHERE [Nombre] = @inTipoDocumento AND [Activo] = 1)
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -281,13 +288,6 @@ AS
 		SET XACT_ABORT ON
 
 			BEGIN TRAN
-
-				Declare @Id_TipoDocumento INT,
-				@idUsuarioMoidifica int,
-				@insertado_El date
-
-				set @Id_TipoDocumento = (SELECT [Id_TipoDocumento] FROM [Tipo_Documento] WHERE [Nombre] = @inTipoDocumento AND [Activo] = 1)
-
 
 				--Actualizar AL Persona
 				Update Persona
@@ -300,10 +300,6 @@ AS
 						 Telefono2 = @inTelefono2
 					where Id_Persona = @inId_Persona AND
 						[activo] = 1
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -331,7 +327,20 @@ CREATE Procedure Actualizar_Cuenta
 	@inSaldo MONEY,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	--Declaracion de variables
+	@Id_Persona Int,
+	@Id_Tipo_Cuenta_Ahorros int,
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1),
+		@Id_Tipo_Cuenta_Ahorros = (SELECT [Id_Tipo_Cuenta_Ahorros] FROM [Tipo_Cuenta_Ahorros] WHERE [Nombre] = @inNombre_Tipo_Cuenta_Ahorros AND [Activo] = 1)
+	
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -339,15 +348,6 @@ AS
 		SET XACT_ABORT ON
 
 			BEGIN TRAN
-
-				--Declaracion de variables
-				Declare @Id_Persona Int,
-						@Id_Tipo_Cuenta_Ahorros int,
-						@idUsuarioMoidifica int,
-						@insertado_El date
-
-				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1),
-					@Id_Tipo_Cuenta_Ahorros = (SELECT [Id_Tipo_Cuenta_Ahorros] FROM [Tipo_Cuenta_Ahorros] WHERE [Nombre] = @inNombre_Tipo_Cuenta_Ahorros AND [Activo] = 1)
 
 				--Actualizar AL Cuenta
 				Update Cuenta
@@ -358,10 +358,6 @@ AS
 					 Saldo = @inSaldo
 					where Id_Cuenta = @inId_Cuenta AND
 						[activo] = 1
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -389,6 +385,21 @@ CREATE Procedure Actualizar_Beneficiario
 
 	@inUsuarioACargo varchar(20), 
 	@inIPusuario varchar(20)
+	
+	--Declaracion de variables
+	@Id_Persona Int,
+	@Id_Cuenta int,
+	@Id_Parentezco int,
+	@idUsuarioMoidifica int,
+	@insertado_El date
+
+	set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
+	set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
+	set	@Id_Parentezco = (SELECT [Id_Parentezco] FROM [Parentezco] WHERE [Nombre] = @inNombre_Parentezco AND [Activo] = 1)
+	
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -396,18 +407,6 @@ AS
 		SET XACT_ABORT ON
 
 			BEGIN TRAN
-
-				--Declaracion de variables
-				Declare @Id_Persona Int,
-						@Id_Cuenta int,
-						@Id_Parentezco int,
-						@idUsuarioMoidifica int,
-						@insertado_El date
-
-				set @Id_Persona = (SELECT [Id_Persona] FROM [Persona] WHERE [Nombre] = @inNombre_Persona AND [Activo] = 1)
-				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
-				set	@Id_Parentezco = (SELECT [Id_Parentezco] FROM [Parentezco] WHERE [Nombre] = @inNombre_Parentezco AND [Activo] = 1)
-
 
 				--Actualizar AL Beneficiario
 				Update Beneficiario
@@ -417,10 +416,6 @@ AS
 						 Porcentaje = @inPorcentaje
 					where Id_Beneficiario = @inId_Beneficiario AND
 							[activo] = 1					
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -448,7 +443,18 @@ CREATE Procedure Actualizar_Estado_Cuenta
 	@inSaldo_Final MONEY,
 
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	--Declaracion de variables
+	@Id_Cuenta int,
+	@idUsuarioMoidifica int,
+	@insertado_El date
+						
+	set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
+
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -456,13 +462,6 @@ AS
 		SET XACT_ABORT ON
 
 			BEGIN TRAN
-
-				--Declaracion de variables
-				Declare	@Id_Cuenta int,
-						@idUsuarioMoidifica int,
-						@insertado_El date
-						
-				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
 
 				--Actualizar AL Estado_Cuenta
 				Update Estado_Cuenta
@@ -473,10 +472,6 @@ AS
 						Saldo_Final = @inSaldo_Final
 					where Id_Estado_Cuenta = @inId_Estado_Cuenta AND
 							[activo] = 1
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
@@ -500,9 +495,21 @@ CREATE Procedure Actualizar_Usuario_Visualizacion
 	@inNombre_Usuario VARCHAR(120),
 	@inNum_Cuenta VARCHAR(15),
 
-
 	@inUsuarioACargo varchar(20), 
-	@inIPusuario varchar(20)
+	@inIPusuario varchar(20),
+
+	--Declaracion de variables
+	@Id_Cuenta int,
+	@Id_Usuario int,
+	@idUsuarioMoidifica int,
+	@insertado_El date
+						
+	set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
+	set	@Id_Usuario = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre_Usuario AND [Activo] = 1)
+				
+	--GUARDA EL ID y fecha
+	SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
+	SET @insertado_El = GETDATE()
 AS   
 	BEGIN 
 		BEGIN TRY
@@ -511,27 +518,12 @@ AS
 
 			BEGIN TRAN
 
-				--Declaracion de variables
-				Declare	@Id_Cuenta int,
-						@Id_Usuario int,
-						@idUsuarioMoidifica int,
-						@insertado_El date
-						
-				set	@Id_Cuenta = (SELECT [Id_Cuenta] FROM [Cuenta] WHERE [Nombre] = @inNum_Cuenta AND [Activo] = 1)
-				set	@Id_Usuario = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inNombre_Usuario AND [Activo] = 1)
-
-
 				--Actualizar AL Usuario_Visualizacion
 				Update Usuario_Visualizacion
 					set Id_Usuario = Id_Usuario,
 						Id_Cuenta = @Id_Cuenta
 					where Id_Usuario_Visualizacion = @inId_Usuario_Visualizacion AND
 							[activo] = 1
-
-				--GUARDA EL ID y fecha
-				SET @idUsuarioMoidifica = (SELECT [Id_Usuario] FROM [Usuario] WHERE [Nombre_Usuario] = @inUsuarioACargo AND [Activo] = 1)
-				SET @insertado_El = GETDATE()
-
 
 				--INSERTA EL CAMBIO
 				EXEC Insertar_BitacoraAcciones 
