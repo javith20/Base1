@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PrograBases.Models
+namespace BaseTec.Models
 {
     using System;
     using System.Collections.Generic;

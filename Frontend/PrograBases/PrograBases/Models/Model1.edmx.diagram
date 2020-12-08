@@ -4,31 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a5415537aafd46e7888698d0fe623749" Name="Diagram1">
-        <EntityTypeShape EntityType="Modelos.Beneficiario" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Bitacora_Accion" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Cuenta" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Estado_Cuenta" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Parentezco" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Persona" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Tipo_Accion" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Tipo_Cuenta_Ahorros" Width="1.5" PointX="6" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Tipo_Documento" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Tipo_Moneda" Width="1.5" PointX="3.75" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Usuario" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Modelos.Usuario_Visualizacion" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
-        <AssociationConnector Association="Modelos.FK__Beneficia__Id_Cu__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Beneficia__Id_Pa__4222D4EF" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Beneficia__Id_Pe__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Bitacora___Id_Ti__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Cuenta__Id_Perso__3C69FB99" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Cuenta__Id_Tipo___3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Estado_Cu__Id_Cu__45F365D3" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Usuario_V__Id_Cu__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Persona__Id_Tipo__36B12243" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Usuario__Id_Pers__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Tipo_Cuen__Id_Ti__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="Modelos.FK__Usuario_V__Id_Us__4E88ABD4" ManuallyRouted="false" />
+      <Diagram DiagramId="dfb9d35c7cf440c9a1d4e54da600b0ba" Name="Diagram1" ZoomLevel="26">
+        <EntityTypeShape EntityType="BD1Model.Beneficiario" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD1Model.Cuenta" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD1Model.Estado_Cuenta" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD1Model.Parentezco" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD1Model.Persona" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD1Model.Tipo_Cuenta_Ahorros" Width="1.5" PointX="6" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD1Model.Tipo_Documento" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD1Model.Tipo_Moneda" Width="1.5" PointX="3.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD1Model.Usuario" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD1Model.Usuario_Visualizacion" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="BD1Model.FK__Beneficia__Id_Cu__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="BD1Model.FK__Beneficia__Id_Pa__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="BD1Model.FK__Beneficia__Id_Pe__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="BD1Model.FK__Cuenta__Id_Perso__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="BD1Model.FK__Cuenta__Id_Tipo___37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="BD1Model.FK__Estado_Cu__Id_Cu__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="BD1Model.FK__Usuario_V__Id_Cu__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="BD1Model.FK__Persona__Id_Tipo__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="BD1Model.FK__Usuario__Id_Pers__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="BD1Model.FK__Tipo_Cuen__Id_Ti__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="BD1Model.FK__Usuario_V__Id_Us__4AB81AF0" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BD1Model.Bitacora_Accion" Width="1.5" PointX="7.625" PointY="1" />
+        <EntityTypeShape EntityType="BD1Model.Tipo_Accion" Width="1.5" PointX="5.375" PointY="1.25" />
+        <AssociationConnector Association="BD1Model.FK__Bitacora___Id_Ti__276EDEB3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

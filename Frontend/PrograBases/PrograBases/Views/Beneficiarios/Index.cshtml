@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BaseTec.Models.Beneficiario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Porcentaje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cuenta.Num_Cuenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parentezco.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persona.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Porcentaje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cuenta.Num_Cuenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parentezco.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Persona.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Beneficiario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_Beneficiario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Beneficiario })
+        </td>
+    </tr>
+}
+
+</table>

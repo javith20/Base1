@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BaseTec.Models.Usuario_Visualizacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cuenta.Num_Cuenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.Nombre_Usuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cuenta.Num_Cuenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.Nombre_Usuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Usuario_Visualizacion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_Usuario_Visualizacion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Usuario_Visualizacion })
+        </td>
+    </tr>
+}
+
+</table>

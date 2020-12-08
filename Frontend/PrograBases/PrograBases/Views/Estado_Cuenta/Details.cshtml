@@ -1,0 +1,66 @@
+﻿@model BaseTec.Models.Estado_Cuenta
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Estado_Cuenta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Saldo_Inicial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Saldo_Inicial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Saldo_Final)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Saldo_Final)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuenta.Num_Cuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuenta.Num_Cuenta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Estado_Cuenta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -23,7 +23,7 @@
     <Property Name="Id_Objeto_Accion" Type="Int32" Nullable="false" />
     <Property Name="Quien_Inserto" Type="Int32" Nullable="false" />
     <Property Name="Insertado_Por" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Inserto_El" Type="DateTime" Nullable="false" />
+    <Property Name="Inserto_El" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Tipo_Accion" Relationship="Self.FK__Bitacora___Id_Ti__52593CB8" FromRole="Bitacora_Accion" ToRole="Tipo_Accion" />
   </EntityType>
   <EntityType Name="Cuenta">
@@ -34,7 +34,7 @@
     <Property Name="Id_Persona" Type="Int32" Nullable="false" />
     <Property Name="Id_Tipo_Cuenta_Ahorros" Type="Int32" Nullable="false" />
     <Property Name="Num_Cuenta" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Saldo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Beneficiario" Relationship="Self.FK__Beneficia__Id_Cu__403A8C7D" FromRole="Cuenta" ToRole="Beneficiario" />
@@ -49,8 +49,8 @@
     </Key>
     <Property Name="Id_Estado_Cuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Id_Cuenta" Type="Int32" Nullable="false" />
-    <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" />
-    <Property Name="Fecha_Fin" Type="DateTime" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fecha_Fin" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Saldo_Inicial" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="Saldo_Final" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="Activo" Type="Boolean" Nullable="false" />
@@ -73,7 +73,7 @@
     <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Id_TipoDocumento" Type="Int32" Nullable="false" />
     <Property Name="Documento_Identidad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" />
+    <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Telefono1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
