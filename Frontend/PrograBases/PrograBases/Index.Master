@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Index.master.cs" Inherits="BancoSena.Index" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8"/>    
+<title>APLICACIÓN WEB ASO NET BANCO ADSI 1197173</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">        
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="contenedor">
+            <header class="principal">
+                <% Response.WriteFile("encabezado.aspx"); %>
+            </header>
+            <nav class="principal">
+                <% Response.WriteFile("menu.aspx"); %>
+            </nav>
+            <section class="contenido"><p>
+                <asp:ContentPlaceHolder ID="Contenido" runat="server">
+                </asp:ContentPlaceHolder>      
+            </section>
+            <footer class="principal">
+                <% Response.WriteFile("piePagina.aspx"); %>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>

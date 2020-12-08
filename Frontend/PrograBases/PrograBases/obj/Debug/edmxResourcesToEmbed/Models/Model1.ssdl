@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Modelos.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Beneficiario">
+    <Key>
+      <PropertyRef Name="Id_Beneficiario" />
+    </Key>
+    <Property Name="Id_Beneficiario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Persona" Type="int" Nullable="false" />
+    <Property Name="Id_Cuenta" Type="int" Nullable="false" />
+    <Property Name="Id_Parentezco" Type="int" Nullable="false" />
+    <Property Name="Porcentaje" Type="real" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bitacora_Accion">
+    <Key>
+      <PropertyRef Name="Id_Bitacora_Accion" />
+    </Key>
+    <Property Name="Id_Bitacora_Accion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Tipo_Accion" Type="int" Nullable="false" />
+    <Property Name="Id_Objeto_Accion" Type="int" Nullable="false" />
+    <Property Name="Quien_Inserto" Type="int" Nullable="false" />
+    <Property Name="Insertado_Por" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Inserto_El" Type="date" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'BD1.dbo.Bitacora_TEM' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Bitacora_TEM">
+          <Property Name="Usuario" Type="varchar(max)" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Insertado_Por" Type="varchar" MaxLength="20" />
+        </EntityType>-->
+  <EntityType Name="Cuenta">
+    <Key>
+      <PropertyRef Name="Id_Cuenta" />
+    </Key>
+    <Property Name="Id_Cuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Persona" Type="int" Nullable="false" />
+    <Property Name="Id_Tipo_Cuenta_Ahorros" Type="int" Nullable="false" />
+    <Property Name="Num_Cuenta" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="date" Nullable="false" />
+    <Property Name="Saldo" Type="money" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado_Cuenta">
+    <Key>
+      <PropertyRef Name="Id_Estado_Cuenta" />
+    </Key>
+    <Property Name="Id_Estado_Cuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Cuenta" Type="int" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="date" Nullable="false" />
+    <Property Name="Fecha_Fin" Type="date" Nullable="false" />
+    <Property Name="Saldo_Inicial" Type="money" Nullable="false" />
+    <Property Name="Saldo_Final" Type="money" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parentezco">
+    <Key>
+      <PropertyRef Name="Id_Parentezco" />
+    </Key>
+    <Property Name="Id_Parentezco" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="Id_Persona" />
+    </Key>
+    <Property Name="Id_Persona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Id_TipoDocumento" Type="int" Nullable="false" />
+    <Property Name="Documento_Identidad" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Fecha_Nacimiento" Type="date" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Telefono1" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Telefono2" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Accion">
+    <Key>
+      <PropertyRef Name="Id_Tipo_Accion" />
+    </Key>
+    <Property Name="Id_Tipo_Accion" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Cuenta_Ahorros">
+    <Key>
+      <PropertyRef Name="Id_Tipo_Cuenta_Ahorros" />
+    </Key>
+    <Property Name="Id_Tipo_Cuenta_Ahorros" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Id_Tipo_Moneda" Type="int" Nullable="false" />
+    <Property Name="Saldo_Minimo" Type="money" Nullable="false" />
+    <Property Name="Multa_Saldo_Minimo" Type="money" Nullable="false" />
+    <Property Name="Cargo_Anual" Type="money" Nullable="false" />
+    <Property Name="Num_Retiros_Humano" Type="int" Nullable="false" />
+    <Property Name="Num_Retiros_Automatico" Type="int" Nullable="false" />
+    <Property Name="Comision_Humano" Type="money" Nullable="false" />
+    <Property Name="Comision_Automatico" Type="money" Nullable="false" />
+    <Property Name="Interes" Type="real" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Documento">
+    <Key>
+      <PropertyRef Name="Id_TipoDocumento" />
+    </Key>
+    <Property Name="Id_TipoDocumento" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Moneda">
+    <Key>
+      <PropertyRef Name="Id_Tipo_Moneda" />
+    </Key>
+    <Property Name="Id_Tipo_Moneda" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Simbolo" Type="varchar" MaxLength="5" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id_Usuario" />
+    </Key>
+    <Property Name="Id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Persona" Type="int" Nullable="false" />
+    <Property Name="Nombre_Usuario" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="Clave" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="Es_Admin" Type="bit" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario_Visualizacion">
+    <Key>
+      <PropertyRef Name="Id_Usuario_Visualizacion" />
+    </Key>
+    <Property Name="Id_Usuario_Visualizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Usuario" Type="int" Nullable="false" />
+    <Property Name="Id_Cuenta" Type="int" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Beneficia__Id_Cu__403A8C7D">
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+    <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Beneficiario">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Beneficia__Id_Pa__4222D4EF">
+    <End Role="Parentezco" Type="Self.Parentezco" Multiplicity="1" />
+    <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parentezco">
+        <PropertyRef Name="Id_Parentezco" />
+      </Principal>
+      <Dependent Role="Beneficiario">
+        <PropertyRef Name="Id_Parentezco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Beneficia__Id_Pe__412EB0B6">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Beneficiario" Type="Self.Beneficiario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id_Persona" />
+      </Principal>
+      <Dependent Role="Beneficiario">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bitacora___Id_Ti__52593CB8">
+    <End Role="Tipo_Accion" Type="Self.Tipo_Accion" Multiplicity="1" />
+    <End Role="Bitacora_Accion" Type="Self.Bitacora_Accion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Accion">
+        <PropertyRef Name="Id_Tipo_Accion" />
+      </Principal>
+      <Dependent Role="Bitacora_Accion">
+        <PropertyRef Name="Id_Tipo_Accion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuenta__Id_Perso__3C69FB99">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id_Persona" />
+      </Principal>
+      <Dependent Role="Cuenta">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuenta__Id_Tipo___3B75D760">
+    <End Role="Tipo_Cuenta_Ahorros" Type="Self.Tipo_Cuenta_Ahorros" Multiplicity="1" />
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Cuenta_Ahorros">
+        <PropertyRef Name="Id_Tipo_Cuenta_Ahorros" />
+      </Principal>
+      <Dependent Role="Cuenta">
+        <PropertyRef Name="Id_Tipo_Cuenta_Ahorros" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estado_Cu__Id_Cu__45F365D3">
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+    <End Role="Estado_Cuenta" Type="Self.Estado_Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Estado_Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Persona__Id_Tipo__36B12243">
+    <End Role="Tipo_Documento" Type="Self.Tipo_Documento" Multiplicity="1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Documento">
+        <PropertyRef Name="Id_TipoDocumento" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="Id_TipoDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tipo_Cuen__Id_Ti__31EC6D26">
+    <End Role="Tipo_Moneda" Type="Self.Tipo_Moneda" Multiplicity="1" />
+    <End Role="Tipo_Cuenta_Ahorros" Type="Self.Tipo_Cuenta_Ahorros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Moneda">
+        <PropertyRef Name="Id_Tipo_Moneda" />
+      </Principal>
+      <Dependent Role="Tipo_Cuenta_Ahorros">
+        <PropertyRef Name="Id_Tipo_Moneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__Id_Pers__4AB81AF0">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id_Persona" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario_V__Id_Cu__4F7CD00D">
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+    <End Role="Usuario_Visualizacion" Type="Self.Usuario_Visualizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Usuario_Visualizacion">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario_V__Id_Us__4E88ABD4">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Usuario_Visualizacion" Type="Self.Usuario_Visualizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id_Usuario" />
+      </Principal>
+      <Dependent Role="Usuario_Visualizacion">
+        <PropertyRef Name="Id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Actualizar_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Beneficiario" Type="int" Mode="In" />
+    <Parameter Name="inId_Persona" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Parentezco" Type="int" Mode="In" />
+    <Parameter Name="inPorcentaje" Type="real" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Actualizar_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Cuenta" Type="int" Mode="In" />
+    <Parameter Name="inId_Persona" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Tipo_Cuenta_Ahorros" Type="varchar" Mode="In" />
+    <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inFecha_Creacion" Type="date" Mode="In" />
+    <Parameter Name="inSaldo" Type="money" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Actualizar_Estado_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Estado_Cuenta" Type="int" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inFecha_Inicio" Type="date" Mode="In" />
+    <Parameter Name="inFecha_Fin" Type="date" Mode="In" />
+    <Parameter Name="inSaldo_Inicial" Type="money" Mode="In" />
+    <Parameter Name="inSaldo_Final" Type="money" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Actualizar_Parentezco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Parentezco" Type="int" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Actualizar_Persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Persona" Type="int" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inId_TipoDocumento" Type="varchar" Mode="In" />
+    <Parameter Name="inDocumento_Identidad" Type="varchar" Mode="In" />
+    <Parameter Name="inFecha_Nacimiento" Type="date" Mode="In" />
+    <Parameter Name="inEmail" Type="varchar" Mode="In" />
+    <Parameter Name="inTelefono1" Type="varchar" Mode="In" />
+    <Parameter Name="inTelefono2" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Actualizar_Tipo_Cuenta_Ahorros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Tipo_Cuenta_Ahorros" Type="int" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Tipo_Moneda" Type="int" Mode="In" />
+    <Parameter Name="inSaldo_Minimo" Type="money" Mode="In" />
+    <Parameter Name="inMulta_Saldo_Minimo" Type="money" Mode="In" />
+    <Parameter Name="inCargo_Anual" Type="money" Mode="In" />
+    <Parameter Name="inNum_Retiros_Humano" Type="int" Mode="In" />
+    <Parameter Name="inNum_Retiros_Automatico" Type="int" Mode="In" />
+    <Parameter Name="inComision_Humano" Type="money" Mode="In" />
+    <Parameter Name="inComision_Automatico" Type="money" Mode="In" />
+    <Parameter Name="inInteres" Type="real" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Actualizar_Tipo_Moneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Tipo_Moneda" Type="int" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inSimbolo" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Actualizar_TipoDocumento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_TipoDocumento" Type="int" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Actualizar_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Usuario" Type="int" Mode="In" />
+    <Parameter Name="inId_Persona" Type="varchar" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inPassword" Type="varchar" Mode="In" />
+    <Parameter Name="inEs_Admin" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Actualizar_Usuario_Visualizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Usuario_Visualizacion" Type="int" Mode="In" />
+    <Parameter Name="inId_Usuario" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Parentezco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datos" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Tipo_Accion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Tipo_Cuenta_Ahorros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Datos" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Tipo_Doc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cargar_Tipo_Moneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tipo_Documento" Type="xml" Mode="In" />
+    <Parameter Name="doc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Crear_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Persona" Type="int" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="int" Mode="In" />
+    <Parameter Name="inId_Parentezco" Type="int" Mode="In" />
+    <Parameter Name="inPorcentaje" Type="real" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Crear_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Persona" Type="int" Mode="In" />
+    <Parameter Name="inId_Tipo_Cuenta_Ahorros" Type="int" Mode="In" />
+    <Parameter Name="inNum_Cuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inFecha_Creacion" Type="date" Mode="In" />
+    <Parameter Name="inSaldo" Type="money" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Crear_Estado_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Cuenta" Type="int" Mode="In" />
+    <Parameter Name="inFecha_Inicio" Type="date" Mode="In" />
+    <Parameter Name="inFecha_Fin" Type="date" Mode="In" />
+    <Parameter Name="inSaldo_Inicial" Type="money" Mode="In" />
+    <Parameter Name="inSaldo_Final" Type="money" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Crear_Parentezco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Parentezco" Type="int" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Crear_Persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inId_TipoDocumento" Type="int" Mode="In" />
+    <Parameter Name="inDocumento_Identidad" Type="varchar" Mode="In" />
+    <Parameter Name="inFecha_Nacimiento" Type="date" Mode="In" />
+    <Parameter Name="inEmail" Type="varchar" Mode="In" />
+    <Parameter Name="inTelefono1" Type="varchar" Mode="In" />
+    <Parameter Name="inTelefono2" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Crear_Tipo_Cuenta_Ahorros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Tipo_Cuenta_Ahorros" Type="int" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inId_Tipo_Moneda" Type="int" Mode="In" />
+    <Parameter Name="inSaldo_Minimo" Type="money" Mode="In" />
+    <Parameter Name="inMulta_Saldo_Minimo" Type="money" Mode="In" />
+    <Parameter Name="inCargo_Anual" Type="money" Mode="In" />
+    <Parameter Name="inNum_Retiros_Humano" Type="int" Mode="In" />
+    <Parameter Name="inNum_Retiros_Automatico" Type="int" Mode="In" />
+    <Parameter Name="inComision_Humano" Type="money" Mode="In" />
+    <Parameter Name="inComision_Automatico" Type="money" Mode="In" />
+    <Parameter Name="inInteres" Type="real" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Crear_Tipo_Moneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Tipo_Moneda" Type="int" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inSimbolo" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Crear_TipoDocumento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_TipoDocumento" Type="int" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Crear_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Persona" Type="int" Mode="In" />
+    <Parameter Name="inNombre" Type="varchar" Mode="In" />
+    <Parameter Name="inPassword" Type="varchar" Mode="In" />
+    <Parameter Name="inEs_Admin" Type="varchar" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Crear_Usuario_Visualizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Usuario" Type="int" Mode="In" />
+    <Parameter Name="inId_Cuenta" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_Beneficiario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Beneficiario" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Cuenta" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_Estado_Cuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Estado_Cuenta" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_Parentezco" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Parentezco" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_Persona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Persona" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_Tipo_Cuenta_Ahorros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Tipo_Cuenta_Ahorros" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_Tipo_Moneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Tipo_Moneda" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_TipoDocumento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_TipoDocumento" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Usuario" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Eliminar_Usuario_Visualizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Usuario_Visualizacion" Type="int" Mode="In" />
+    <Parameter Name="inUsuarioACargo" Type="varchar" Mode="In" />
+    <Parameter Name="inIPusuario" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Insertar_BitacoraAcciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inId_Tipo_Accion" Type="int" Mode="In" />
+    <Parameter Name="inId_Objeto_Accion" Type="int" Mode="In" />
+    <Parameter Name="inQuien_Inserto" Type="varchar" Mode="In" />
+    <Parameter Name="inInsertado_Por" Type="varchar" Mode="In" />
+    <Parameter Name="inInserto_El" Type="date" Mode="In" />
+  </Function>
+  <EntityContainer Name="ModelosStoreContainer">
+    <EntitySet Name="Beneficiario" EntityType="Self.Beneficiario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bitacora_Accion" EntityType="Self.Bitacora_Accion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado_Cuenta" EntityType="Self.Estado_Cuenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parentezco" EntityType="Self.Parentezco" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Accion" EntityType="Self.Tipo_Accion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Cuenta_Ahorros" EntityType="Self.Tipo_Cuenta_Ahorros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Documento" EntityType="Self.Tipo_Documento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Moneda" EntityType="Self.Tipo_Moneda" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario_Visualizacion" EntityType="Self.Usuario_Visualizacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Beneficia__Id_Cu__403A8C7D" Association="Self.FK__Beneficia__Id_Cu__403A8C7D">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Beneficiario" EntitySet="Beneficiario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Beneficia__Id_Pa__4222D4EF" Association="Self.FK__Beneficia__Id_Pa__4222D4EF">
+      <End Role="Parentezco" EntitySet="Parentezco" />
+      <End Role="Beneficiario" EntitySet="Beneficiario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Beneficia__Id_Pe__412EB0B6" Association="Self.FK__Beneficia__Id_Pe__412EB0B6">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Beneficiario" EntitySet="Beneficiario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bitacora___Id_Ti__52593CB8" Association="Self.FK__Bitacora___Id_Ti__52593CB8">
+      <End Role="Tipo_Accion" EntitySet="Tipo_Accion" />
+      <End Role="Bitacora_Accion" EntitySet="Bitacora_Accion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuenta__Id_Perso__3C69FB99" Association="Self.FK__Cuenta__Id_Perso__3C69FB99">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Cuenta" EntitySet="Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuenta__Id_Tipo___3B75D760" Association="Self.FK__Cuenta__Id_Tipo___3B75D760">
+      <End Role="Tipo_Cuenta_Ahorros" EntitySet="Tipo_Cuenta_Ahorros" />
+      <End Role="Cuenta" EntitySet="Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estado_Cu__Id_Cu__45F365D3" Association="Self.FK__Estado_Cu__Id_Cu__45F365D3">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Estado_Cuenta" EntitySet="Estado_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Persona__Id_Tipo__36B12243" Association="Self.FK__Persona__Id_Tipo__36B12243">
+      <End Role="Tipo_Documento" EntitySet="Tipo_Documento" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tipo_Cuen__Id_Ti__31EC6D26" Association="Self.FK__Tipo_Cuen__Id_Ti__31EC6D26">
+      <End Role="Tipo_Moneda" EntitySet="Tipo_Moneda" />
+      <End Role="Tipo_Cuenta_Ahorros" EntitySet="Tipo_Cuenta_Ahorros" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__Id_Pers__4AB81AF0" Association="Self.FK__Usuario__Id_Pers__4AB81AF0">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario_V__Id_Cu__4F7CD00D" Association="Self.FK__Usuario_V__Id_Cu__4F7CD00D">
+      <End Role="Cuenta" EntitySet="Cuenta" />
+      <End Role="Usuario_Visualizacion" EntitySet="Usuario_Visualizacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario_V__Id_Us__4E88ABD4" Association="Self.FK__Usuario_V__Id_Us__4E88ABD4">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Usuario_Visualizacion" EntitySet="Usuario_Visualizacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

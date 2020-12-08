@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelosStoreContainer" CdmEntityContainer="EntidadesBase">
+    <EntitySetMapping Name="Beneficiario">
+      <EntityTypeMapping TypeName="Modelos.Beneficiario">
+        <MappingFragment StoreEntitySet="Beneficiario">
+          <ScalarProperty Name="Id_Beneficiario" ColumnName="Id_Beneficiario" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+          <ScalarProperty Name="Id_Parentezco" ColumnName="Id_Parentezco" />
+          <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bitacora_Accion">
+      <EntityTypeMapping TypeName="Modelos.Bitacora_Accion">
+        <MappingFragment StoreEntitySet="Bitacora_Accion">
+          <ScalarProperty Name="Id_Bitacora_Accion" ColumnName="Id_Bitacora_Accion" />
+          <ScalarProperty Name="Id_Tipo_Accion" ColumnName="Id_Tipo_Accion" />
+          <ScalarProperty Name="Id_Objeto_Accion" ColumnName="Id_Objeto_Accion" />
+          <ScalarProperty Name="Quien_Inserto" ColumnName="Quien_Inserto" />
+          <ScalarProperty Name="Insertado_Por" ColumnName="Insertado_Por" />
+          <ScalarProperty Name="Inserto_El" ColumnName="Inserto_El" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cuenta">
+      <EntityTypeMapping TypeName="Modelos.Cuenta">
+        <MappingFragment StoreEntitySet="Cuenta">
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="Id_Tipo_Cuenta_Ahorros" ColumnName="Id_Tipo_Cuenta_Ahorros" />
+          <ScalarProperty Name="Num_Cuenta" ColumnName="Num_Cuenta" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado_Cuenta">
+      <EntityTypeMapping TypeName="Modelos.Estado_Cuenta">
+        <MappingFragment StoreEntitySet="Estado_Cuenta">
+          <ScalarProperty Name="Id_Estado_Cuenta" ColumnName="Id_Estado_Cuenta" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+          <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+          <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+          <ScalarProperty Name="Saldo_Inicial" ColumnName="Saldo_Inicial" />
+          <ScalarProperty Name="Saldo_Final" ColumnName="Saldo_Final" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parentezco">
+      <EntityTypeMapping TypeName="Modelos.Parentezco">
+        <MappingFragment StoreEntitySet="Parentezco">
+          <ScalarProperty Name="Id_Parentezco" ColumnName="Id_Parentezco" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="Modelos.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_TipoDocumento" ColumnName="Id_TipoDocumento" />
+          <ScalarProperty Name="Documento_Identidad" ColumnName="Documento_Identidad" />
+          <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+          <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Accion">
+      <EntityTypeMapping TypeName="Modelos.Tipo_Accion">
+        <MappingFragment StoreEntitySet="Tipo_Accion">
+          <ScalarProperty Name="Id_Tipo_Accion" ColumnName="Id_Tipo_Accion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Cuenta_Ahorros">
+      <EntityTypeMapping TypeName="Modelos.Tipo_Cuenta_Ahorros">
+        <MappingFragment StoreEntitySet="Tipo_Cuenta_Ahorros">
+          <ScalarProperty Name="Id_Tipo_Cuenta_Ahorros" ColumnName="Id_Tipo_Cuenta_Ahorros" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Tipo_Moneda" ColumnName="Id_Tipo_Moneda" />
+          <ScalarProperty Name="Saldo_Minimo" ColumnName="Saldo_Minimo" />
+          <ScalarProperty Name="Multa_Saldo_Minimo" ColumnName="Multa_Saldo_Minimo" />
+          <ScalarProperty Name="Cargo_Anual" ColumnName="Cargo_Anual" />
+          <ScalarProperty Name="Num_Retiros_Humano" ColumnName="Num_Retiros_Humano" />
+          <ScalarProperty Name="Num_Retiros_Automatico" ColumnName="Num_Retiros_Automatico" />
+          <ScalarProperty Name="Comision_Humano" ColumnName="Comision_Humano" />
+          <ScalarProperty Name="Comision_Automatico" ColumnName="Comision_Automatico" />
+          <ScalarProperty Name="Interes" ColumnName="Interes" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Documento">
+      <EntityTypeMapping TypeName="Modelos.Tipo_Documento">
+        <MappingFragment StoreEntitySet="Tipo_Documento">
+          <ScalarProperty Name="Id_TipoDocumento" ColumnName="Id_TipoDocumento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Moneda">
+      <EntityTypeMapping TypeName="Modelos.Tipo_Moneda">
+        <MappingFragment StoreEntitySet="Tipo_Moneda">
+          <ScalarProperty Name="Id_Tipo_Moneda" ColumnName="Id_Tipo_Moneda" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Simbolo" ColumnName="Simbolo" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="Modelos.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="Nombre_Usuario" ColumnName="Nombre_Usuario" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Es_Admin" ColumnName="Es_Admin" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario_Visualizacion">
+      <EntityTypeMapping TypeName="Modelos.Usuario_Visualizacion">
+        <MappingFragment StoreEntitySet="Usuario_Visualizacion">
+          <ScalarProperty Name="Id_Usuario_Visualizacion" ColumnName="Id_Usuario_Visualizacion" />
+          <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

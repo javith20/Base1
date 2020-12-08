@@ -1,0 +1,77 @@
+/** principal **/
+nav.principal{
+    width: 100%;
+}
+nav.principal li{
+    position: relative;
+    display: inline-block;
+    padding: 15px;
+    border-right: 1px solid #009999;
+}
+
+nav.principal li:hover,li.active{
+    cursor: pointer;
+    background-color: #0D1952;
+}
+
+nav.principal li a{
+    color:#fff;
+    text-decoration: none;
+}
+
+/** lateral **/
+nav.lateral{
+    margin: 10px;
+    padding: 5px;
+    background-color: #96A3E8;
+    border-radius: 4px;
+}
+
+nav.lateral h3{
+    color:#3F2C1A;
+}
+
+nav.lateral ul li{
+    list-style: none;
+    padding: 5px;
+    width: 100px;
+}
+
+nav.lateral a{
+    color:#3F2C1A;
+    text-decoration: none;
+}
+
+nav.lateral li:hover{
+    background-color: #3C477F;
+}
+
+li:hover > .submenu{
+	display:block;
+}
+
+nav.lateral li:hover a{
+    color: #fff;
+}
+
+nav .submenu{
+	position: absolute;
+	z-index: 1000;
+        background-color: #009999;
+	top: 48px;
+	left: 0px;
+	display:none;
+}
+nav .submenu li{
+	position:relative;
+	width:100%;
+}
+
+nav .submenu li {
+	padding:10px 0;
+}
+
+nav .submenu li:hover{
+	background-color: #0D1952;
+}
+
