@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Index.Master" AutoEventWireup="true" CodeBehind="FrmIniciarSesion.aspx.cs" Inherits="P.FrmIniciarSesion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Index.Master" AutoEventWireup="true" CodeBehind="FrmIniciarSesion.aspx.cs" Inherits="BaseTec.FrmIniciarSesion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
         <link href="Css/footer.css" rel="stylesheet" />
         <link href="Css/form.css" rel="stylesheet" />

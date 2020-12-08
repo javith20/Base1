@@ -1,0 +1,98 @@
+label span{
+    color: red;
+}
+
+form label{
+    display: block;
+}
+
+label.ib{
+    display: inline-block;
+}
+
+fieldset{
+    margin-top: 10px;
+    padding: 5px;
+}
+
+input[type=text],
+input[type=date],
+input[type=password],
+input[type=number],
+input[type=email],
+select,
+textarea{
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 5px 0;
+    width:80%
+    }
+
+select{
+}
+input[type=file]{   
+    border-radius: 4px;
+    padding: 5px 0;
+    width: 400px;
+    height: 30px; 
+}
+
+textarea{
+    width: 400px;
+}
+
+table, tr, td, th{
+    border: 1px solid #6D421A;
+    border-collapse: collapse;
+    padding: 8px;
+}
+
+table thead{
+    background-color: #3F2C1A;
+    color:#fff;
+}
+
+tbody tr:nth-child(odd){
+    background: #DEE9EB;
+    color: #0D1952;
+    font-weight:bold;
+}
+ 
+tbody tr:nth-child(even){
+    background: #FFFFFF;
+    color: #0D1952;
+     font-weight:bold;
+}
+
+/** icons **/
+.icon{
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    cursor: pointer;    
+}
+
+.icon.edit{
+    background-image: url(../assets/edit.png);
+}
+
+.icon.remove{
+    background-image: url(../assets/remove.png);
+}
+
+input.error,
+select.error
+{
+    border-color: red;
+    color:red;
+}
+
+label.error{
+    color:red;
+}
+
+#content_values{
+    display: none;
+}

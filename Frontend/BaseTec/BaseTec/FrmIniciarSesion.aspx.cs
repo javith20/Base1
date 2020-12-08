@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using PrograBases.Models;
-using PrograBases.Controllers;
+using BaseTec.Models;
+using BaseTec.Controllers;
 
 namespace BancoSena
 {
@@ -19,9 +19,11 @@ namespace BancoSena
                 int valor = Convert.ToInt32(Request.QueryString["x"]);
                 switch (valor)
                 {
-                    case 1: lblMensaje.Text = "Debe Iniciar primero con su usuario y contraseña";
+                    case 1: 
+                        lblMensaje.Text = "Debe Iniciar primero con su usuario y contraseña";
                         break;
-                    case 2: lblMensaje.Text = "Ha cerrado la sesión. Hasta pronto";
+                    case 2: 
+                        lblMensaje.Text = "Ha cerrado la sesión. Hasta pronto";
                         break;
                 }
             }

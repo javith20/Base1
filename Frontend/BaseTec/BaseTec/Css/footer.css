@@ -1,0 +1,16 @@
+footer .logo{
+    width: 120px;
+    height: 90px;
+    background-image: url(../Recursos/Imagenes/logo_footer.png);
+    background-size: 100%;
+    position: absolute;
+    top: 5px;
+    left: 30px;
+}
+
+footer small{
+    position: absolute;
+    top: 40px;
+    left: 160px;
+    align-content:center
+}

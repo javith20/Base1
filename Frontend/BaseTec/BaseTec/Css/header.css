@@ -1,0 +1,41 @@
+header .logo{
+    width: 100px;
+    height: 100px;
+    background-image: url(../Recursos/Imagenes/logo.png);
+    background-size: 100%;  
+    position: absolute;
+    left: 30px;
+    top: 10px;
+}
+
+header .texto{ 
+    width: 100%;
+    height: 100px;   
+    background-size: 100%;  
+    position: absolute;
+    left: 80px;
+   
+    font-size:xx-large
+}
+
+header .imgTitulo{ 
+   
+    left: 200px;
+    width:700px;
+    height:100px;
+    background-image: url(../Recursos/Imagenes/titulo.png);
+    background-size: 100%; 
+    position: absolute;
+ 
+ 
+}
+
+header .logo2{
+    width: 100px;
+    height: 100px;
+    background-image: url(../Recursos/Imagenes/logo.png);
+    background-size: 100%;  
+    position: absolute;
+    right:30px;
+    top: 10px;
+}
