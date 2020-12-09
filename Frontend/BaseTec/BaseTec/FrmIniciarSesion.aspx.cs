@@ -6,8 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BaseTec.Models;
 using BaseTec.Controllers;
+using BaseTec.Controlador;
 
-namespace BancoSena
+namespace BaseTec
 {
     public partial class FrmIniciarSesion : System.Web.UI.Page
     {
@@ -32,22 +33,22 @@ namespace BancoSena
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
             Usuario unUsuario = new Usuario();
-            unUsuario.userName = txtUsuario.Text;
-            unUsuario.password = txtPassword.Text;
+            unUsuario.Nombre_Usuario = txtUsuario.Text;
+            unUsuario.Clave = txtPassword.Text;
             unUsuario = objControllerGestionBanco.iniciarSesion(unUsuario);
             if (unUsuario!=null)
             {
-                switch (unUsuario.unRol.nombre){
-                    case "Administrador":
-                        Session["idUsuario"] = unUsuario.idUsuario;
+                switch (unUsuario.Es_Admin){
+                    case true:
+                        Session["Nombre_Usuario"] = unUsuario.Nombre_Usuario;
                         Response.Redirect("Vista/Administrador/default.aspx");
                         break;
-                    case "Cajero":
-                        Session["idUsuario"] = unUsuario.idUsuario;
-                        Response.Redirect("Vista/Cajero/default.aspx");
-                        break;
-                    case "Cliente":
-                        Session["idUsuario"] = unUsuario.idUsuario;
+                    /* case "Cajero":
+                         Session["Nombre_Usuario"] = unUsuario.Nombre_Usuario;
+                         Response.Redirect("Vista/Cajero/default.aspx");
+                         break;*/
+                    case false:
+                        Session["idUsuaNombre_Usuariorio"] = unUsuario.Nombre_Usuario;
                         Response.Redirect("Vista/Clientes/default.aspx");
                         break;
                 }

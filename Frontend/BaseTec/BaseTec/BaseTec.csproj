@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BeneficiariosController.cs" />
+    <Compile Include="Controllers\ControllerGestionBanco.cs" />
     <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\Estado_CuentaController.cs" />
     <Compile Include="Controllers\Global.cs" />
@@ -174,9 +175,12 @@
     <Compile Include="Models\Bitacora_Accion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Conexion.cs" />
     <Compile Include="Models\Cuenta.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DatosGestionBanco.cs" />
+    <Compile Include="Models\DatosUsuario.cs" />
     <Compile Include="Models\Estado_Cuenta.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
